@@ -3,6 +3,7 @@ include('./model/database.php');
 $lugares = view_lugares();
 $orgs = view_orgs();
 $carreras = view_carreras();
+$cat_carreras = view_cat_carreras();
 // foreach ($int_lugares as $lugares) {
 //    # code...
 //    $lugares = $lugares['lugares'];
@@ -597,17 +598,37 @@ $carreras = view_carreras();
                            <!-- Hover added -->
                            <div class="mb-3">
                               <label for="" class="form-label">Selecciona tu carrera</label>
-                              <select class="form-select form-select-lg" name="" id="">
+                              <select class="form-select form-select-lg" name="" id="cat_carrera">
                                  
-                              <option selected>Carreras</option>
+                              <option value = "0" selected>Carreras</option>
                               <?php
-                                    
-                                    foreach($carreras as $resul){
-                                       echo '<option value="'..'">'.$resul[''].'</option>';    
+                                    foreach ($carreras as $resul) {
+                                       # code...
+                                       echo '<option value="'.$resul['id_grado'].'">'.$resul['nombre_grado'].'</option>';    
+                                       
                                     }
+                                    // while($carreras = $resul->fetch_assoc()){
+
+                                       // echo '<option value="'.$resul['id_carrera'].'">'.$resul['nivel'].'</option>';    
+                                    // }
 
                                      ?>
                               </select>
+                              <br>
+                              <select id="catalogo" class="form-select form-select-lg"  hidden ="true"  disabled>
+                                 <option selected disabled >Selecciona tu carrera <?php //echo $valorglobal; ?></option>
+                                       <?php 
+                                       // $valorglobal = $_GET['catalogo'];
+                                       foreach ($cat_carreras as $resul2) {
+                                          # code...
+                                          if ($resul2['id_rel_grado_carrera'] ==  "<script> document.writeln(indice); </script>" ) {
+                                             # code...
+                                             echo '<option value="'.$resul['id_carrera'].'">'.$resul2['nombre'].'</option>';    
+                                          }
+   
+                                       }
+                                       ?>
+                              </select> 
                            </div>
                      </div>
 
@@ -1131,6 +1152,23 @@ $carreras = view_carreras();
       <script src="assets/app/js/isotope.pkgd.min.js"></script>
       <script src="assets/app/js/ajax-form.js"></script>
       <script src="assets/app/js/main.js"></script>
+      <script>
+         let ee = document.getElementById('cat_carrera');
+         var cs = document.getElementById('catalogo');
+         ee.addEventListener("change", function(){
+            if (ee.value != 0 ) {
+               cs.disabled = false;
+               cs.hidden = false;
+               var indice = ee.value;
+               <?php
+                $valorglobal = "<script> document.writeln(ee.value); </script>";
+               ?>
+               alert(ee.value);
+            }else {
+               cs.disabled = true;
+            }
+         });
+      </script>
    </body>
 </html>
 <!--

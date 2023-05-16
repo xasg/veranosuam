@@ -3,12 +3,22 @@ require_once('./controller/conect.php');
 
 function view_carreras(){
     global $mysqli;
-   $sql = "SELECT * FROM espacio_disponible";
+   $sql = "SELECT * FROM rel_grado_carrera";
     // Ejecuta la consulta y obtén el resultado
-    $result = $mysqli->query($sql);
-    $row = $result->fetch_assoc();
-    return $row;
+    // $result = $mysqli->query($sql);
+    // $row = $result->fetch_assoc();
+    // return $row;
+    return $mysqli->query($sql);
+    return $result->fetch_assoc();
 
+}
+function view_cat_carreras(){
+    global $mysqli;
+   $sql = "SELECT * FROM cat_carrera ";
+    
+    // return $mysqli->query($sql);
+    return $mysqli->query($sql);
+    return $result->fetch_assoc();
 }
 
 

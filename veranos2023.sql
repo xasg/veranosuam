@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cat_carrera` (
   `id_carrera` int(11) NOT NULL,
-  `nivel` set('Licenciatura','Posgrado','Doctorado') COLLATE utf8_spanish_ci NOT NULL,
+  `nivel` set('Licenciatura','Ingeniería','Maestría','Posgrado','Doctorado') COLLATE utf8_spanish_ci NOT NULL,
   `nombre` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
   `area` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -43,13 +43,13 @@ INSERT INTO `cat_carrera` (`id_carrera`, `nivel`, `nombre`, `area`) VALUES
 (2, 'Licenciatura', 'Biología Molecular', 'DCNI'),
 (3, 'Licenciatura', 'Ciencias de la Comunicación', 'DCCD'),
 (4, 'Licenciatura', 'Derecho', 'DCSH'),
-(5, 'Licenciatura', 'Diseńo', 'DCCD'),
-(6, '', 'Ingeniería Biológica', 'DCNI'),
-(7, '', 'Ingeniería en Computación', 'DCNI'),
+(5, 'Licenciatura', 'Diseño', 'DCCD'),
+(6, 'Ingeniería', 'Ingeniería Biológica', 'DCNI'),
+(7, 'Ingeniería', 'Ingeniería en Computación', 'DCNI'),
 (8, 'Licenciatura', 'Estudios Socioterritoriales', 'DCSH'),
 (9, 'Licenciatura', 'Humanidades', 'DCSH'),
-(10, '', 'Maestría en Ciencias Sociales y Humanidades', 'DCSH'),
-(11, '', 'Maestría en Diseńo, Información y Comunicación', 'DCCD'),
+(10, 'Maestría', 'Maestría en Ciencias Sociales y Humanidades', 'DCSH'),
+(11, 'Maestría', 'Maestría en Diseño, Información y Comunicación', 'DCCD'),
 (12, 'Licenciatura', 'Matemáticas Aplicadas', 'DCNI'),
 (13, 'Licenciatura', 'Tecnologías y Sistemas de Información', 'DCCD');
 
