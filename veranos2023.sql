@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-05-2023 a las 02:07:46
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.11
+-- Tiempo de generación: 16-05-2023 a las 08:25:13
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,29 +29,30 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cat_carrera` (
   `id_carrera` int(11) NOT NULL,
-  `nivel` set('Licenciatura','Ingeniería','Maestría','Posgrado','Doctorado') COLLATE utf8_spanish_ci NOT NULL,
-  `nombre` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
-  `area` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL
+  `nivel` set('Licenciatura','Ingeniería','Maestría','Posgrado','Doctorado') NOT NULL,
+  `nombre` varchar(250) NOT NULL,
+  `area` varchar(50) DEFAULT NULL,
+  `id_rel_grado_carrera` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `cat_carrera`
 --
 
-INSERT INTO `cat_carrera` (`id_carrera`, `nivel`, `nombre`, `area`) VALUES
-(1, 'Licenciatura', 'Administración', 'DCSH'),
-(2, 'Licenciatura', 'Biología Molecular', 'DCNI'),
-(3, 'Licenciatura', 'Ciencias de la Comunicación', 'DCCD'),
-(4, 'Licenciatura', 'Derecho', 'DCSH'),
-(5, 'Licenciatura', 'Diseño', 'DCCD'),
-(6, 'Ingeniería', 'Ingeniería Biológica', 'DCNI'),
-(7, 'Ingeniería', 'Ingeniería en Computación', 'DCNI'),
-(8, 'Licenciatura', 'Estudios Socioterritoriales', 'DCSH'),
-(9, 'Licenciatura', 'Humanidades', 'DCSH'),
-(10, 'Maestría', 'Maestría en Ciencias Sociales y Humanidades', 'DCSH'),
-(11, 'Maestría', 'Maestría en Diseño, Información y Comunicación', 'DCCD'),
-(12, 'Licenciatura', 'Matemáticas Aplicadas', 'DCNI'),
-(13, 'Licenciatura', 'Tecnologías y Sistemas de Información', 'DCCD');
+INSERT INTO `cat_carrera` (`id_carrera`, `nivel`, `nombre`, `area`, `id_rel_grado_carrera`) VALUES
+(1, 'Licenciatura', 'Administración', 'DCSH', 1),
+(2, 'Licenciatura', 'Biología Molecular', 'DCNI', 1),
+(3, 'Licenciatura', 'Ciencias de la Comunicación', 'DCCD', 1),
+(4, 'Licenciatura', 'Derecho', 'DCSH', 1),
+(5, 'Licenciatura', 'Diseño', 'DCCD', 1),
+(6, 'Ingeniería', 'Ingeniería Biológica', 'DCNI', 3),
+(7, 'Ingeniería', 'Ingeniería en Computación', 'DCNI', 3),
+(8, 'Licenciatura', 'Estudios Socioterritoriales', 'DCSH', 1),
+(9, 'Licenciatura', 'Humanidades', 'DCSH', 1),
+(10, 'Maestría', 'Maestría en Ciencias Sociales y Humanidades', 'DCSH', 4),
+(11, 'Maestría', 'Maestría en Diseño, Información y Comunicación', 'DCCD', 4),
+(12, 'Licenciatura', 'Matemáticas Aplicadas', 'DCNI', 1),
+(13, 'Licenciatura', 'Tecnologías y Sistemas de Información', 'DCCD', 1);
 
 -- --------------------------------------------------------
 
@@ -62,14 +63,14 @@ INSERT INTO `cat_carrera` (`id_carrera`, `nivel`, `nombre`, `area`) VALUES
 CREATE TABLE `espacio_disponible` (
   `id_espacio` int(11) NOT NULL,
   `id_organizacion` int(11) NOT NULL,
-  `licenciatura` varchar(250) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `area_proyecto` varchar(250) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `actividad` varchar(250) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `modalidad_part` set('Tres a uno','Individual','Sin especificar') COLLATE utf8_spanish_ci DEFAULT NULL,
-  `modalidad_trabajo` set('Presencial','Híbrida','Home office','Sin especificar') COLLATE utf8_spanish_ci DEFAULT NULL,
-  `apoyo` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `licenciatura` varchar(250) DEFAULT NULL,
+  `area_proyecto` varchar(250) DEFAULT NULL,
+  `actividad` varchar(250) DEFAULT NULL,
+  `modalidad_part` set('Tres a uno','Individual','Sin especificar') DEFAULT NULL,
+  `modalidad_trabajo` set('Presencial','Híbrida','Home office','Sin especificar') DEFAULT NULL,
+  `apoyo` varchar(200) DEFAULT NULL,
   `lugares` int(11) NOT NULL DEFAULT 0,
-  `requisitos` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `requisitos` varchar(200) DEFAULT NULL,
   `dt_create` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -170,15 +171,15 @@ INSERT INTO `espacio_disponible` (`id_espacio`, `id_organizacion`, `licenciatura
 
 CREATE TABLE `estudiantes` (
   `id` int(11) NOT NULL,
-  `nombres` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
-  `a_paterno` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `a_materno` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `matricula` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `licenciatura` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `nombres` varchar(150) NOT NULL,
+  `a_paterno` varchar(100) NOT NULL,
+  `a_materno` varchar(100) NOT NULL,
+  `matricula` varchar(50) NOT NULL,
+  `licenciatura` varchar(150) DEFAULT NULL,
   `creditos` int(11) DEFAULT NULL,
   `edad` int(11) DEFAULT NULL,
-  `sexo` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `correo` varchar(80) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `sexo` varchar(10) DEFAULT NULL,
+  `correo` varchar(80) DEFAULT NULL,
   `telefono` int(11) DEFAULT NULL,
   `cretate` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -191,8 +192,8 @@ CREATE TABLE `estudiantes` (
 
 CREATE TABLE `organizacion` (
   `id_org` int(11) NOT NULL,
-  `nombre` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
-  `direccion` varchar(250) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `nombre` varchar(250) NOT NULL,
+  `direccion` varchar(250) DEFAULT NULL,
   `dt_create` timestamp NOT NULL DEFAULT current_timestamp(),
   `estatus` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -232,13 +233,35 @@ INSERT INTO `organizacion` (`id_org`, `nombre`, `direccion`, `dt_create`, `estat
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `rel_grado_carrera`
+--
+
+CREATE TABLE `rel_grado_carrera` (
+  `id_grado` int(10) NOT NULL,
+  `nombre_grado` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `rel_grado_carrera`
+--
+
+INSERT INTO `rel_grado_carrera` (`id_grado`, `nombre_grado`) VALUES
+(1, 'LICENCIATURA'),
+(3, 'INGENIERÍA'),
+(4, 'MAESTRIA'),
+(5, 'POSGRADO'),
+(6, 'DOCTORADO');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
-  `name` varchar(80) COLLATE utf8_spanish_ci NOT NULL,
-  `password` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `name` varchar(80) NOT NULL,
+  `password` varchar(15) NOT NULL,
   `tp_user` int(11) NOT NULL DEFAULT 1,
   `date_create` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -258,6 +281,12 @@ ALTER TABLE `estudiantes`
 --
 ALTER TABLE `organizacion`
   ADD PRIMARY KEY (`id_org`);
+
+--
+-- Indices de la tabla `rel_grado_carrera`
+--
+ALTER TABLE `rel_grado_carrera`
+  ADD PRIMARY KEY (`id_grado`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -280,6 +309,12 @@ ALTER TABLE `estudiantes`
 --
 ALTER TABLE `organizacion`
   MODIFY `id_org` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT de la tabla `rel_grado_carrera`
+--
+ALTER TABLE `rel_grado_carrera`
+  MODIFY `id_grado` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
