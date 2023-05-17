@@ -4,19 +4,6 @@ $lugares = view_lugares();
 $orgs = view_orgs();
 $carreras = view_carreras();
 $cat_carreras = view_cat_carreras();
-// if(isset($_POST['myVariable'])) {
-//    // Guarda la variable recibida en una nueva variable PHP
-//    $myVariable = $_POST['myVariable'];
- 
-//    // Haz lo que necesites con la variable en PHP
-//  }
-// // foreach ($int_lugares as $lugares) {
-// //    # code...
-// //    $lugares = $lugares['lugares'];
-// // }
-// // if ($int_lugares->num_rows > 0) {
-// //    $lugares = $int_lugares['lugares'];
-// // } 
 ?>
 
 <!doctype html>
@@ -77,7 +64,7 @@ $cat_carreras = view_cat_carreras();
                               <i class="fal fa-map-marker-alt"></i>
                            </div>
                            <div class="offcanvas__contact-text">
-                              <a target="_blank" href="#" >UAMC</a>
+                              <a target="_blank" href="https://www.google.com/maps/place/Universidad+Aut%C3%B3noma+Metropolitana+Unidad+Cuajimalpa/@19.3520841,-99.2826256,15z/data=!4m6!3m5!1s0x85d2074a4aea180d:0x1151e61121fd01f3!8m2!3d19.3520841!4d-99.2826256!16s%2Fm%2F03qdkrv" >UAMC</a>
                            </div>
                         </li>
                         <li class="d-flex align-items-center">
@@ -627,9 +614,13 @@ $cat_carreras = view_cat_carreras();
                                  <option selected disabled >Selecciona tu carrera <?php //echo $valorglobal; ?></option>
                               </select>
                               <br> 
-                              <select id="catalogo_org" name="catalogo_org" class="form-select form-select-lg"   hidden="true">
+                              <!-- <select id="catalogo_org" name="catalogo_org" class="form-select form-select-lg"   hidden="true">
                                  <option selected disabled >Selecciona tu carrera <?php //echo $valorglobal; ?></option>
-                              </select> 
+                              </select>  -->
+                              
+                           </div>
+                           <div class="bd-faq__wrapper mb-60" id="catalogo_org" name="catalogo_org" hidden = true>
+                              
                            </div>
                      </div>
 
@@ -1073,7 +1064,7 @@ $cat_carreras = view_cat_carreras();
                          </svg>
                      </div>
                      <div class="hero__btn-link wow fadeInUp" data-wow-delay=".8s">
-                        <a class="solid__btn" href="#">Inscribete</a>
+                        <a class="solid__btn" href="./view/inscribete.php">Inscribete</a>
                      </div>
                   </div>
             </div>
@@ -1170,7 +1161,7 @@ $cat_carreras = view_cat_carreras();
            $("#catalogo").change(function () {         
              $("#catalogo option:selected").each(function () {
                id_carrera= $(this).val();
-               $.post("includes/carrerasObtener_catalogo_org.php", { id_carrera: id_carrera }, function(data){
+               $.post("includes/espacios_disp.php", { id_carrera: id_carrera }, function(data){
                  $("#catalogo_org").html(data);
                });            
              });
@@ -1180,17 +1171,20 @@ $cat_carreras = view_cat_carreras();
       
       <script>
          let ee = document.getElementById('cat_carrera');
+         let ef = document.getElementById('catalogo_org');
          var cs = document.getElementById('catalogo');
          ee.addEventListener("change", function(){
             if (ee.value != 0 ) {
                cs.disabled = false;
                cs.hidden = false;
-//                // var indice = ee.value;
-//                // var myVariable = indice;
-
-// // Asigna el valor de la variable al campo oculto del formulario
-// // document.getElementById("myForm").myVariable.value = myVariable;
                         
+            }else {
+               cs.disabled = true;
+            }
+         });
+         cs.addEventListener("change", function(){
+            if (cs.value != 0 ) {
+               ef.hidden = false;                        
             }else {
                cs.disabled = true;
             }
