@@ -4,13 +4,19 @@ $lugares = view_lugares();
 $orgs = view_orgs();
 $carreras = view_carreras();
 $cat_carreras = view_cat_carreras();
-// foreach ($int_lugares as $lugares) {
-//    # code...
-//    $lugares = $lugares['lugares'];
-// }
-// if ($int_lugares->num_rows > 0) {
-//    $lugares = $int_lugares['lugares'];
-// } 
+// if(isset($_POST['myVariable'])) {
+//    // Guarda la variable recibida en una nueva variable PHP
+//    $myVariable = $_POST['myVariable'];
+ 
+//    // Haz lo que necesites con la variable en PHP
+//  }
+// // foreach ($int_lugares as $lugares) {
+// //    # code...
+// //    $lugares = $lugares['lugares'];
+// // }
+// // if ($int_lugares->num_rows > 0) {
+// //    $lugares = $int_lugares['lugares'];
+// // } 
 ?>
 
 <!doctype html>
@@ -598,12 +604,13 @@ $cat_carreras = view_cat_carreras();
                            <!-- Hover added -->
                            <div class="mb-3">
                               <label for="" class="form-label">Selecciona tu carrera</label>
-                              <select class="form-select form-select-lg" name="" id="cat_carrera">
-                                 
+                              <select class="form-select form-select-lg" name="cat_carrera" id="cat_carrera">
+                              
                               <option value = "0" selected>Carreras</option>
                               <?php
-                                    foreach ($carreras as $resul) {
+                                    // foreach ($carreras as $resul) {
                                        # code...
+                                       while($resul = $carreras->fetch_assoc()){
                                        echo '<option value="'.$resul['id_grado'].'">'.$resul['nombre_grado'].'</option>';    
                                        
                                     }
@@ -615,19 +622,13 @@ $cat_carreras = view_cat_carreras();
                                      ?>
                               </select>
                               <br>
-                              <select id="catalogo" class="form-select form-select-lg"  hidden ="true"  disabled>
+                              
+                              <select id="catalogo" name="catalogo" class="form-select form-select-lg"   hidden="true">
                                  <option selected disabled >Selecciona tu carrera <?php //echo $valorglobal; ?></option>
-                                       <?php 
-                                       // $valorglobal = $_GET['catalogo'];
-                                       foreach ($cat_carreras as $resul2) {
-                                          # code...
-                                          if ($resul2['id_rel_grado_carrera'] ==  "<script> document.writeln(indice); </script>" ) {
-                                             # code...
-                                             echo '<option value="'.$resul['id_carrera'].'">'.$resul2['nombre'].'</option>';    
-                                          }
-   
-                                       }
-                                       ?>
+                              </select>
+                              <br> 
+                              <select id="catalogo_org" name="catalogo_org" class="form-select form-select-lg"   hidden="true">
+                                 <option selected disabled >Selecciona tu carrera <?php //echo $valorglobal; ?></option>
                               </select> 
                            </div>
                      </div>
@@ -1134,6 +1135,7 @@ $cat_carreras = view_cat_carreras();
          <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
             <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
          </svg>
+         
       </div>
       <!-- Back to top end -->
 
@@ -1152,6 +1154,30 @@ $cat_carreras = view_cat_carreras();
       <script src="assets/app/js/isotope.pkgd.min.js"></script>
       <script src="assets/app/js/ajax-form.js"></script>
       <script src="assets/app/js/main.js"></script>
+      
+      <script> 
+    $(document).ready(function(){
+           $("#cat_carrera").change(function () {         
+             $("#cat_carrera option:selected").each(function () {
+               id_grado= $(this).val();
+               $.post("includes/carrerasObtener.php", { id_grado: id_grado }, function(data){
+                 $("#catalogo").html(data);
+               });            
+             });
+           })
+         });
+         $(document).ready(function(){
+           $("#catalogo").change(function () {         
+             $("#catalogo option:selected").each(function () {
+               id_carrera= $(this).val();
+               $.post("includes/carrerasObtener_catalogo_org.php", { id_carrera: id_carrera }, function(data){
+                 $("#catalogo_org").html(data);
+               });            
+             });
+           })
+         });
+         </script>
+      
       <script>
          let ee = document.getElementById('cat_carrera');
          var cs = document.getElementById('catalogo');
@@ -1159,17 +1185,21 @@ $cat_carreras = view_cat_carreras();
             if (ee.value != 0 ) {
                cs.disabled = false;
                cs.hidden = false;
-               var indice = ee.value;
-               <?php
-                $valorglobal = "<script> document.writeln(ee.value); </script>";
-               ?>
-               alert(ee.value);
+//                // var indice = ee.value;
+//                // var myVariable = indice;
+
+// // Asigna el valor de la variable al campo oculto del formulario
+// // document.getElementById("myForm").myVariable.value = myVariable;
+                        
             }else {
                cs.disabled = true;
             }
          });
       </script>
+    
+    
    </body>
+  
 </html>
 <!--
 veranos
