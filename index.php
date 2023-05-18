@@ -1,5 +1,7 @@
 <?php
-include('./model/database.php'); 
+error_reporting (E_ALL);
+// require('controller/conect.php');
+include_once('model/database.php'); 
 $lugares = view_lugares();
 $orgs = view_orgs();
 $carreras = view_carreras();

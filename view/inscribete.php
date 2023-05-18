@@ -24,6 +24,43 @@
       <link rel="stylesheet" href="../assets/app/css/main.css">
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {  
+    $('#correo').on('blur', function(){
+        $('#result-username').html('<img src="../img/loader.gif" />').fadeOut(1000);
+
+        var correo = $(this).val();       
+        var dataString = 'correo='+correo;
+
+        $.ajax({
+            type: "POST",
+            url: "validacion_correo.php",
+            data: dataString,
+            success: function(data) {
+                $('#result-username').fadeIn(1000).html(data);
+            }
+        });
+    });              
+});    
+$(document).ready(function() {  
+    $('#matricula').on('blur', function(){
+        $('#result-matricula').html('<img src="../img/loader.gif" />').fadeOut(1000);
+
+        var matricula = $(this).val();       
+        var dataString = 'matricula='+matricula;
+
+        $.ajax({
+            type: "POST",
+            url: "validacion_matricula.php",
+            data: dataString,
+            success: function(data) {
+                $('#result-matricula').fadeIn(1000).html(data);
+            }
+        });
+    });              
+});    
+</script>
    </head>
    <body>
    <?php
@@ -339,8 +376,8 @@ if (isset($_GET['matricula'])) {
                                                 
                                             
                                                     <div class="col-md-4">
-                                                        <label for="" class="form-label">Nombre(s)</label>
-                                                        <input type="text" class="form-control" id="matricula" name="matricula" value="" required>
+                                                        <label for="nombres" class="form-label">Nombre(s)</label>
+                                                        <input type="text" class="form-control" id="nombres" name="nombres" value="" required>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label for="a_paterno" class="form-label">Apellido Paterno</label>
@@ -354,22 +391,23 @@ if (isset($_GET['matricula'])) {
                                                         <label for="matricula" class="form-label">Matricula</label>
                                                         <input type="number" class="form-control" min="10" maxlength="10" id="matricula" name="matricula" value="" oninput="validarCampoNumerico(this)" required>
                                                         <span id="mensajeError" style="color: red;"></span>
+                                                        <div id="result-matricula"></div> 
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label for="licenciatura" class="form-label">Licenciatura</label>
                                                         <!-- <input type="text" class="form-control" id="matricula" name="matricula" value="" required> -->
                                                         <select class="form-select " name="licenciatura" id="licenciatura">
                                                                 <option selected>Selecciona tu carrera</option>
-                                                                <option value="Administración">Administración</option>
-                                                                <option value="Biología Molecular">Biología Molecular</option>                                                                
-                                                                <option value="Ciencias de la Comunicación">Ciencias de la Comunicación</option>                                                                
+                                                                <option value="Administracion">Administración</option>
+                                                                <option value="Biologia Molecular">Biología Molecular</option>                                                                
+                                                                <option value="Ciencias de la Comunicacion">Ciencias de la Comunicación</option>                                                                
                                                                 <option value="Derecho">Derecho</option>                                                                
                                                                 <option value="Diseño">Diseño</option>                                                                
-                                                                <option value="Doctorado en Ciencias Biológicas y de la Salud">Doctorado en Ciencias Biológicas y de la Salud</option>                                                                
+                                                                <option value="Doctorado en Ciencias Biologicas y de la Salud">Doctorado en Ciencias Biológicas y de la Salud</option>                                                                
                                                                 <option value="Estudios Socioterritoriales">Estudios Socioterritoriales</option>                                                                
                                                                 <option value="Humanidades">Humanidades</option>                                                                
-                                                                <option value="Ingeniería Biológica">Ingeniería Biológica</option>                                                                
-                                                                <option value="Ingeniería en Computación">Ingeniería en Computación</option>                                                                
+                                                                <option value="Ingenieria Biologica">Ingeniería Biológica</option>                                                                
+                                                                <option value="Ingenieria en Computacion">Ingeniería en Computación</option>                                                                
                                                                 <option value="Matemáticas Aplicadas">Matemáticas Aplicadas</option>                                                                
                                                                 <option value="Maestría en Diseño, Información y Comunicación">Maestría en Diseño, Información y Comunicación</option>                                                                
                                                                 <option value="Posgrado en Ciencias Naturales e Ingeniería">Posgrado en Ciencias Naturales e Ingeniería</option>                                                                
@@ -390,15 +428,16 @@ if (isset($_GET['matricula'])) {
                                                         <label for="sexo" class="form-label">Sexo</label>
                                                             <select class="form-select " name="sexo" id="sexo">
                                                                 <option selected>Selecciona</option>
-                                                                <option value="">Masculino</option>
-                                                                <option value="">Femenino</option>                                                                
+                                                                <option value="Masculino">Masculino</option>
+                                                                <option value="Femenino">Femenino</option>                                                                
                                                             </select>
                                                         <!-- </div> -->
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label for="correo" class="form-label">Correo</label>
                                                         <input type="email" class="form-control" id="correo" name="correo" value="" required>
-                                                    </div>
+                                                        <div id="result-username"></div> 
+                                                   </div>
                                                     <div class="col-md-4">
                                                         <label for="telefono" class="form-label">Telefono</label>
                                                         <input type="number" class="form-control" min="10" maxlength="10" id="telefono" name="telefono" value="" oninput="validarCampoNumerico2(this)" required>
