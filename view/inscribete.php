@@ -5,6 +5,56 @@
       <meta charset="utf-8">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       <title> Estancias Profesionales de Verano UAMC</title>
+      <style>
+    #progress-bar {
+      width: 100%;
+      height: 20px;
+      background-color: #f0f0f0;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    #progress {
+      height: 100%;
+      /* background-color: #42b983; */
+      /* background-color: #ff8e31e0; */
+      background: linear-gradient(#ff8e31e0,#ea6900e0,#9f5111ec);
+      width: 0%;
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .step {
+      display: none;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    .step h2 {
+      margin-top: 0;
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    .button-container button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #d76b1d;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .button-container button:first-child {
+      background-color: #ddd;
+      color: #000;
+    }
+  </style>
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -359,8 +409,97 @@ if (isset($_GET['matricula'])) {
                         <button type="button" class="solid__btn " data-bs-toggle="modal" data-bs-target="#modalId">
                           Inscribete
                         </button>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn solid__btn btn-md" data-bs-toggle="modal" data-bs-target="#modalId2">
+                          Si ya te registraste continua con tu proceso
+                        </button>
                         
-                        <!-- Modal Body -->
+
+                     
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalId2" tabindex="-1" role="dialog" aria-labelledby="modalTitleId2" aria-hidden="true">
+                           <div class="modal-dialog modal-sm modal-fullscreen" role="document">
+                              <div class="modal-content">
+                                 <div class="modal-header">
+                                    <h5 class="modal-title" id="modalTitleId">Llenado de documentos</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        
+                                 </div>
+                                 <div class="modal-body">
+                                    
+
+                                 <div id="progress-bar">
+                                 <div id="progress"></div>
+                        </div>
+
+                        <form metod="post">
+                                                   <div class="col-md-4">
+                                                        <label for="correo" class="form-label">Correo</label>
+                                                        <input type="email" class="form-control" id="correo" name="correo" value="" required>
+                                                        <div id="result-username"></div> 
+                                                        <a name="" id="" class="btn btn-primary" href="#" role="button" onclick="validarCampoNumerico(this)">Validar</a>
+                                                   </div>
+                                                   <div class="col-md-4">
+                                                        <label for="matriculaValida" class="form-label">Matricula</label>
+                                                        <input type="number" class="form-control" min="10" maxlength="10" id="matriculaValida" name="matriculaValida" value="" oninput="validarCampoNumerico(this)" required>
+                                                        <!-- <span id="mensajeError" style="color: red;"></span> -->
+                                                        <!-- <div id="result-matricula"></div>  -->
+                                                    </div>
+                                                    <button type="sumbit" class="btn solid__btn">Button</button>
+                        </form>  
+                        
+                        <?php 
+
+                        $usuario = $_REQUEST['correo'];
+
+
+                        if ( $usuario ) {
+                           # code...
+
+                     ?>
+                        <form id="step-form">
+                           <div class="step active" id="step-1">
+                              <h2 class="text-center ">Paso 1</h2>
+                              <label for="campo1">Identificacion Oficial:</label>
+                              <input type="text" name="identificacion" id="identificacion" required>
+                           </div>
+
+                           <div class="step" id="step-2">
+                              <h2>Paso 2</h2>
+                              <label for="campo2">Campo 2:</label>
+                              <input type="text" name="campo2" id="campo2" required>
+                           </div>
+
+                           <div class="step" id="step-3">
+                              <h2>Paso 3</h2>
+                              <label for="campo3">Campo 3:</label>
+                              <input type="text" name="campo3" id="campo3" required>
+                           </div>
+
+                           <div class="button-container">
+                              <button type="button" class="solid__btn" onclick="previousStep()">Anterior</button>
+                              <button type="button"  class="solid__btn" onclick="nextStep()">Siguiente</button>
+                              <button type="submit" class="solid__btn" onclick="submitForm()">Enviar</button>
+                           </div>
+                        </form>
+                        <?php
+                        }
+                        ?>   
+
+                        
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            
+            
+            
+            <!-- Modal Body -->
                         <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
                         <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
@@ -636,6 +775,71 @@ if (isset($_GET['matricula'])) {
             }
         }
     </script>
+
+<script>
+    let currentStep = 0;
+    const progressBar = document.getElementById('progress');
+    const form = document.getElementById('step-form');
+    const steps = Array.from(form.getElementsByClassName('step'));
+
+    function nextStep() {
+      if (validateFields()) {
+        if (currentStep < steps.length - 1) {
+          steps[currentStep].classList.remove('active');
+          currentStep++;
+          steps[currentStep].classList.add('active');
+          updateProgress();
+        }
+      }
+    }
+
+    function previousStep() {
+      if (currentStep > 0) {
+        steps[currentStep].classList.remove('active');
+        currentStep--;
+        steps[currentStep].classList.add('active');
+        updateProgress();
+      }
+    }
+
+    function updateProgress() {
+      const progress = (currentStep / (steps.length - 1)) * 100;
+      progressBar.style.width = progress + '%';
+    }
+
+    function validateFields() {
+      const currentField = steps[currentStep].querySelector('input[required]');
+      if (currentField && !currentField.value.trim()) {
+        alert('Por favor, complete el campo antes de continuar.');
+        return false;
+      }
+      return true;
+    }
+
+    function submitForm() {
+      // Realizar acciones adicionales aquí, como enviar datos al servidor
+      if (validateFields().alert() != 'Por favor, complete el campo antes de continuar.' ) {
+        alert('Formulario enviado correctamente');
+        resetForm();
+      }else{
+        alert('Completa Todos los Pasos antes de continuar')
+      }
+    }
+
+    function resetForm() {
+      currentStep = 0;
+      steps.forEach((step) => {
+        step.classList.remove('active');
+      });
+      steps[currentStep].classList.add('active');
+      updateProgress();
+      form.reset();
+    }
+
+    // Mostrar el primer paso al cargar la página
+    updateProgress();
+    steps[currentStep].classList.add('active');
+  </script>
    </body>
   
 </html>
