@@ -119,7 +119,7 @@ if (isset($_GET['matricula'])) {
                <div class="offcanvas__content">
                   <div class="offcanvas__top mb-40 d-flex justify-content-between align-items-center">
                      <div class="offcanvas__logo">
-                        <a href="index.html">
+                        <a href="../#">
                         <img src="../assets/img/logo/logo.png" alt="logo not found">
                         </a>
                      </div>
@@ -185,7 +185,7 @@ if (isset($_GET['matricula'])) {
                <div class="row align-items-center">
                   <div class="col-xl-2 col-lg-2 col-6">
                      <div class="header__logo">
-                        <a href="index.html">
+                        <a href="../#">
                            <img src="../assets/img/logo/logo.png" alt="logo not found">
                         </a>
                      </div>

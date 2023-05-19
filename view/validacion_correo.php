@@ -1,5 +1,5 @@
 <?php 
-require('../controller/conec.php');
+require('../controller/conect.php');
 sleep(1);
 if (isset($_POST)) {
     $username = (string)$_POST['correo'];    
@@ -14,7 +14,3 @@ if (isset($_POST)) {
     }
 }
 ?>
-
-<!-- <p class="">
-    Help Text
-</p> -->

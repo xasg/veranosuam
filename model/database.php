@@ -2,7 +2,7 @@
 // require_once('../controller/conect.php');
 // require_once('./controller/conec.php');
 
-require_once('./controller/conec.php');
+require_once('./controller/conect.php');
 
 
 function view_carreras(){

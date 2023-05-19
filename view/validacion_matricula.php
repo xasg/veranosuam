@@ -1,5 +1,5 @@
 <?php 
-require('../controller/conec.php');
+require('../controller/conect.php');
 sleep(1);
 if (isset($_POST)) {
     $matricula = (string)$_POST['matricula'];    
