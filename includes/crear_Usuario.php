@@ -4,17 +4,17 @@
     
     if (isset($_POST['matricula'])) {
         # code...
-    $nombres = $_POST['nombres'];
-    $a_paterno = $_POST['a_paterno'];
-    $a_materno = $_POST['a_materno'];
+    $nombres = strtoupper( $_POST['nombres']);
+    $a_paterno = strtoupper( $_POST['a_paterno']);
+    $a_materno = strtoupper( $_POST['a_materno']);
     $matricula = $_POST['matricula'];
     $licenciatura = $_POST['licenciatura'];
     $creditos = $_POST['creditos'];
     $edad = $_POST['edad'];
-    $sexo = $_POST['sexo'];
-    $correo = $_POST['correo'];
     $telefono = $_POST['telefono'];
-    $timestamp = time();
+    $sexo = $_POST['sexo'];
+    $correo = strtoupper( $_POST['correo']);
+    // $timestamp = time();
     date_default_timezone_set('America/Mexico_City');
 $tiempo = date('d-m-Y H:i:s');    
     // mysqli_set_charset( $mysqli, 'utf8');	

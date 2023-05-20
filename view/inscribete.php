@@ -453,8 +453,7 @@ if (isset($_GET['matricula'])) {
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                            <form  action="../includes/crear_Usuario.php" method="post">
-                                                    
+                                            <form  action="../includes/crear_Usuario.php" method="post">   
                                             <div class="row justify-content-center align-items-center g-2">
                                                 
                                             
@@ -507,28 +506,36 @@ if (isset($_GET['matricula'])) {
                                                         <label for="edad" class="form-label">Edad</label>
                                                         <input type="number" class="form-control" id="edad" name="edad" value="" required>
                                                     </div>
-                                                    <div class="col-md-4">
-                                                        <label for="sexo" class="form-label">Sexo</label>
-                                                            <select class="form-select " name="sexo" id="sexo">
-                                                                <option selected>Selecciona</option>
-                                                                <option value="Masculino">Masculino</option>
-                                                                <option value="Femenino">Femenino</option>                                                                
-                                                            </select>
-                                                        <!-- </div> -->
-                                                    </div>
+                                                    <!-- <div class="col-md-4">
+                                                          <label for="telefono" class="form-label">Telefono</label>
+                                                          <input type="number" class="form-control" id="telefono" name="telefono" value="" required>
+                                                   </div> -->
                                                     <div class="col-md-4">
                                                         <label for="correo" class="form-label">Correo</label>
                                                         <input type="email" class="form-control" id="correo" name="correo" value="" required>
                                                         <div id="result-username"></div> 
-                                                   </div>
+                                                      </div>
+                                                     
                                                     <div class="col-md-4">
+                                                       <label for="sexo" class="form-label">Sexo</label>
+                                                       <select class="form-select " name="sexo" id="sexo">
+                                                          <option selected>Selecciona</option>
+                                                          <option value="Masculino">Masculino</option>
+                                                          <option value="Femenino">Femenino</option>                                                                
+                                                         </select>
+                                                         </div>
+                                                      </div>
+                                                      
+                                                      <div class="col-md-4">
                                                         <label for="telefono" class="form-label">Telefono</label>
                                                         <input type="number" class="form-control" min="10" maxlength="10" id="telefono" name="telefono" value="" oninput="validarCampoNumerico2(this)" required>
+                                                        <!-- <input type="number" class="form-control" min="10" maxlength="10" id="telefonos" name="telefonos" value=""  oninput="validarCampoNumerico2(this)" required> -->
                                                         <span id="mensajeError2" style="color: red;"></span>
-                                                    </div>
-                                                    </div>
-                                                  <button type="submit" class="btn solid__btn" >Enviar Solicitud </button>
-                                            </form>
+                                                        </div>
+                                                   <!-- </div> -->
+                                                   <!-- </div> -->
+                                                   <button type="submit" class="btn solid__btn" >Enviar Solicitud </button>
+                                                </form>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

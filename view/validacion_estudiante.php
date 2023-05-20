@@ -71,27 +71,69 @@ if (isset($_POST)) {
         // echo ;
         echo "<div class='alert alert-success'><strong>Enhorabuena {$nombre} {$apellidop}!</strong> Matricula Registrada continua llenando tus documentos .</div>";
         echo "";
-        // echo " <input  placeholder='{$matriculaValida}' value='{$matriculaValida}'   id='matriculavalida1' name='matriculavalida1' hidden>";
-        // echo " <input type='number' class='form-control'  id='matriculaValida1' name='matriculaValida1' value='$matriculaValida' >";
-
         ?>
  <form id="step-form">
                            <div class="step active" id="step-1">
-                              <h2 class="text-center ">Paso 1</h2>
-                              <label for="campo1">Identificacion Oficial:</label>
-                              <input type="text" name="identificacion" id="identificacion" required>
+                              <h2 class="text-center ">Paso 1 Datos personales</h2>
+                              <!-- <label for="">Identificacion Oficial:</label> -->
+                              <p>Procura tener todos los documentos en mano, para agilizar el proceso</p>
+                              <div class="mb-3">
+                                <label for="campo1" class="form-label">Ideintificacion oficial</label>
+                                <input type="file" class="form-control" name="identificacion" id="identificacion" placeholder="" aria-describedby="fileHelpId" required>
+                                <div id="fileHelpId" class="form-text">(INE) en formato pdf</div>
+                              </div>
+                              <div class="mb-3">
+                                <label for="campo1" class="form-label">CURP</label>
+                                <input type="file" class="form-control" name="curp" id="curp" placeholder="" aria-describedby="fileHelpId" required>
+                                <div id="fileHelpId" class="form-text">en formato pdf</div>
+                              </div>
+                              <div class="mb-3">
+                                <label for="campo1" class="form-label">Comprobante de domicilio</label>
+                                <input type="file" class="form-control" name="comprobante_domicilio" id="comprobante_domicilio" placeholder="" aria-describedby="fileHelpId" required>
+                                <div id="fileHelpId" class="form-text">en formato pdf</div>
+                              </div>
+                              <div class="mb-3">
+                                <label for="campo1" class="form-label">Constancia de créditos y promedio</label>
+                                <input type="file" class="form-control" name="constancia" id="constancia" placeholder="" aria-describedby="fileHelpId" required>
+                                <div id="fileHelpId" class="form-text">en formato pdf</div>
+                              </div>
+                             
+
+                              <!-- <input type="text" name="identificacion" id="identificacion" required> -->
                            </div>
 
                            <div class="step" id="step-2">
-                              <h2>Paso 2</h2>
-                              <label for="campo2">Campo 2:</label>
-                              <input type="text" name="campo2" id="campo2" required>
+                              <h2>Paso 2 Datos de postulación</h2>
+                              <div class="mb-3">
+                                <label for="campo1" class="form-label">Curriculum Vitae</label>
+                                <input type="file" class="form-control" name="cv" id="cv" placeholder="" aria-describedby="fileHelpId" required>
+                                <div id="fileHelpId" class="form-text">en formato pdf</div>
+                              </div>
+                              <div class="mb-3">
+                                <label for="campo1" class="form-label">Carta Compromiso</label>
+                                <input type="file" class="form-control" name="carta_compromiso" id="carta_compromiso" placeholder="" aria-describedby="fileHelpId" required>
+                                <div id="fileHelpId" class="form-text">en formato pdf</div>
+                              </div>
+                              <div class="mb-3">
+                                <label for="campo1" class="form-label">Comprobante de seguro facultativo</label>
+                                <input type="file" class="form-control" name="carta_compromiso" id="carta_compromiso" placeholder="" aria-describedby="fileHelpId" required>
+                                <div id="fileHelpId" class="form-text">en formato pdf</div>
+                              </div>
+                             
                            </div>
 
                            <div class="step" id="step-3">
-                              <h2>Paso 3</h2>
-                              <label for="campo3">Campo 3:</label>
-                              <input type="text" name="campo3" id="campo3" required>
+                              <h2>Paso 3 Datos documentación bancaria</h2>
+                              <div class="mb-3">
+                                <label for="campo1" class="form-label">Formato de pago por transferencia</label>
+                                <input type="file" class="form-control" name="formato_pago" id="formato_pago" placeholder="" aria-describedby="fileHelpId" required>
+                                <div id="fileHelpId" class="form-text">en formato pdf</div>
+                              </div>
+                              <div class="mb-3">
+                                <label for="campo1" class="form-label">Estado de cuenta Bancario</label>
+                                <input type="file" class="form-control" name="cuenta_bancaria" id="cuenta_bancaria" placeholder="" aria-describedby="fileHelpId" required>
+                                <div id="fileHelpId" class="form-text">en formato pdf</div>
+                              </div>
                            </div>
 
                            <div class="button-container">

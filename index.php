@@ -597,9 +597,9 @@ $cat_carreras = view_cat_carreras();
                               
                               <option value = "0" selected>Carreras</option>
                               <?php
-                                    // foreach ($carreras as $resul) {
+                                    foreach ($carreras as $resul) {
                                        # code...
-                                       while($resul = $carreras->fetch_assoc()){
+                                       // while($resul = $carreras->fetch_assoc()){
                                        echo '<option value="'.$resul['id_grado'].'">'.$resul['nombre_grado'].'</option>';    
                                        
                                     }
