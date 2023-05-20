@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2023 a las 06:59:03
+-- Tiempo de generación: 20-05-2023 a las 19:32:02
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -181,8 +181,8 @@ CREATE TABLE `estudiantes` (
   `edad` int(11) DEFAULT NULL,
   `sexo` varchar(10) DEFAULT NULL,
   `correo` varchar(80) DEFAULT NULL,
-  `telefono` int(11) DEFAULT NULL,
-  `cretate` timestamp NOT NULL DEFAULT current_timestamp()
+  `telefono` bigint(11) DEFAULT NULL,
+  `cretate` varchar(250) NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -190,8 +190,7 @@ CREATE TABLE `estudiantes` (
 --
 
 INSERT INTO `estudiantes` (`id`, `nombres`, `a_paterno`, `a_materno`, `matricula`, `licenciatura`, `creditos`, `edad`, `sexo`, `correo`, `telefono`, `cretate`) VALUES
-(1, 'Andres', 'tapia', 'tapa', '2203024384', 'Tecnologías y Sistemas de Información', 120, 22, 'Masculino', '2203024384@cua.uam.mx', 2147483647, '0000-00-00 00:00:00'),
-(2, 'Juan carlos', 'Melgar', 'Tapia', '2203040343', 'Selecciona tu carrera', 150, 22, 'Masculino', 'ALEXIS@FESE.MX.COM', 2147483647, '0000-00-00 00:00:00');
+(20, 'ANDRES ALEXIS', 'MALFAVAUN', 'TAPIA', '2203024384', 'Tecnologías y Sistemas de Información', 128, 22, 'Masculino', 'ANDRES.MALFAVAUN@CUA.UAM.MX', 5637269723, '20-05-2023 10:33:34');
 
 -- --------------------------------------------------------
 
@@ -311,7 +310,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `organizacion`
