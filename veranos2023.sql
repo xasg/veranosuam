@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2023 a las 19:32:02
+-- Tiempo de generación: 20-05-2023 a las 19:35:35
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -53,6 +53,20 @@ INSERT INTO `cat_carrera` (`id_carrera`, `nivel`, `nombre`, `area`, `id_rel_grad
 (11, 'Maestría', 'Maestría en Diseño, Información y Comunicación', 'DCCD', 4),
 (12, 'Licenciatura', 'Matemáticas Aplicadas', 'DCNI', 1),
 (13, 'Licenciatura', 'Tecnologías y Sistemas de Información', 'DCCD', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `documentos_estudiante`
+--
+
+CREATE TABLE `documentos_estudiante` (
+  `id` int(11) NOT NULL,
+  `ine` varchar(250) NOT NULL,
+  `curp` varchar(250) NOT NULL,
+  `comprobante_domicilio` int(11) NOT NULL,
+  `matricula` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -279,6 +293,12 @@ CREATE TABLE `usuarios` (
 --
 
 --
+-- Indices de la tabla `documentos_estudiante`
+--
+ALTER TABLE `documentos_estudiante`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
@@ -305,6 +325,12 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `documentos_estudiante`
+--
+ALTER TABLE `documentos_estudiante`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `estudiantes`
