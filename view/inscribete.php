@@ -78,6 +78,24 @@ $(document).ready(function() {
         });
     });              
 });    
+  
+$(document).ready(function() {  
+    $('#matriculaValida_formato').on('blur', function(){
+        $('#result-matricula-valida-formato').html('<img src="../img/loader.gif" />').fadeOut(1000);
+
+        var matriculaValida = $(this).val();       
+        var dataString = 'matricula='+matriculaValida;
+
+        $.ajax({
+            type: "POST",
+            url: "validacion_estudiante_formato.php",
+            data: dataString,
+            success: function(data) {
+                $('#result-matricula-valida-formato').fadeIn(1000).html(data);
+            }
+        });
+    });              
+});  
 </script>
    </head>
    <body>
@@ -372,15 +390,54 @@ if (isset($_GET['matricula'])) {
                      </div>
                      <div class="hero__btn-link wow fadeInUp" data-wow-delay=".8s">
                         <!-- <a class="solid__btn" href="#">Inscribete</a> -->
-
+                        
                         <!-- Modal trigger button -->
                         <button type="button" class="solid__btn " data-bs-toggle="modal" data-bs-target="#modalId">
                           Inscribete
                         </button>
+                        <br>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn solid__btn btn-md" data-bs-toggle="modal" data-bs-target="#modalId2">
                           Si ya te registraste continua con tu proceso
                         </button>
+                        
+                        <!--  Modal trigger button  -->
+                        <button type="button" class="btn solid__btn btn-sm" data-bs-toggle="modal" data-bs-target="#modalId3">
+                          Si ya cuentas con tu formato de postulación subelo aqui
+                        </button>
+                        
+                        <!-- Modal Body Formato de postulacion-->
+                        <div class="modal fade" id="modalId3" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                           <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                    <div class="modal-header">
+                                          <h5 class="modal-title" id="modalTitleId">Formato de Postulacion</h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                       </div>
+                                 <div class="modal-body">
+                                    <div class="container-fluid">
+                                    <div class="col-md-auto">
+                                                        <label for="matriculaValida_formato" class="form-label">Matricula</label>
+                                                        <input type="number" class="form-control" min="10" maxlength="10" id="matriculaValida_formato" name="matriculaValida_formato" value="" oninput="validarCampoNumerico(this)" required>
+                                                        <span id="mensajeError" style="color: red;"></span>
+                                                        <div id="result-matricula-valida-formato"></div> 
+                                                        <button type="button" class="btn btn-primary btn-sm ">Validar</button>
+                                                        
+                                                    </div>
+                                    </div>
+                                 </div>
+                                 <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <!-- <button type="button" class="btn btn-primary">Save</button> -->
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        
                         
 
                      
@@ -401,7 +458,7 @@ if (isset($_GET['matricula'])) {
                                  <div id="progress"></div>
                         </div>
 
-                        <form metod="post" >
+                        <form metod="post" acttion="../includes/crear_documentos_estudiante.php" >
                                                    <!-- <div class="col-md-4">
                                                         <label for="correo" class="form-label">Correo</label>
                                                         <input type="email" class="form-control" id="correo" name="correo" value="" required>
@@ -409,17 +466,18 @@ if (isset($_GET['matricula'])) {
                                                         <a name="" id="" class="btn btn-primary" href="#" role="button" onclick="validarCampoNumerico(this)">Validar</a>
                                                    </div> -->
                                                    <div class="col-md-auto">
-                                                        <label for="matriculaValida" class="form-label">Matricula</label>
+                                                        <label for="matriculaValida" class="form-label">Matricula ss</label>
                                                         <input type="number" class="form-control" min="10" maxlength="10" id="matriculaValida" name="matriculaValida" value="" oninput="validarCampoNumerico(this)" required>
                                                         <span id="mensajeError" style="color: red;"></span>
                                                         <div id="result-matricula-valida"></div> 
                                                         <button type="button" class="btn btn-primary btn-sm ">Validar</button>
+                                                        <!-- <button type="submit" class="btn btn-primary btn-sm ">Enviar</button> -->
                                                     </div>
                                                     <!-- <button type="sumbit" class="btn solid__btn">Button</button> -->
                         </form>  
                         
                         <?php 
-                        $usuario = 0;
+                        // $usuario = 0;
                         // $usuario = $_REQUEST['matriculaValida1'];
                         // $usuario = $matriculaValida;
 
