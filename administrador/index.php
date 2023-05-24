@@ -1,6 +1,18 @@
 <?php
-session_start();
+    // include_once("../templates/header.php");
+    session_start();
+    if (isset($_SESSION['correo']) == false) {
+      echo "<script> window.location ='../index.php'; </script>";
+    }
+    $id = $_SESSION['id'];
+    // $correo = $_SESSION['correo'];
+    $nombre = $_SESSION['name'];
+    // $usuario = $_SESSION['nombre'];
+    // $_SESSION['id'];
+ 
+
 ?>
+
 <!doctype html>
 <html lang="es">
    <head>
@@ -12,64 +24,50 @@ session_start();
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Place favicon.ico in the root directory -->
-      <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+      <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png">
 
       <!-- CSS here -->
-      <link rel="stylesheet" href="assets/app/css/bootstrap.min.css">
-      <link rel="stylesheet" href="assets/app/css/meanmenu.min.css">
-      <link rel="stylesheet" href="assets/app/css/animate.css">
-      <link rel="stylesheet" href="assets/app/css/swiper-bundle.min.css">
-      <link rel="stylesheet" href="assets/app/css/slick.css">
-      <link rel="stylesheet" href="assets/app/css/backtotop.css">
-      <link rel="stylesheet" href="assets/app/css/magnific-popup.css">
-      <link rel="stylesheet" href="assets/app/css/fontawesome-pro.css">
-      <link rel="stylesheet" href="assets/app/css/spacing.css">
-      <link rel="stylesheet" href="assets/app/css/main.css">
+      <link rel="stylesheet" href="../assets/app/css/bootstrap.min.css">
+      <link rel="stylesheet" href="../assets/app/css/meanmenu.min.css">
+      <link rel="stylesheet" href="../assets/app/css/animate.css">
+      <link rel="stylesheet" href="../assets/app/css/swiper-bundle.min.css">
+      <link rel="stylesheet" href="../assets/app/css/slick.css">
+      <link rel="stylesheet" href="../assets/app/css/backtotop.css">
+      <link rel="stylesheet" href="../assets/app/css/magnific-popup.css">
+      <link rel="stylesheet" href="../assets/app/css/fontawesome-pro.css">
+      <link rel="stylesheet" href="../assets/app/css/spacing.css">
+      <link rel="stylesheet" href="../assets/app/css/main.css">
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
    </head>
-
-   <body>
    <?php
-   require("controller/conect.php");
+if ($_SESSION['name']) {
+    # code...
+    echo "<script> 
+    Swal.fire({
+        icon: 'success',
+        title: 'Bienvenid@ {$_SESSION['name']} {$a} al panel de ADMIN',
+        showConfirmButton: false,
+        timer: 1500
+    });
+    </script>";
+}
+
+   ?>
 
 
-if (isset($_POST['correo']) && isset($_POST['pass'])) {
-   $usuario = $_POST['correo'];
-   $pd = $_POST['pass'];
 
-   $query = "SELECT * FROM usuarios WHERE correo = '{$usuario}' and password = '{$pd}' ";
-   $res = $mysqli->query($query);
-   $row = mysqli_fetch_assoc($res);
-
-   if ($row) {
-      # code...
-      $_SESSION['id'] = $row['id'];
-      $_SESSION['correo'] = $row['correo'];
-      $_SESSION['name'] = $row['name'];
-                echo "<script> window.location ='administrador/index.php'; </script>";
-        }else{
-            echo"<div class='alert alert-danger' role='alert'>";
-            echo "<strong>Usuario o Contraseña INCORRECTOS</strong> intentalo nuevamente!";
-            echo "</div>";
-        }
-  
-      }
-?>
-      <!--[if lte IE 9]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-      <![endif]-->
-
-      <!-- Offcanvas area start -->
-      <div class="fix">
+<!-- <p>hola <?php      ?></p>-->
+ <!-- Offcanvas area start -->
+ <div class="fix">
          <div class="offcanvas__info">
             <div class="offcanvas__wrapper">
                <div class="offcanvas__content">
                   <div class="offcanvas__top mb-40 d-flex justify-content-between align-items-center">
                      <div class="offcanvas__logo">
                         <a href="view/inscribete.php">
-                        <img src="assets/img/logo/logo.png" alt="logo not found">
+                        <img src="../assets/img/logo/logo.png" alt="logo not found">
                         </a>
                      </div>
                     
@@ -135,7 +133,7 @@ if (isset($_POST['correo']) && isset($_POST['pass'])) {
                   <div class="col-xl-2 col-lg-2 col-6">
                      <div class="header__logo">
                         <a href="index.php">
-                           <img src="assets/img/logo/logo.png" alt="logo not found">
+                           <img src="../assets/img/logo/logo.png" alt="logo not found">
                         </a>
                      </div>
                   </div>
@@ -145,6 +143,9 @@ if (isset($_POST['correo']) && isset($_POST['pass'])) {
                            <nav id="mobile-menu">
                               <ul>
                                  
+                                 <li>
+                                    <a href="logout.php">Cerrar Session</a>
+                                 </li>
                                  <li>
                                     <a href="index.php">Inicio</a>
                                  </li>
@@ -261,7 +262,7 @@ if (isset($_POST['correo']) && isset($_POST['pass'])) {
                <div class="col-xl-4 col-lg-6 ">
                   <div class="boost__thumb-wrapper mb-60">
                      <div class="boost__thumb w-img p-relative">
-                        <img src="assets/img/boost/boost-01.png" alt="image not found">
+                        <img src="../assets/img/boost/boost-01.png" alt="image not found">
                         <div class="boost__shape-1"></div>
                      </div>
                      <div class="boost__shape-2">
@@ -290,7 +291,7 @@ if (isset($_POST['correo']) && isset($_POST['pass'])) {
       <footer>
          <section class="footer__border footer-bg grey__bg p-relative z-index-11 pt-120 pb-60">
             <div class="footer__shape">
-               <img src="assets/img/shape/footer-shape.png" alt="">
+               <img src="../assets/img/shape/footer-shape.png" alt="">
             </div>
             <div class="container">
                <div class="row">
@@ -299,7 +300,7 @@ if (isset($_POST['correo']) && isset($_POST['pass'])) {
                      <div class="footer__widget mb-55">
                         <div class="footer__logo mb-20">
                            <a href="index.html">
-                              <img src="assets/img/logo/logo.png" alt="logo not found">
+                              <img src="../assets/img/logo/logo.png" alt="logo not found">
                            </a>
                         </div>
                         <div class="footer__contact mb-30">
@@ -333,8 +334,8 @@ if (isset($_POST['correo']) && isset($_POST['pass'])) {
       </main>
       <!-- Body main wrapper end -->
 
-      <!-- Back to top start -->
-      <div class="progress-wrap">
+        <!-- Back to top start -->
+        <div class="progress-wrap">
          <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
             <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
          </svg>
@@ -343,20 +344,20 @@ if (isset($_POST['correo']) && isset($_POST['pass'])) {
       <!-- Back to top end -->
 
       <!-- JS here -->
-      <script src="assets/app/js/vendor/jquery-3.6.0.min.js"></script>
-      <script src="assets/app/js/vendor/waypoints.min.js"></script>
-      <script src="assets/app/js/bootstrap.min.js"></script>
-      <script src="assets/app/js/meanmenu.min.js"></script>
-      <script src="assets/app/js/swiper-bundle.min.js"></script>
-      <script src="assets/app/js/slick.min.js"></script>
-      <script src="assets/app/js/magnific-popup.min.js"></script>
-      <script src="assets/app/js/backtotop.js"></script>
-      <script src="assets/app/js/counterup.js"></script>
-      <script src="assets/app/js/wow.min.js"></script>
-      <script src="assets/app/js/imagesloaded.pkgd.min.js"></script>
-      <script src="assets/app/js/isotope.pkgd.min.js"></script>
-      <script src="assets/app/js/ajax-form.js"></script>
-      <script src="assets/app/js/main.js"></script>
+      <script src="../assets/app/js/vendor/jquery-3.6.0.min.js"></script>
+      <script src="../assets/app/js/vendor/waypoints.min.js"></script>
+      <script src="../assets/app/js/bootstrap.min.js"></script>
+      <script src="../assets/app/js/meanmenu.min.js"></script>
+      <script src="../assets/app/js/swiper-bundle.min.js"></script>
+      <script src="../assets/app/js/slick.min.js"></script>
+      <script src="../assets/app/js/magnific-popup.min.js"></script>
+      <script src="../assets/app/js/backtotop.js"></script>
+      <script src="../assets/app/js/counterup.js"></script>
+      <script src="../assets/app/js/wow.min.js"></script>
+      <script src="../assets/app/js/imagesloaded.pkgd.min.js"></script>
+      <script src="../assets/app/js/isotope.pkgd.min.js"></script>
+      <script src="../assets/app/js/ajax-form.js"></script>
+      <script src="../assets/app/js/main.js"></script>
       
       <script> 
     $(document).ready(function(){
