@@ -5,6 +5,22 @@ if ($_POST) {
         // header("../index.php");
         $matricula_estudiante = $_POST["matricula_estudiante"];
     
+        //Validacion de usuario en base de datos con documentos
+        // $siexiste = '';
+        // global $mysqli;
+        //                 $sql =  "SELECT * FROM  documentos_estudiante WHERE matricula = '{$matricula_estudiante}'";
+        //                 $result = $mysqli->query($sql);
+        //                 foreach($result as $matriculaexiste){
+        //                     $siexiste = $matriculaexiste['matricula'];
+        //                 }
+        //                 if ($matricula_estudiante == $siexiste) {
+        //                     # code...
+        //                     header("Location: ../view/inscribete.php?existe=1");
+        //                 }elseif($siexiste == '' || $siexiste == null) {
+                        
+
+
+        
         $ine = $matricula_estudiante.'_'. $_FILES['ine']["name"];
         $ine_tmp = $_FILES['ine']["tmp_name"];
 
@@ -45,10 +61,14 @@ if ($_POST) {
             $tipo_de_archivo = strtolower(pathinfo($archivo,PATHINFO_EXTENSION));
             // echo $tipo_de_archivo; 
 
+
+
+
             if ($tipo_de_archivo == "jpg" || $tipo_de_archivo ="jpeg" ) {
                     if (move_uploaded_file($ine_tmp , $carpeta_documentos . $ine) && move_uploaded_file($comprobante_domicilio_tmp , $carpeta_documentos . $comprobante_domicilio) && move_uploaded_file($curp_tmp , $carpeta_documentos . $curp) && move_uploaded_file($cv_tmp , $carpeta_documentos . $cv) && move_uploaded_file($seguro_tmp , $carpeta_documentos . $seguro) && move_uploaded_file($constancia_tmp , $carpeta_documentos . $constancia) && move_uploaded_file($carta_compromiso_tmp , $carpeta_documentos . $carta_compromiso) && move_uploaded_file($formato_pago_tmp , $carpeta_documentos . $formato_pago) && move_uploaded_file($cuenta_bancaria_tmp , $carpeta_documentos . $cuenta_bancaria) && move_uploaded_file($formato_postulacion_tmp , $carpeta_documentos . $formato_postulacion)) {
                         # code...
                         
+
                         // echo "El archivo se agrego correctamente";
                         global $mysqli;
                         $sql =  "INSERT INTO  documentos_estudiante(matricula,ine,curp,comprobante_domicilio,seguro,cv,constancia_creditos,carta_compromiso,formato_pago,cuenta_bancaria,formato_postulacion)  values( '{$matricula_estudiante}','{$ine}','{$curp}','{$comprobante_domicilio}','{$seguro}','{$cv}','{$constancia}','{$carta_compromiso}','{$formato_pago}','{$cuenta_bancaria}','{$formato_postulacion}')";
@@ -67,6 +87,6 @@ if ($_POST) {
                 # code...
                 echo '<script> alert("El archivo tiene que ser pdf"); </script>';
             }
-    
+        // }
     }
 ?>

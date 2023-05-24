@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="es">
    <head>
@@ -403,7 +402,7 @@ if (isset($_GET['matricula'])) {
                         
                         <!--  Modal trigger button  -->
                         <button type="button" class="btn solid__btn btn-lg" data-bs-toggle="modal" data-bs-target="#modalId3">
-                          Si ya cuentas con tu formato de postulación subelo aqui
+                          Si ya cuentas con tus documentos subelos aqui
                         </button>
                         
                         <!-- Modal Body Formato de postulacion-->

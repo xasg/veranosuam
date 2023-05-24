@@ -56,19 +56,26 @@ require('../controller/conect.php');
 sleep(1);
 if (isset($_POST)) {
     $matricula = $_POST['matricula'];    
-    $result = $mysqli->query(
-        "SELECT * FROM estudiantes WHERE matricula = {$matricula} "
-    );
+    $result = $mysqli->query("SELECT * FROM estudiantes WHERE matricula = {$matricula} ");
     foreach($result as $datos){
         $nombre = $datos['nombres'];
         $apellidop = $datos['a_paterno'];
         $apellidom = $datos['a_materno'];
         $matricula_registrada = $datos['matricula'];
     }
-
+    $siexite ='';
     $matriculaValida = $matricula;
     if ($result->num_rows > 0) {
-        
+      $result2 = $mysqli->query("SELECT * FROM documentos_estudiante WHERE matricula = {$matricula} ");
+      foreach ($result2 as $matriculado) {
+        # code...
+        $siexite =  $matriculado['matricula'];
+      }
+      if ($siexite) {
+        # code...
+        echo "<div class='alert alert-success'><strong> {$nombre} {$apellidop} {$matricula_registrada}!</strong> ya has llenado tus documentos espera a que nos comuniquemos contigo! .</div>";
+        echo "";
+      }else{
         // echo ;
         echo "<div class='alert alert-success'><strong>Enhorabuena {$nombre} {$apellidop} {$matricula_registrada}!</strong> Matricula Registrada continua llenando tus documentos .</div>";
         echo "";
@@ -130,9 +137,9 @@ if (isset($_POST)) {
                         </form>
 
 <?php
-        
+      }
     } else {
-        echo '<div class=" alert alert-danger"><strong>Oh no!</strong> la matricula no se encuentra registrada.</div>';
+        echo '<div class=" alert alert-danger"><strong>Oh no!</strong> aun no se encuentran documentos registrados registrada.</div>';
     }
 }
 ?>
