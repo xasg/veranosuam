@@ -397,26 +397,28 @@ if (isset($_GET['matricula'])) {
                         </button>
                         <br>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn solid__btn btn-md" data-bs-toggle="modal" data-bs-target="#modalId2">
+                        <!-- <button type="button" class="btn solid__btn btn-md" data-bs-toggle="modal" data-bs-target="#modalId2">
                           Si ya te registraste continua con tu proceso
-                        </button>
+                        </button> -->
                         
                         <!--  Modal trigger button  -->
-                        <button type="button" class="btn solid__btn btn-sm" data-bs-toggle="modal" data-bs-target="#modalId3">
+                        <button type="button" class="btn solid__btn btn-lg" data-bs-toggle="modal" data-bs-target="#modalId3">
                           Si ya cuentas con tu formato de postulación subelo aqui
                         </button>
                         
                         <!-- Modal Body Formato de postulacion-->
                         <div class="modal fade" id="modalId3" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-                           <div class="modal-dialog" role="document">
+                           <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                     <div class="modal-header">
-                                          <h5 class="modal-title" id="modalTitleId">Formato de Postulacion</h5>
+                                          <h5 class="modal-title" id="modalTitleId">Continua llenando tus Documentos</h5>
                                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                        </div>
-                                 <div class="modal-body">
+
+                                    <div class="modal-body">
                                     <div class="container-fluid">
-                                    <div class="col-md-auto">
+                                    <form action="" method="" enctype="multipart/form-data">
+                                    <div class="col-lg-auto">
                                                         <label for="matriculaValida_formato" class="form-label">Matricula</label>
                                                         <input type="number" class="form-control" min="10" maxlength="10" id="matriculaValida_formato" name="matriculaValida_formato" value="" oninput="validarCampoNumerico(this)" required>
                                                         <span id="mensajeError" style="color: red;"></span>
@@ -425,6 +427,7 @@ if (isset($_GET['matricula'])) {
                                                         
                                                     </div>
                                     </div>
+                                    </form>
                                  </div>
                                  <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -458,7 +461,7 @@ if (isset($_GET['matricula'])) {
                                  <div id="progress"></div>
                         </div>
 
-                        <form metod="post" acttion="../includes/crear_documentos_estudiante.php" >
+                        <form metod="post" acttion="../includes/crear_documentos_estudiante.php" enctype="multipart/form-data">
                                                    <!-- <div class="col-md-4">
                                                         <label for="correo" class="form-label">Correo</label>
                                                         <input type="email" class="form-control" id="correo" name="correo" value="" required>
@@ -466,7 +469,7 @@ if (isset($_GET['matricula'])) {
                                                         <a name="" id="" class="btn btn-primary" href="#" role="button" onclick="validarCampoNumerico(this)">Validar</a>
                                                    </div> -->
                                                    <div class="col-md-auto">
-                                                        <label for="matriculaValida" class="form-label">Matricula ss</label>
+                                                        <label for="matriculaValida" class="form-label">Matricula</label>
                                                         <input type="number" class="form-control" min="10" maxlength="10" id="matriculaValida" name="matriculaValida" value="" oninput="validarCampoNumerico(this)" required>
                                                         <span id="mensajeError" style="color: red;"></span>
                                                         <div id="result-matricula-valida"></div> 
@@ -476,16 +479,6 @@ if (isset($_GET['matricula'])) {
                                                     <!-- <button type="sumbit" class="btn solid__btn">Button</button> -->
                         </form>  
                         
-                        <?php 
-                        // $usuario = 0;
-                        // $usuario = $_REQUEST['matriculaValida1'];
-                        // $usuario = $matriculaValida;
-
-
-                     
-                           # code...
-
-                     ?>
                        
                         
 
@@ -507,7 +500,7 @@ if (isset($_GET['matricula'])) {
                             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="modalTitleId">Modal title</h5>
+                                        <h5 class="modal-title" id="modalTitleId">Datos Generales</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">

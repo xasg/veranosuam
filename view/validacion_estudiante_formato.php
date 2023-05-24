@@ -73,22 +73,55 @@ if (isset($_POST)) {
         echo "<div class='alert alert-success'><strong>Enhorabuena {$nombre} {$apellidop} {$matricula_registrada}!</strong> Matricula Registrada continua llenando tus documentos .</div>";
         echo "";
         ?>
- <form  action="../includes/crear_documentos_estudiante.php" method="post">
+ <form  action="../includes/crear_documentos_estudiante.php" method="post" enctype="multipart/form-data">
                            <!-- <div class="step active" id="step-3"> -->
                               <h2 class="text-center">Formato de Postulación</h2>
                               <!-- <label for="">Identificacion Oficial:</label> -->
                               <p>Procura tener todos los documentos en mano, para agilizar el proceso</p>
                      
                               <div class="mb-3 " id="step-1">
-                                <label for="formato_postulacion" class="form-label">Formato de postulacion</label>
-                                <!-- <input type="text" class="form-control" name="formato_postulacion" id="formato_postulacion" placeholder="<?php echo $matricula_registrada; ?>" value="<?php echo $matricula_registrada; ?>"  required> -->
-                                <input type="text" class="form-control" name="matricula_estudiante" id="matricula_estudiante" placeholder="<?php echo $matricula_registrada; ?>" value="<?php echo $matricula_registrada; ?>"  required>
-                                
-                                <!-- <input type="file" class="form-control" name="formato_postulacion" id="formato_postulacion" placeholder="" aria-describedby="fileHelpId" required> -->
-                                <div id="fileHelpId" class="form-text">Help text</div>
-                              </div>
+                                <input type="text" class="form-control" name="matricula_estudiante" id="matricula_estudiante" placeholder="<?php echo $matricula_registrada; ?>" value="<?php echo $matricula_registrada; ?>"  required hidden="true">
+                              
+                                <label for="ine" class="form-label">INE</label>
+                                <input type="file" class="form-control" name="ine" id="ine" required>
+                                <div id="fileHelpId" class="form-text">en formato pdf</div>
+                              
+                                <label for="campo1" class="form-label">Comprobante de Domicilio</label>
+                                <input type="file" class="form-control" name="comprobante_domicilio" id="comprobante_domicilio" placeholder="" aria-describedby="fileHelpId" required>
+                                <div id="fileHelpId" class="form-text">en formato pdf</div>
 
-                              <!-- <input type="text" name="identificacion" id="identificacion" required> -->
+                                <label for="campo1" class="form-label">CURP</label>
+                                <input type="file" class="form-control" name="curp" id="curp" placeholder="" aria-describedby="fileHelpId" required>
+                                <div id="fileHelpId" class="form-text">en formato pdf</div>
+
+                                <label for="campo1" class="form-label">Comprobante de Seguro Facultativo</label>
+                                <input type="file" class="form-control" name="seguro" id="seguro" placeholder="" aria-describedby="fileHelpId" required>
+                                <div id="fileHelpId" class="form-text">en formato pdf</div>
+
+                                <label for="campo1" class="form-label">Curriculum Vitae</label>
+                                <input type="file" class="form-control" name="cv" id="cv" placeholder="" aria-describedby="fileHelpId" required>
+                                <div id="fileHelpId" class="form-text">en formato pdf</div>
+                                
+                                <label for="campo1" class="form-label">Constancia de créditos y promedio</label>
+                                <input type="file" class="form-control" name="constancia" id="constancia" placeholder="" aria-describedby="fileHelpId" required>
+                                <div id="fileHelpId" class="form-text">en formato pdf</div>
+
+                                <label for="campo1" class="form-label">Carta Compromiso</label>
+                                <input type="file" class="form-control" name="carta_compromiso" id="carta_compromiso" placeholder="" aria-describedby="fileHelpId" required>
+                                <div id="fileHelpId" class="form-text">en formato pdf</div>
+
+                                <label for="campo1" class="form-label">Formato de pago por transferencia</label>
+                                <input type="file" class="form-control" name="formato_pago" id="formato_pago" placeholder="" aria-describedby="fileHelpId" required>
+                                <div id="fileHelpId" class="form-text">en formato pdf</div>
+                                
+                                <label for="campo1" class="form-label">Estado de cuenta Bancario</label>
+                                <input type="file" class="form-control" name="cuenta_bancaria" id="cuenta_bancaria" placeholder="" aria-describedby="fileHelpId" required>
+                                <div id="fileHelpId" class="form-text">en formato pdf</div>
+
+                              <label for="formato_postulacion" class="form-label">Formato de postulacion</label>
+                                <input type="file" class="form-control" name="formato_postulacion" id="formato_postulacion"   required>
+                                <div id="fileHelpId" class="form-text">Help text</div>                                
+                              </div>
                            </div>
 
                            <div class="button-container">

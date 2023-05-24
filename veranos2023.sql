@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2023 a las 19:35:35
+-- Tiempo de generación: 24-05-2023 a las 04:15:00
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -62,10 +62,17 @@ INSERT INTO `cat_carrera` (`id_carrera`, `nivel`, `nombre`, `area`, `id_rel_grad
 
 CREATE TABLE `documentos_estudiante` (
   `id` int(11) NOT NULL,
+  `matricula` bigint(11) NOT NULL,
   `ine` varchar(250) NOT NULL,
   `curp` varchar(250) NOT NULL,
-  `comprobante_domicilio` int(11) NOT NULL,
-  `matricula` int(11) NOT NULL
+  `comprobante_domicilio` varchar(250) NOT NULL,
+  `seguro` varchar(250) NOT NULL,
+  `cv` varchar(250) NOT NULL,
+  `constancia_creditos` varchar(250) NOT NULL,
+  `carta_compromiso` varchar(250) NOT NULL,
+  `formato_pago` varchar(250) NOT NULL,
+  `cuenta_bancaria` varchar(250) NOT NULL,
+  `formato_postulacion` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -296,7 +303,8 @@ CREATE TABLE `usuarios` (
 -- Indices de la tabla `documentos_estudiante`
 --
 ALTER TABLE `documentos_estudiante`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `matricula` (`matricula`);
 
 --
 -- Indices de la tabla `estudiantes`
@@ -330,7 +338,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `documentos_estudiante`
 --
 ALTER TABLE `documentos_estudiante`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT de la tabla `estudiantes`

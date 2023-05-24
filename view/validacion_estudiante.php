@@ -73,19 +73,14 @@ if (isset($_POST)) {
         echo "<div class='alert alert-success'><strong>Enhorabuena {$nombre} {$apellidop} {$matricula_registrada}!</strong> Matricula Registrada continua llenando tus documentos .</div>";
         echo "";
         ?>
-<form id="step-form" action="../includes/crear_documentos_estudiante.php" method="post">
-                           <!-- <div class="step active" id="step-1">
-                              <h2 class="text-center ">Paso 1 Datos personales</h2>
-                              <p>Procura tener todos los documentos en mano, para agilizar el proceso</p>
-                              <input type="text" class="form-control" name="matricula_estudiante" id="matricula_estudiante" placeholder="<?php echo $matricula_registrada; ?>" value="<?php echo $matricula_registrada; ?>"  required disabled>
-                           </div> -->
+<form id="step-form" action="../includes/crear_documentos_estudiante.php" method="post" enctype="multipart/formdata">
                            <div class="step mb-3 active" id="step-1">
                                 <label for="matricula_registrada" class="form-label">Matricula Registrada</label>
-                                <!-- <input type="text" class="form-control" name="formato_postulacion" id="formato_postulacion" placeholder="<?php echo $matricula_registrada; ?>" value="<?php echo $matricula_registrada; ?>"  required> -->
-                                <input type="text" class="form-control" name="matricula_estudiante" id="matricula_estudiante" placeholder="<?php echo $matricula_registrada; ?>" value="<?php echo $matricula_registrada; ?>"  required>                                
+                                
+                                <input type="text" class="form-control" name="matricula_estudiante" id="matricula_estudiante" placeholder="<?php echo $matricula_registrada; ?>" value="<?php echo $matricula_registrada; ?>" hidden="true">                                
                                 <div class="mb-3">
                                 <label for="campo1" class="form-label">INE</label>
-                                <input type="file" class="form-control" name="ine" id="ine" placeholder="" aria-describedby="fileHelpId" required>
+                                <input type="file" class="form-control" name="ine" id="ine" required>
                                 <div id="fileHelpId" class="form-text">en formato pdf</div>
                               </div>
                               <div class="mb-3">
@@ -98,11 +93,11 @@ if (isset($_POST)) {
                                 <input type="file" class="form-control" name="curp" id="curp" placeholder="" aria-describedby="fileHelpId" required>
                                 <div id="fileHelpId" class="form-text">en formato pdf</div>
                               </div>
-                              <!-- <div class="mb-3">
-                                <label for="campo1" class="form-label">Curriculum Vitae</label>
-                                <input type="file" class="form-control" name="cv" id="cv" placeholder="" aria-describedby="fileHelpId" required>
+                              <div class="mb-3">
+                                <label for="campo1" class="form-label">Comprobante de Seguro Facultativo</label>
+                                <input type="file" class="form-control" name="seguro" id="seguro" placeholder="" aria-describedby="fileHelpId" required>
                                 <div id="fileHelpId" class="form-text">en formato pdf</div>
-                              </div> -->
+                              </div>
                             </div>
                            <div class="step" id="step-2">
                               <h2>Paso 2 Datos de postulación</h2>
@@ -141,8 +136,8 @@ if (isset($_POST)) {
                            <div class="button-container">
                               <button type="button" class="solid__btn" onclick="previousStep()">Anterior</button>
                               <button type="button"  class="solid__btn" onclick="nextStep()">Siguiente</button>
-                              <!-- <button type="submit" class="solid__btn" onclick="submitForm()">Enviar</button> -->
-                              <button type="submit" class="solid__btn">Enviar</button>
+                              <button type="submit" class="solid__btn" onclick="submitForm()">Enviar</button>
+                              <!-- <button type="submit" class="solid__btn">Enviar</button> -->
                               
                            </div>
                         </form>
