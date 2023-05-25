@@ -40,6 +40,7 @@
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    
 <script type="text/javascript">
 $(document).ready(function() {  
     $('#correo').on('blur', function(){
@@ -50,7 +51,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: "POST",
-            url: "validacion_correo.php",
+            url: "validacion_correo_usuario.php",
             data: dataString,
             success: function(data) {
                 $('#result-username').fadeIn(1000).html(data);
@@ -279,110 +280,124 @@ if (isset($_SESSION['name'])) {
       <!-- Boost area start -->
       <a name="participa"></a>
 <br><br><br>
-      <div class="boost__area pb-25">
+      <div class="boost__area ">
          <div class="container">
             <div class="row  wow fadeInUp" data-wow-delay=".3s">
-               <div class="col-xl-8 col-lg-6 ">
+               <div class="col-xl-12 col-lg-12 ">
                   <div class="boost__content-wrapper mb-60">
                      <div class="section__title-wrapper mb-40">
                         <span class="section__subtitle-2">
-                           <span>Part</span>icipa
+                           <span>ADMIN</span>ISTRA
                         </span>
                         <h2 class="section__title-2">
                            Gestiona el proceso
                         </h2>
                      </div>
-                     <!-- <p class="mb-0">Solo podrás realizar el registro una vez, asegúrate de tener tu información y documentación completa</p> -->
-                     <!-- <div class="approach__features s-2">
-                        <div class="approach__features-item">
-                           <div class="approach__arrow">
-                              <img src="../assets/img/svg/arrow-2.svg" alt="">                            
-                           </div>
-                           <div class="approach__text">
-                              <span>Datos generales</span>
-                           </div>
-                        </div>
-                        <div class="approach__features-item">
-                           <div class="approach__arrow">
-                              <img src="../assets/img/svg/arrow-2.svg" alt="">                            
-                           </div>
-                           <div class="approach__text">
-                              <span>Formato de postulación</span>
-                           </div>
-                        </div>
-                        <div class="approach__features-item">
-                           <div class="approach__arrow">
-                              <img src="../assets/img/svg/arrow-2.svg" alt="">                            
-                           </div>
-                           <div class="approach__text">
-                              <span>Constancia de créditos y promedio</span>
-                           </div>
-                        </div>
-                        <div class="approach__features-item">
-                           <div class="approach__arrow">
-                              <img src="../assets/img/svg/arrow-2.svg" alt="">                            
-                           </div>
-                           <div class="approach__text">
-                              <span>Carta compromiso</span>
-                           </div>
-                        </div>
-                        <div class="approach__features-item">
-                           <div class="approach__arrow">
-                              <img src="../assets/img/svg/arrow-2.svg" alt="">                            
-                           </div>
-                           <div class="approach__text">
-                              <span>CV</span>
-                           </div>
-                        </div>
-                        <div class="approach__features-item">
-                           <div class="approach__arrow">
-                              <img src="../assets/img/svg/arrow-2.svg" alt="">                            
-                           </div>
-                           <div class="approach__text">
-                              <span>Comprobante de seguro facultativo</span>
-                           </div>
-                        </div>
-                        <div class="approach__features-item">
-                           <div class="approach__arrow">
-                              <img src="../assets/img/svg/arrow-2.svg" alt="">                            
-                           </div>
-                           <div class="approach__text">
-                              <span>Identificación oficial</span>
-                           </div>
-                        </div>
-                        <div class="approach__features-item">
-                           <div class="approach__arrow">
-                              <img src="../assets/img/svg/arrow-2.svg" alt="">                            
-                           </div>
-                           <div class="approach__text">
-                              <span>CURP</span>
-                           </div>
-                        </div>
-                        <div class="approach__features-item">
-                           <div class="approach__arrow">
-                              <img src="../assets/img/svg/arrow-2.svg" alt="">                            
-                           </div>
-                           <div class="approach__text">
-                              <span>Comprobante de domicilio</span>
-                           </div>
-                        </div>
-                        <div class="approach__features-item">
-                           <div class="approach__arrow">
-                              <img src="../assets/img/svg/arrow-2.svg" alt="">                            
-                           </div>
-                           <div class="approach__text">
-                              <span>Formato de pago por transferencia</span>
-                           </div>
-                        </div>
-                        <div class="approach__features-item">
-                           <div class="approach__arrow">
-                              <img src="../assets/img/svg/arrow-2.svg" alt="">                            
-                           </div>
-                           <div class="approach__text">
-                              <span>Estado de cuenta bancario </span>
-                           </div>
-                        </div>
-                     </div> -->
+
+                     <div class="table-responsive-xxl">
+                        <table class="table table-primary">
+                           <?php 
+                              require("../controller/conect.php");
+
+                              $query = "SELECT * FROM documentos_estudiante left join estudiantes on estudiantes.matricula = documentos_estudiante.matricula";
+                              $result = $mysqli->query($query);
+                              // $row = mysqli_fetch_assoc($result);
+                              
+                                 # code...
+                           ?>
+                           <thead>
+                              <tr>
+                                 <th scope="col">Matricula del alumno</th>
+                                 <th scope="col">Nombre</th>
+                                 <th scope="col">Apellido Paterno</th>
+                                 <th scope="col">Apellido Materno</th>
+                                 <th scope="col">Licenciatura o carrera</th>
+                                 <th scope="col">Creditos</th>
+                                 <th scope="col">edad</th>
+                                 <th scope="col">Sexo</th>
+                                 <th scope="col">correo</th>
+                                 <th scope="col">telefono</th>
+                                 <th scope="col">fecha de registro</th>
+                                 <th scope="col">Ver documentos</th>
+                              </tr>
+                           </thead>
+                           
+                           <?php
+                           foreach ($result as $rows) {
+                           ?>
+                           <tbody>
+                              <tr class="">
+                                 <td scope="row"><?php echo $rows['matricula'] ?> </td>
+                                 <td scope="row"><?php echo $rows['nombres'] ?> </td>
+                                 <td scope="row"><?php echo $rows['a_paterno'] ?> </td>
+                                 <td scope="row"><?php echo $rows['a_materno'] ?> </td>
+                                 <td scope="row"><?php echo $rows['licenciatura'] ?> </td>
+                                 <td scope="row"><?php echo $rows['creditos'] ?> </td>
+                                 <td scope="row"><?php echo $rows['edad'] ?> </td>
+                                 <td scope="row"><?php echo $rows['sexo'] ?> </td>
+                                 <td scope="row"><?php echo $rows['correo'] ?> </td>
+                                 <td scope="row"><?php echo $rows['telefono'] ?> </td>
+                                 <td scope="row"><?php echo $rows['cretate'] ?> </td>
+                                 <td scope="row"> <!--  Modal trigger button  -->
+                                 <button type="button" class="btn btn-primary btn-md" data-bs-toggle="modal" data-bs-target="#modalId<?php echo $rows['id']; ?>">
+                                   ver documentos
+                                 </button>
+                                 
+                                 <!-- Modal Body-->
+                                 <div class="modal fade" id="modalId<?php echo $rows['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalTitleId<?php echo $rows['id']; ?>" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                       <div class="modal-content">
+                                             <div class="modal-header">
+                                                   <h5 class="modal-title" id="modalTitleId<?php echo $rows['id']; ?>">Documentos llenados</h5>
+                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                          <div class="modal-body">
+                                             <div class="container-fluid">
+                                                Documentos de <?php echo $rows['nombres'] ?> <br>
+                                                Puedes previsualizar y Descarga los documentos <br>
+                                                <!-- <h3><span>1 - </span> Matricula -> <a class="btn btn-primary btn-sm" href="../includes/files/<?php #echo $rows['ine'] ?>" target="_blank">Visualizar</a></h3><br>  -->
+                                                <h3><span>1 - </span> INE -> <a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['ine'] ?>" target="_blank">Visualizar</a></h3><br>
+                                                <h3><span>2 - </span> CURP -> <a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['curp']; ?>" target="_blank">Visualizar</a></h3><br>
+                                                <h3><span>3 - </span>Comprobante de domicilio -> <a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['comprobante_domicilio']; ?>" target="_blank">Visualizar</a></h3><br>
+                                                <h3><span>4 - </span>Comprobante de Seguro Facultativo -> <a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['seguro']; ?>" target="_blank">Visualizar</a></h3><br>
+                                                <h3><span>5 - </span>Curriculum Vitae -> <a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['cv'] ?>" target="_blank">Visualizar</a></h3><br>
+                                                <h3><span>6 - </span>Constancia de Creditos y Promedio-> <a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['constancia_creditos'] ?>" target="_blank">Visualizar</a></h3><br>
+                                                <h3><span>7 - </span>Carta Compromiso -> <a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['carta_compromiso'] ?>" target="_blank">Visualizar</a></h3><br>
+                                                <h3><span>8 - </span>Formato de Pago -> <a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['formato_pago'] ?>" target="_blank">Visualizar</a></h3><br>
+                                                <h3><span>9 - </span>Cuenta Bancaria -> <a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['cuenta_bancaria'] ?>" target="_blank">Visualizar</a></h3><br>
+                                                <h3><span>10 - </span>Formato de Postulación -> <a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['formato_postulacion'] ?>" target="_blank">Visualizar</a></h3><br>
+                                             </div>
+                                          </div>
+                                          <div class="modal-footer">
+                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                             <button type="button" class="btn btn-primary">Save</button>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 
+                                 
+                                 
+                                 
+                                  </td>
+                                 <!-- <td></td>
+                                 <td>R1C3</td> -->
+                              </tr>
+                
+                           </tbody>
+
+                           <?php
+                           }
+                           ?>
+
+                        </table>
+                        <br><br><br>
+                     </div>
+                     <div class="col-md-12 text-center">
+<ul class="pagination pagination-lg pager" id="developer_page"></ul>
+</div>
+                     
+
                   </div>
                </div>
                <div class="col-xl-4 col-lg-6 ">
@@ -424,10 +439,10 @@ if (isset($_SESSION['name'])) {
             <!-- Modal Body -->
                         <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
                         <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
+                            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="modalTitleId">Datos Generales</h5>
+                                        <h5 class="modal-title" id="modalTitleId">Registro de usuario con rol de ADMIN</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -435,88 +450,26 @@ if (isset($_SESSION['name'])) {
                                             <div class="row justify-content-center align-items-center g-2">
                                                 
                                             
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-12">
                                                         <label for="nombres" class="form-label">Nombre(s)</label>
                                                         <input type="text" class="form-control" id="nombres" name="nombres" value="" required>
                                                     </div>
-                                                    <div class="col-md-4">
-                                                        <label for="a_paterno" class="form-label">Apellido Paterno</label>
-                                                        <input type="text" class="form-control" id="a_paterno" name="a_paterno" value="" required>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label for="a_materno" class="form-label">Apellido Materno</label>
-                                                        <input type="text" class="form-control" id="a_materno" name="a_materno" value="" required>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label for="matricula" class="form-label">Matricula</label>
-                                                        <input type="number" class="form-control" min="10" maxlength="10" id="matricula" name="matricula" value="" oninput="validarCampoNumerico(this)" required>
-                                                        <span id="mensajeError" style="color: red;"></span>
-                                                        <div id="result-matricula"></div> 
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label for="licenciatura" class="form-label">Licenciatura</label>
-                                                        <!-- <input type="text" class="form-control" id="matricula" name="matricula" value="" required> -->
-                                                        <select class="form-select " name="licenciatura" id="licenciatura">
-                                                                <option selected>Selecciona tu carrera</option>
-                                                                <option value="Administracion">Administración</option>
-                                                                <option value="Biologia Molecular">Biología Molecular</option>                                                                
-                                                                <option value="Ciencias de la Comunicacion">Ciencias de la Comunicación</option>                                                                
-                                                                <option value="Derecho">Derecho</option>                                                                
-                                                                <option value="Diseño">Diseño</option>                                                                
-                                                                <option value="Doctorado en Ciencias Biologicas y de la Salud">Doctorado en Ciencias Biológicas y de la Salud</option>                                                                
-                                                                <option value="Estudios Socioterritoriales">Estudios Socioterritoriales</option>                                                                
-                                                                <option value="Humanidades">Humanidades</option>                                                                
-                                                                <option value="Ingenieria Biologica">Ingeniería Biológica</option>                                                                
-                                                                <option value="Ingenieria en Computacion">Ingeniería en Computación</option>                                                                
-                                                                <option value="Matemáticas Aplicadas">Matemáticas Aplicadas</option>                                                                
-                                                                <option value="Maestría en Diseño, Información y Comunicación">Maestría en Diseño, Información y Comunicación</option>                                                                
-                                                                <option value="Posgrado en Ciencias Naturales e Ingeniería">Posgrado en Ciencias Naturales e Ingeniería</option>                                                                
-                                                                <option value="Posgrado en Ciencias Sociales y Humanidades">Posgrado en Ciencias Sociales y Humanidades</option>                                                                
-                                                                <option value="Tecnologías y Sistemas de Información">Tecnologías y Sistemas de Información</option>                                                                
-                                                            </select>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label for="creditos" class="form-label">Creditos</label>
-                                                        <input type="number"  class="form-control" min="2" maxlength="3" id="creditos" name="creditos" value="" oninput="validarCampoNumerico3(this)" required>
-                                                        <span id="mensajeError3" style="color: red;"></span>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label for="edad" class="form-label">Edad</label>
-                                                        <input type="number" class="form-control" id="edad" name="edad" value="" required>
-                                                    </div>
-                                                    <!-- <div class="col-md-4">
-                                                          <label for="telefono" class="form-label">Telefono</label>
-                                                          <input type="number" class="form-control" id="telefono" name="telefono" value="" required>
-                                                   </div> -->
-                                                    <div class="col-md-4">
+
+                                                    <div class="col-md-12">
                                                         <label for="correo" class="form-label">Correo</label>
                                                         <input type="email" class="form-control" id="correo" name="correo" value="" required>
                                                         <div id="result-username"></div> 
                                                       </div>
-                                                     
-                                                    <div class="col-md-4">
-                                                       <label for="sexo" class="form-label">Sexo</label>
-                                                       <select class="form-select " name="sexo" id="sexo">
-                                                          <option selected>Selecciona</option>
-                                                          <option value="Masculino">Masculino</option>
-                                                          <option value="Femenino">Femenino</option>                                                                
-                                                         </select>
-                                                         </div>
+                                                    <div class="col-md-12">
+                                                        <label for="password" class="form-label">Password</label>
+                                                        <input type="password" class="form-control" id="password" name="password" value="" required>
+                                                        <!-- <div id="result-username"></div>  -->
                                                       </div>
-                                                      
-                                                      <div class="col-md-4">
-                                                        <label for="telefono" class="form-label">Telefono</label>
-                                                        <input type="number" class="form-control" min="10" maxlength="10" id="telefono" name="telefono" value="" oninput="validarCampoNumerico2(this)" required>
-                                                        <!-- <input type="number" class="form-control" min="10" maxlength="10" id="telefonos" name="telefonos" value=""  oninput="validarCampoNumerico2(this)" required> -->
-                                                        <span id="mensajeError2" style="color: red;"></span>
-                                                        </div>
-                                                   <!-- </div> -->
-                                                   <!-- </div> -->
-                                                   <button type="submit" class="btn solid__btn" >Enviar Solicitud </button>
+                                                   <button type="submit" class="btn solid__btn" >Registrar usuario </button>
                                                 </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar pestaña</button>
                                     </div>
                                 </div>
                             </div>

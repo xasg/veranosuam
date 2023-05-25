@@ -54,7 +54,7 @@
 <?php 
 require('../controller/conect.php');
 sleep(1);
-if (isset($_POST)) {
+if (isset($_POST) != "") {
     $matricula = $_POST['matricula'];    
     $result = $mysqli->query("SELECT * FROM estudiantes WHERE matricula = {$matricula} ");
     foreach($result as $datos){
@@ -74,7 +74,7 @@ if (isset($_POST)) {
       if ($siexite) {
         # code...
         echo "<div class='alert alert-success'><strong> {$nombre} {$apellidop} {$matricula_registrada}!</strong> ya has llenado tus documentos espera a que nos comuniquemos contigo! .</div>";
-        echo "";
+        // echo "";
       }else{
         // echo ;
         echo "<div class='alert alert-success'><strong>Enhorabuena {$nombre} {$apellidop} {$matricula_registrada}!</strong> Matricula Registrada continua llenando tus documentos .</div>";
