@@ -123,22 +123,7 @@ $(document).ready(function() {
    </head>
    <body>
    <?php
-
-if (isset($_SESSION['name'])) {
-    $usuario = $_SESSION['name'];
-        echo "<script>  Swal.fire({
-            icon: 'success',
-            title: 'Bienvenid@ {$usuario} al panel de ADMIN',
-            showConfirmButton: true,
-            customClass: {
-               confirmButton: 'mi-clase-boton-confirmar'
-             },
-            timer: 12500
-        });
-        </script>";
-    
-    // header("Location: ../view/inscribete.php?registrado='si'");
-}
+$usuario = $_SESSION['name'];
 ?>
 <?php
    if (isset($_REQUEST['usuarionuevo'])) {
@@ -315,7 +300,7 @@ if (isset($_SESSION['name'])) {
                            <span>ADMIN</span>ISTRA
                         </span>
                         <h2 class="section__title-2">
-                           Gestiona el proceso
+                           Organizaciones
                         </h2>
                      </div>
 
@@ -324,12 +309,14 @@ if (isset($_SESSION['name'])) {
                           Gestiona Usuarios
                         </button>
                         <a name="" id="" class="solid__btn" href="organizaciones.php" role="button">Gestiona ORGS</a>
+                        <a name="" id="" class="solid__btn" href="index.php" role="button">Estudiantes</a>
                         <br><br>
                         <table class="table table-sm table-dark ">
                            <?php 
                               require("../controller/conect.php");
 
-                              $query = "SELECT * FROM documentos_estudiante left join estudiantes on estudiantes.matricula = documentos_estudiante.matricula";
+                            //   $query = "SELECT *,COUNT(DISTINCT espacio_disponible.id_organizacion) FROM organizacion left join espacio_disponible on organizacion.id_org = espacio_disponible.id_organizacion GROUP BY organizacion.nombre";
+                              $query = "SELECT * FROM organizacion ORDER BY id_org";
                               $result = $mysqli->query($query);
                               // $row = mysqli_fetch_assoc($result);
                               
@@ -337,59 +324,67 @@ if (isset($_SESSION['name'])) {
                            ?>
                            <thead class="border-bottom">
                               <tr>
-                                 <th scope="col">Matricula del alumno</th>
-                                 <th scope="col">Nombre</th>
-                                 <th scope="col">Apellido Paterno</th>
-                                 <th scope="col">Apellido Materno</th>
-                                 <th scope="col">Licenciatura o carrera</th>
+
+                                 <th scope="col">ID</th>
+                                 <th scope="col">Nombre de la Organizacion</th>
+                                 <th scope="col">Direccion</th>
+                                 <th scope="col">Día en que se registro la ORG</th>
+                                 <th scope="col">Estatus</th>
+                                 <th scope="col">Acciones</th>
+                                 <!-- <th scope="col">Licenciatura o carrera</th>
                                  <th scope="col">Creditos</th>
                                  <th scope="col">edad</th>
                                  <th scope="col">Sexo</th>
                                  <th scope="col">correo</th>
                                  <th scope="col">telefono</th>
                                  <th scope="col">fecha de registro</th>
-                                 <th scope="col">Ver documentos</th>
+                                 <th scope="col">Ver documentos</th> -->
                               </tr>
                            </thead>
                            
                            <?php
+                           $counter = 1;
                            foreach ($result as $rows) {
                            ?>
                            <tbody class="">
                               <tr class="table-secondary">
-                                 <td scope="row"><?php echo $rows['matricula'] ?> </td>
-                                 <td scope="row"><?php echo $rows['nombres'] ?> </td>
-                                 <td scope="row"><?php echo $rows['a_paterno'] ?> </td>
-                                 <td scope="row"><?php echo $rows['a_materno'] ?> </td>
-                                 <td scope="row"><?php echo $rows['licenciatura'] ?> </td>
+                              <td class="text-center"><?php echo $counter++ ?></td>
+                                 <td scope="row"><?php echo $rows['nombre'] ?> </td>
+                                 <td scope="row"><?php echo $rows['direccion'] ?> </td>
+                                 <td scope="row"><?php echo $rows['dt_create'] ?> </td>
+                                 <td scope="row"><?php if ($rows['estatus'] == 1) {
+                                     # code...
+                                     echo 'Disponible';}else{ echo 'No disponible';}  ?> </td>
+                                 <!-- <td scope="row"><?php echo $rows['licenciatura'] ?> </td>
                                  <td scope="row"><?php echo $rows['creditos'] ?> </td>
                                  <td scope="row"><?php echo $rows['edad'] ?> </td>
                                  <td scope="row"><?php echo $rows['sexo'] ?> </td>
                                  <td scope="row"><?php echo $rows['correo'] ?> </td>
                                  <td scope="row"><?php echo $rows['telefono'] ?> </td>
-                                 <td scope="row"><?php echo $rows['cretate'] ?> </td>
+                                 <td scope="row"><?php echo $rows['cretate'] ?> </td> -->
                                  <td scope="row"> <!--  Modal trigger button  -->
-                                 <button type="button" class="btn btn-primary btn-md" data-bs-toggle="modal" data-bs-target="#modalId<?php echo $rows['id']; ?>">
-                                   ver documentos
+                                 <button type="button" class="btn btn-primary btn-md" data-bs-toggle="modal" data-bs-target="#modalId<?php echo $rows['id_org']; ?>">
+                                   acciones
                                  </button>
                                  
                                  <!-- Modal Body-->
-                                 <div class="modal fade" id="modalId<?php echo $rows['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalTitleId<?php echo $rows['id']; ?>" aria-hidden="true">
+                                 <div class="modal fade" id="modalId<?php echo $rows['id_org']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalTitleId<?php echo $rows['id_org']; ?>" aria-hidden="true">
                                     <div class="modal-dialog modal-lg" >
                                        <div class="modal-content">
                                              <div class="modal-header">
-                                                   <h5 class="modal-title" id="modalTitleId<?php echo $rows['id']; ?>">Documentos llenados</h5>
+                                                   <h5 class="modal-title" id="modalTitleId<?php echo $rows['id_org']; ?>">Documentos llenados</h5>
                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                           <div class="modal-body">
                                              <div class="container-fluid">
                                                 <h4 class="bg-dark text-center border-bottom-0 text-light rounded">
-                                                   Documentos de 
+                                                   Informacion de ORG : 
                                                    <i>
-                                                      <?php echo $rows['nombres']." ".$rows['a_paterno']."  ".$rows['a_materno'] ?> <br>
+                                                      <?php echo $rows['nombre'] ?> <br>
                                                    </i> 
                                                 </h4>
-                                                Puedes previsualizar y Descarga los documentos <br>
+                                                <br>
+                                                Realiza cambios <br> <br>
 
                                                 <div class="table-responsive">
                                                    <table class="table table-striped
@@ -400,7 +395,7 @@ if (isset($_SESSION['name'])) {
                                                       <thead class="table-light">
                                                          <caption>Documentación</caption>
                                                          <tr class="text-center">
-                                                            <th>INE</th>
+                                                            <th></th>
                                                             <th>CURP</th>
                                                             <th>Comprobante de Domicilio</th>
                                                          </tr>

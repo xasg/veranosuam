@@ -125,7 +125,7 @@ $cat_carreras = view_cat_carreras();
                                     <a href="#">Inicio</a>
                                  </li>
                                  <li>
-                                    <a href="#que_son">¿Qué son?</a>
+                                    <a href="#que_son">¿Qué_<?php echo strtolower('son?');?></a>
                                  </li>
 
                                  <li>
@@ -188,7 +188,7 @@ $cat_carreras = view_cat_carreras();
                            <span class="wow fadeInUp" data-wow-delay=".2s">Participa <span>en</span> las</span>
                            <h2 class="wow fadeInUp" data-wow-delay=".4s"> Estancias Profesionales de Verano</h2>
                            <p class="wow fadeInUp" data-wow-delay=".6s">Experimenta tu primer acercamiento al mundo laboral y 
-                              pon en práctica los conocimientos durante 6 semanas y un apoyo de 3 mil pesos</p>
+                           pon en práctica los conocimientos y competencias adquiridas durante tu formación académica.</p>
                         </div>
                         <div class="hero__btn-link wow fadeInUp" data-wow-delay=".8s">
                            <a class="solid__btn" target="_blank" href="https://www.cua.uam.mx/conoce-la-uam-unidad-cuajimalpa/coordinaciones-administrativas/coordinacion-de-vinculacion/vinculacion-y-desarrollo-profesional/estancias-profesionales-de-verano/informacion-para-alumnos">Convocatoria</a>
@@ -313,8 +313,8 @@ $cat_carreras = view_cat_carreras();
                               <i class="fa-solid fa-check"></i>
                            </div>
                            <div class="about__features-content">
-                              <p>Duración de la estancia</p>
-                              <p>– 6 semanas</p>
+                              <p>Adquiere habilidades laborales</p>
+                              <!-- <p>– 6 semanas</p> -->
                            </div>
                         </div>
                         <div class="about__features-item">
@@ -322,8 +322,8 @@ $cat_carreras = view_cat_carreras();
                               <i class="fa-solid fa-check"></i>
                            </div>
                            <div class="about__features-content">
-                              <p>Apoyo recibido</p>
-                              <p>– 3 mil pesos al final de la estancia</p>
+                              <p>Pon en practica tus conocimientos</p>
+                              <!-- <p>– 3 mil pesos al final de la estancia</p> -->
                            </div>
                         </div>
                      </div>
@@ -595,7 +595,7 @@ $cat_carreras = view_cat_carreras();
                               <label for="" class="form-label">Selecciona tu carrera</label>
                               <select class="form-select form-select-lg" name="cat_carrera" id="cat_carrera">
                               
-                              <option value = "0" selected>Carreras</option>
+                              <option value = "0" selected>Selecciona tu Grado</option>
                               <?php
                                     foreach ($carreras as $resul) {
                                        # code...

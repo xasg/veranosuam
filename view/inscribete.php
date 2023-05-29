@@ -25,6 +25,7 @@
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    
 <script type="text/javascript">
 $(document).ready(function() {  
     $('#correo').on('blur', function(){
@@ -96,6 +97,14 @@ $(document).ready(function() {
     });              
 });  
 </script>
+<style>
+       .mi-clase-boton-confirmar {
+  background-color: #007bff !important;
+  border-radius: 10px !important;
+  color: #FFFFFF !important;
+  box-shadow: 1px 0px 8px #000 !important;
+}
+    </style>
    </head>
    <body>
    <?php
@@ -116,9 +125,12 @@ if (isset($_GET['matricula'])) {
 <?php
         echo "<script>  Swal.fire({
             icon: 'success',
-            title: 'Usuario con matricula {$usuario}  Agregado correctamente',
+            title: 'Usuario con matricula {$usuario}  Agregado correctamente, Recuerda que tu postulación no será tomada en cuenta si no cargas tu documentación completa',
             showConfirmButton: true,
-            timer: 12500
+            customClass: {
+               confirmButton: 'mi-clase-boton-confirmar'
+             },
+            timer: false
         });
         </script>";
     

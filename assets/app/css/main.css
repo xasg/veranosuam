@@ -1090,7 +1090,7 @@ input[type=color] {
 .breadcrumb__menu ul li span {
   font-size: 14px;
   color: var(--clr-theme-1);
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   font-weight: var(--bd-fw-medium);
 }
 .breadcrumb__menu ul li span a {
@@ -1858,7 +1858,7 @@ input[type=color] {
   font-size: 16px;
   line-height: 1.5;
   font-weight: 500;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 .mean-container .mean-nav ul li a:last-child {
   border-bottom: 0;
@@ -2098,7 +2098,7 @@ input[type=color] {
   font-weight: var(--bd-fw-medium);
   -webkit-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   line-height: 1;
 }
 .main-menu ul li .submenu {
@@ -2137,7 +2137,7 @@ input[type=color] {
   width: 100%;
   display: block;
   padding: 10px 25px;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   color: var(--clr-common-heading);
   font-weight: var(--bd-fw-medium);
   position: relative;
@@ -3292,7 +3292,7 @@ input[type=color] {
 .project__filter-button button {
   font-size: 16px;
   font-weight: 500;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 .project__filter-button .active {
   color: var(--clr-theme-1);
@@ -3357,7 +3357,7 @@ input[type=color] {
   background: transparent;
   border-radius: 0;
   font-weight: 700;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   position: relative;
   outline: none;
   font-size: 14px;
