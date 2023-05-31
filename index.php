@@ -125,7 +125,7 @@ $cat_carreras = view_cat_carreras();
                                     <a href="#">Inicio</a>
                                  </li>
                                  <li>
-                                    <a href="#que_son">¿Qué_<?php echo strtolower('son?');?></a>
+                                    <a href="#que_son">¿Qué <?php echo strtolower('son?');?></a>
                                  </li>
 
                                  <li>
@@ -134,6 +134,10 @@ $cat_carreras = view_cat_carreras();
                                  
                                  <li>
                                     <a href="#participa">Participa</a>
+                                 </li>
+                                 
+                                 <li>
+                                    <a href="./contacto.php">Contacto</a>
                                  </li>
                                  
                                  
@@ -293,7 +297,7 @@ $cat_carreras = view_cat_carreras();
                            Estancias Profesionales de Verano
                         </h2>
                      </div>
-                     <p>Son estancias cortas de <b>seis semanas</b>  en las que los alumnos y recién egresados ponen en práctica los conocimientos, 
+                     <p>Son estancias en las que los alumnos y recién egresados ponen en práctica los conocimientos, 
                         habilidades y competencias adquiridos durante su formación académica y, también, obtienen su primer acercamiento al mundo laboral.</p>
                         <p>El objetivo de las estancias es coadyuvar en el proceso de formación profesional de alumnos de la Unidad Cuajimalpa mediante 
                            la realización de prácticas profesionales y propiciar la inserción de alumnos en Organizaciones Receptoras (OR’s).
