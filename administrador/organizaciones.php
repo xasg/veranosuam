@@ -306,12 +306,74 @@ $usuario = $_SESSION['name'];
 
                      <div class="table-responsive-xxl">
                      <button type="button" class="solid__btn " data-bs-toggle="modal" data-bs-target="#modalId">
-                          Gestiona Usuarios
-                        </button>
+                          Agregar Usuarios
+                     </button>
                         <a name="" id="" class="solid__btn" href="organizaciones.php" role="button">Gestiona ORGS</a>
                         <a name="" id="" class="solid__btn" href="index.php" role="button">Estudiantes</a>
                         <br><br>
                         <table class="table table-sm table-dark ">
+                           <!-- Button trigger modal Agregar Organización -->
+                           <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalid2">
+                             Agrega una ORG
+                           </button>
+                           <br>
+                           
+                           <!-- Modal Agregar Organización -->
+                           <div class="modal fade" id="modalid2" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                              <div class="modal-dialog modal-lg position-relative" role="document">
+                                 <div class="modal-content ">
+                                       <div class="modal-header bg-dark text-light text-center">
+                                             <h5 class="modal-title bg-dark text-light text-center" id="modalTitleId">Agregar Empresa</h5>
+                                                  <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                                          </div>
+                                    <div class="modal-body bg-secondary text-light">
+                                       <div class="container-fluid">
+                                          <!--Formulario para agregar una organización-->
+                                       <form  action="crear_org.php" method="post">   
+                                            <div class="row justify-content-center align-items-center g-2">
+                                                <div class="col-md-12">
+                                                        <label for="nombre_empresa" class="form-label">Nombre</label>
+                                                        <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" value="" required>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                        <label for="direccion" class="form-label">Dirección</label>
+                                                        <input type="text" class="form-control" id="direccion" name="direccion" value="" required>
+                                                    </div>
+                                                        <div class="mb-3">
+                                                         <label for="estatus" class="form-label">Disponible</label>
+                                                         <select class="form-select form-select-md w-50" name="estatus" id="estatus">
+                                                            <option selected disabled>Selecciona la disponibilidad</option>
+                                                            <option value="1">SI</option>
+                                                            <option value="0">NO</option>
+                                                         </select>
+                                                        </div>
+                                                      </div>
+                                                   <button type="submit" class="btn solid__btn" >Registrar usuario </button>
+                                                </form>
+                                       </div>
+                                    </div>
+                                    <div class="modal-footer bg-dark text-light">
+                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar ventana</button>
+                                       <!-- <button type="button" class="btn btn-primary">Save</button> -->
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           
+                           <script>
+                              var modalId = document.getElementById('modalid2');
+                           
+                              modalId.addEventListener('show.bs.modal', function (event) {
+                                   // Button that triggered the modal
+                                   let button = event.relatedTarget;
+                                   // Extract info from data-bs-* attributes
+                                   let recipient = button.getAttribute('data-bs-whatever');
+                           
+                                 // Use above variables to manipulate the DOM
+                              });
+                           </script>
+                           
                            <?php 
                               require("../controller/conect.php");
 
@@ -355,13 +417,7 @@ $usuario = $_SESSION['name'];
                                  <td scope="row"><?php if ($rows['estatus'] == 1) {
                                      # code...
                                      echo 'Disponible';}else{ echo 'No disponible';}  ?> </td>
-                                 <!-- <td scope="row"><?php echo $rows['licenciatura'] ?> </td>
-                                 <td scope="row"><?php echo $rows['creditos'] ?> </td>
-                                 <td scope="row"><?php echo $rows['edad'] ?> </td>
-                                 <td scope="row"><?php echo $rows['sexo'] ?> </td>
-                                 <td scope="row"><?php echo $rows['correo'] ?> </td>
-                                 <td scope="row"><?php echo $rows['telefono'] ?> </td>
-                                 <td scope="row"><?php echo $rows['cretate'] ?> </td> -->
+                                
                                  <td scope="row"> <!--  Modal trigger button  -->
                                  <button type="button" class="btn btn-primary btn-md" data-bs-toggle="modal" data-bs-target="#modalId<?php echo $rows['id_org']; ?>">
                                    acciones
@@ -380,86 +436,194 @@ $usuario = $_SESSION['name'];
                                                 <h4 class="bg-dark text-center border-bottom-0 text-light rounded">
                                                    Informacion de ORG : 
                                                    <i>
-                                                      <?php echo $rows['nombre'] ?> <br>
+                                                      <?php echo $rows['nombre']; ?> <br>
                                                    </i> 
                                                 </h4>
                                                 <br>
-                                                Realiza cambios <br> <br>
+                                                Realiza cambios en las vacantes de las ORS <br> <br>
+                                                <?php
+                                                // $query = "SELECT * FROM organizacion LEFT JOIN espacio_disponible on organizacion.id_org = espacio_disponible.id_organizacion where id_org ='{$rows['id_org']}'";
+                                                // $result2 = $mysqli->query($query);
 
-                                                <div class="table-responsive">
+                                                // foreach ($result as $campos ) {
+                                                   if ($rows['estatus'] == 1) {
+                                                      # code...
+                                                      $estats = 'Disponible';
+                                                   }else {
+                                                      # code...
+                                                      $estats = 'No Disponible';
+                                                   }
+                                                   # code...
+                                                ?>                                                         
+                                                <!-- <div class="table-responsive">
                                                    <table class="table table-striped
                                                    table-hover	
                                                    table-borderless
                                                    table-dark
                                                    align-middle">
                                                       <thead class="table-light">
-                                                         <caption>Documentación</caption>
+                                                         <caption>Info de la ORG</caption>
                                                          <tr class="text-center">
-                                                            <th></th>
-                                                            <th>CURP</th>
-                                                            <th>Comprobante de Domicilio</th>
+                                                            <th>Estatus</th>
+                                                            <th>Licenciatura</th>
+                                                            <th>Area o Proyecto</th>
+                                                            <th>Actividad</th>
+                                                            <th>Modalidad</th>
+                                                            <th>Modalidad de Trabajo</th>
+                                                            <th>Apoyo</th>
+                                                            <th>Lugares Disponibles</th>
+                                                            <th>Requisitos</th>
                                                          </tr>
                                                          </thead>
                                                          <tbody class="table-group-divider">
                                                             <tr class="table-secondary text-center" >
-                                                               <td scope="row"><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['ine'] ?>" target="_blank">Visualizar</a></td>
+                                                               <td scope="row">
+                                                                  <div class="mb-5">
+                                                                     
+                                                                     <label for="" class="form-label"><?php echo $estats; ?></label>
+                                                                     
+                                                                  </div>
+                                                               </td>
                                                                <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['curp']; ?>" target="_blank">Visualizar</a></td>
                                                                <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['comprobante_domicilio']; ?>" target="_blank">Visualizar</a></td>
                                                             </tr>
                                                          </tbody>
-                                                         <thead>
-                                                            <tr class="text-center">
-                                                               <th>
-                                                               Comprobante de Seguro Facultativo
-                                                               </th>
-                                                               <th>
-                                                               Curriculum Vitae
-                                                               </th>
-                                                               <th>
-                                                               Constancia de Creditos y Promedio
-                                                               </th>
-                                                            </tr>
-                                                         </thead>
-                                                         <tbody>
-                                                         <tr class="table-secondary text-center">
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['seguro']; ?>" target="_blank">Visualizar</a></td>
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['cv'] ?>" target="_blank">Visualizar</a></td>
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['constancia_creditos'] ?>" target="_blank">Visualizar</a></td>
-                                                            </tr>
-                                                         </tbody>
-                                                         <thead>
-                                                            <tr class="text-center">
-                                                               <th>Carta Compromiso</th>
-                                                               <th>Formato de Pago</th>
-                                                               <th>Cuenta Bancaria</th>
-                                                            </tr>
-                                                         </thead>
-                                                         <tbody>
-                                                            <tr class="table-secondary text-center">
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['carta_compromiso'] ?>" target="_blank">Visualizar</a></td>
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['formato_pago'] ?>" target="_blank">Visualizar</a></td>
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['cuenta_bancaria'] ?>" target="_blank">Visualizar</a></td>
-                                                            </tr>
-                                                         </tbody>
-                                                         <thead>
-                                                            <tr>
-                                                               <th>Formato de Postulación</th>
-                                                               <th></th>
-                                                               <th></th>
-                                                            </tr>
-                                                         </thead>
-                                                         <tbody>
-                                                            <tr class="table-secondary text-center">
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['formato_postulacion'] ?>" target="_blank">Visualizar</a></td>
-                                                               <td></td>
-                                                               <td></td>
-                                                            </tr>
-                                                         </tbody>
+                                                      
                                                          <tfoot>
                                                          </tfoot>
                                                    </table>
+                                                </div> -->
+
+                                                <form action="actualizar_org.php" class="row" method="post">
+
+                                                   <!-- <label for="idorg" class="row form-label col-md-4">ID de Empresa</label> -->
+                                                  <input type="text"class="form-control" name="idorg" id="irorg" aria-describedby="helpId" value="<?php echo $rows['id_org'];?>" hidden="true">
+                                                   <div class="col-6">
+                                                     
+                                                         <label for="estatus" class="row form-label col-md-4">Estatus</label>
+                                                         <select class="form-select form-select-md" name="estatus" id="estatus">
+                                                            <option selected disabled><?php echo $estats;?></option>
+                                                            <option value="1">SI</option>
+                                                            <option value="0">NO</option>
+                                                         </select>
+                                                   </div>
+
+                                                   <div class="col-6">
+                                                      <label for="nombre" class="form-label">Nombre de la empresa</label>
+                                                        <input type="text" class="form-control border" name="nombre" id="nombre" aria-describedby="helpId" value="<?php echo $rows['nombre']; ?>">
+                                                   </div>
+                                                   <div class="col-6">
+                                                      <label for="direccion" class="form-label">Direccion</label>
+                                                        <input type="text" class="form-control border" name="direccion" id="direccion" aria-describedby="helpId" value="<?php echo $rows['direccion']; ?>">
+                                                   </div>
+                                                   <br>
+                                                   <div class="col-4 ">
+                                                      <br>
+                                                      
+                                                   </div>
+                                                   <div class="col2">
+
+                                                   </div>
+                                                   <div class="col-6 ">
+                                                      <br>
+                                                      <button type="submit" class="btn btn-primary">Actualizar Datos de la Organización</button>
+                                                   </div>
+                                                   <br>
+
+                                                </form>
+                                                   <br>
+
+                                                <form action="actualizar_org_espacios.php" class="row" method="post">
+                                                <?php
+                                                $sql = "SELECT * FROM organizacion LEFT JOIN espacio_disponible on organizacion.id_org = espacio_disponible.id_organizacion where id_org ='{$rows['id_org']}'"; 
+                                                $espacios = $mysqli->query($sql);
+                                                $counter2 = 1;
+                                                foreach ($espacios as $campos) {
+                                                   # code...
+                                                   
+                                                ?>   
+                                                <br>
+                                                <div class="border-bottom">
+                                                   <!-- a -->
                                                 </div>
+                                                <!-- <input type="text"class="form-control" name="idorg" id="irorg" aria-describedby="helpId" value="<?php echo $campos['id_espacio'];?>" > -->
                                                 
+                                                <div class="col-6"> 
+                                                      <label for="vacante"  class="row form- label col-md-4">Vacante # <?php echo $counter2; $counter2++; ?></label>
+
+                                                         <label for="lic" class="row form-label col-md-4">Licenciatura</label>
+                                                         <input type="text" class="form-control border" name="lic" id="lic" aria-describedby="helpId" value="<?php echo $campos['licenciatura']; ?>">
+                                                         
+                                                   </div>
+                                                   
+                                                   <div class="col-6">
+                                                      <br>
+                                                      <label for="area" class="form-label">Area o Proyecto</label>
+                                                        <input type="text" class="form-control border" name="area" id="area" aria-describedby="helpId" value="<?php echo $campos['area_proyecto']; ?>">
+                                                   </div>
+                                                   <div class="col-6">
+                                                      <label for="direccion" class="form-label">Actividad</label>
+                                                        <input type="text" class="form-control border" name="direccion" id="direccion" aria-describedby="helpId" value="<?php echo $campos['actividad']; ?>">
+                                                   </div>
+                                                   <div class="col-6">
+                                                      <div class="mb-3">
+                                                         <label for="modalidad" class="form-label">Modalidad Particular</label>
+                                                         <select class="form-select form-select-md" name="modalidad" id="modalidad">
+                                                            <option selected ><?php echo $campos['modalidad_part']; ?></option>
+                                                            <option value="Tres a uno">Tres a Uno</option>
+                                                            <option value="Individual">Individual</option>
+                                                            <option value="Sin especificar">Sin especificar</option>
+                                                         </select>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-6">
+                                                      <div class="mb-3">
+                                                         <label for="modalidad" class="form-label">Modalidad de Trabajo</label>
+                                                         <select class="form-select form-select-md" name="modalidad" id="modalidad">
+                                                            <option selected><?php echo $campos['modalidad_trabajo']; ?></option>
+                                                            <option value="Presencial">Presencial</option>
+                                                            <option value="Híbrida">Híbrida</option>
+                                                            <option value="Home Office">Home Office</option>
+                                                            <option value="Sin especificar">Sin especificar</option>
+                                                         </select>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-6">
+                                                      <div class="mb-3">
+                                                         <div class="mb-3">
+                                                           <label for="" class="form-label">Apoyo</label>
+                                                           <input type="text"
+                                                             class="form-control" name="apoyo" id="apoyo" aria-describedby="helpId" value="<?php echo $campos['apoyo']; ?>">
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-6">
+                                                      <div class="mb-3">
+                                                         <div class="mb-3">
+                                                           <label for="" class="form-label">Lugares</label>
+                                                           <input type="number"
+                                                             class="form-control" name="lugares" id="lugares" aria-describedby="helpId" value="<?php echo $campos['lugares']; ?>">
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                      <div class="col-7">
+                                                      <br>   
+                                                      <button type="submit" class="btn btn-primary">Actualizar</button>
+                                                      <br><br><br><br>   
+                                                   </div>
+                                                      
+                                                      
+                                                <?php
+                                                }
+                                                ?>
+                                                      <br><br>
+                                            
+                                                   </div>
+                                                </form>
+
+                                                
+                                                
+                                             
 
                                                 <!-- <h3><span>1 - </span> Matricula -> <a class="btn btn-primary btn-sm" href="../includes/files/<?php #echo $rows['ine'] ?>" target="_blank">Visualizar</a></h3><br>  -->
 
@@ -467,7 +631,7 @@ $usuario = $_SESSION['name'];
                                           </div>
                                           <div class="modal-footer">
                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                             
+
                                           </div>
                                        </div>
                                     </div>

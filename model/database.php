@@ -1,7 +1,4 @@
 <?php
-// require_once('../controller/conect.php');
-// require_once('./controller/conec.php');
-
 require_once('./controller/conect.php');
 
 
@@ -60,6 +57,10 @@ function view_lugares(){
 function insertar_estudiante($nombres,$a_paterno,$a_materno,$matricula,$licenciatura,$creditos,$edad,$sexo,$correo,$telefono){
     global $mysqli;
     $mysqli->query("INSERT INTO estudiantes(id,nombres,a_paterno,a_materno,matricula,licenciatura,creditos,edad,sexo,correo,telefono)  VALUES (null, '{$nombres}','{$a_paterno}','{$a_materno}','{$matricula}','{$licenciatura}','{$creditos}','{$edad}','{$sexo}','{$correo}','{$telefono}' ");
+}
+function actualiza_org($nombre,$id){
+    global $mysqli;
+    $mysqli->query("UPDATE organizacion SET nombre = '{$nombre}' where id_org='{$id}'");
 }
 
 

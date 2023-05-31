@@ -159,7 +159,25 @@ if (isset($_SESSION['name'])) {
 <?php
    }
 ?>
-
+<?php
+   if (isset($_REQUEST['exitoso'])) {
+?>
+ <script>
+        // function mostrarPopup() {
+                   Swal.fire({
+                icon: 'success',
+                title: 'Organizacion : <?php echo $_REQUEST['exitoso']; ?> creada correctamente',
+                showConfirmButton: true,
+                customClass: {
+               confirmButton: 'mi-clase-boton-confirmar'
+               },
+                timer: 13500
+            });
+        // }
+    </script>
+<?php
+   }
+   ?>
 
       <!--[if lte IE 9]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
