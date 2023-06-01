@@ -533,7 +533,7 @@ $usuario = $_SESSION['name'];
                                                 </form>
                                                    <br>
 
-                                                <form action="actualizar_org_espacios.php" class="row" method="post">
+                                                <form action="crear_espacios_org.php" class="row" method="post">
                                                 <?php
                                                 $sql = "SELECT * FROM organizacion LEFT JOIN espacio_disponible on organizacion.id_org = espacio_disponible.id_organizacion where id_org ='{$rows['id_org']}'"; 
                                                 $espacios = $mysqli->query($sql);
@@ -546,30 +546,55 @@ $usuario = $_SESSION['name'];
                                                 <div class="border-bottom">
                                                    <!-- a -->
                                                 </div>
-                                                <!-- <input type="text"class="form-control" name="idorg" id="irorg" aria-describedby="helpId" value="<?php echo $campos['id_espacio'];?>" > -->
+                                                <input type="text"class="form-control" name="id_espacio" id="id_espacio" aria-describedby="helpId" value="<?php echo $campos['id_espacio'];?>" >
+                                                <input type="text"class="form-control" name="idorg" id="irorg" aria-describedby="helpId" value="<?php echo $campos['id_organizacion'];?>"  >
                                                 
+                                                
+                                                <?php
+                                                   if ($campos['id_espacio'] != null || $campos['id_espacio'] != 0 ) {
+                                                      # code...
+                                                   
+                                                ?>
                                                 <div class="col-6"> 
+                                                   
                                                       <label for="vacante"  class="row form- label col-md-4">Vacante # <?php echo $counter2; $counter2++; ?></label>
-
-                                                         <label for="lic" class="row form-label col-md-4">Licenciatura</label>
-                                                         <input type="text" class="form-control border" name="lic" id="lic" aria-describedby="helpId" value="<?php echo $campos['licenciatura']; ?>">
-                                                         
+                                                         <!-- <label for="lic" class="row form-label col-md-4">Licenciatura</label>
+                                                         <input type="text" class="form-control border" name="lic" id="lic" aria-describedby="helpId" value="<?php echo $campos['licenciatura']; ?>"> -->
+                                                         <div class="mb-3">
+                                                            <label for="" class="form-label">Licenciatura o Maestria</label>
+                                                            <select class="form-select form-select-md" name="lic_act" id="lic_act">
+                                                               <option selected><?php echo $campos['licenciatura']; ?></option>
+                                                               <option value="Administración">Administración</option>
+                                                               <option value="Biología Molecular">Biología Molecular</option>
+                                                               <option value="Ciencias de la Comunicación">Ciencias de la Comunicación</option>
+                                                               <option value="Derecho">Derecho</option>
+                                                               <option value="Diseño">Diseño</option>
+                                                               <option value="Estudios Socioterritoriales">Estudios Socioterritoriales</option>
+                                                               <option value="Humanidades">Humanidades</option>
+                                                               <option value="Ingeniería Biológica">Ingeniería Biológica</option>
+                                                               <option value="Ingeniería en Computación">Ingeniería en Computación</option>
+                                                               <option value="Maestría en Ciencias Sociales y Humanidades">Maestría en Ciencias Sociales y Humanidades</option>
+                                                               <option value="Maestría en Diseño, Información y Comunicación">Maestría en Diseño, Información y Comunicación</option>
+                                                               <option value="Matemáticas Aplicadas">Matemáticas Aplicadas</option>
+                                                               <option value="Tecnologías y Sistemas de Información">Tecnologías y Sistemas de Información</option>
+                                                            </select>
+                                                         </div>
                                                    </div>
                                                    
                                                    <div class="col-6">
                                                       <br>
                                                       <label for="area" class="form-label">Area o Proyecto</label>
-                                                        <input type="text" class="form-control border" name="area" id="area" aria-describedby="helpId" value="<?php echo $campos['area_proyecto']; ?>">
+                                                        <input type="text" class="form-control border" name="area_act" id="area_act" aria-describedby="helpId" value="<?php echo $campos['area_proyecto']; ?>" >
                                                    </div>
                                                    <div class="col-6">
-                                                      <label for="direccion" class="form-label">Actividad</label>
-                                                        <input type="text" class="form-control border" name="direccion" id="direccion" aria-describedby="helpId" value="<?php echo $campos['actividad']; ?>">
+                                                      <label for="actividad" class="form-label">Actividad</label>
+                                                        <input type="text" class="form-control border" name="actividad_act" id="actividad_act" aria-describedby="helpId" value="<?php echo $campos['actividad']; ?>">
                                                    </div>
                                                    <div class="col-6">
                                                       <div class="mb-3">
                                                          <label for="modalidad" class="form-label">Modalidad Particular</label>
-                                                         <select class="form-select form-select-md" name="modalidad" id="modalidad">
-                                                            <option selected ><?php echo $campos['modalidad_part']; ?></option>
+                                                         <select class="form-select form-select-md" name="modalidad_act" id="modalidad_act">
+                                                            <option selected disabled><?php echo $campos['modalidad_part']; ?></option>
                                                             <option value="Tres a uno">Tres a Uno</option>
                                                             <option value="Individual">Individual</option>
                                                             <option value="Sin especificar">Sin especificar</option>
@@ -579,8 +604,8 @@ $usuario = $_SESSION['name'];
                                                    <div class="col-6">
                                                       <div class="mb-3">
                                                          <label for="modalidad" class="form-label">Modalidad de Trabajo</label>
-                                                         <select class="form-select form-select-md" name="modalidad" id="modalidad">
-                                                            <option selected><?php echo $campos['modalidad_trabajo']; ?></option>
+                                                         <select class="form-select form-select-md" name="modalidad_trabajo_act" id="modalidad_trabajo_act">
+                                                            <option selected disabled><?php echo $campos['modalidad_trabajo']; ?></option>
                                                             <option value="Presencial">Presencial</option>
                                                             <option value="Híbrida">Híbrida</option>
                                                             <option value="Home Office">Home Office</option>
@@ -593,7 +618,7 @@ $usuario = $_SESSION['name'];
                                                          <div class="mb-3">
                                                            <label for="" class="form-label">Apoyo</label>
                                                            <input type="text"
-                                                             class="form-control" name="apoyo" id="apoyo" aria-describedby="helpId" value="<?php echo $campos['apoyo']; ?>">
+                                                             class="form-control" name="apoyo_act" id="apoyo_act" aria-describedby="helpId" value="<?php echo $campos['apoyo']; ?>">
                                                          </div>
                                                       </div>
                                                    </div>
@@ -602,19 +627,129 @@ $usuario = $_SESSION['name'];
                                                          <div class="mb-3">
                                                            <label for="" class="form-label">Lugares</label>
                                                            <input type="number"
-                                                             class="form-control" name="lugares" id="lugares" aria-describedby="helpId" value="<?php echo $campos['lugares']; ?>">
+                                                             class="form-control" name="lugares_act" id="lugares_act" aria-describedby="helpId" value="<?php echo $campos['lugares']; ?>">
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-6">
+                                                      <div class="mb-3">
+                                                         <div class="mb-3">
+                                                           <label for="" class="form-label">Requisitos</label>
+                                                           <input type="text"
+                                                             class="form-control" name="requisitos_act" id="requisitos_act" aria-describedby="helpId" value="<?php echo $campos['requisitos']; ?>">
                                                          </div>
                                                       </div>
                                                    </div>
                                                       <div class="col-7">
                                                       <br>   
                                                       <button type="submit" class="btn btn-primary">Actualizar</button>
+                                                      <button type="submit" class="btn text-light btn-danger">Eliminar</button>
                                                       <br><br><br><br>   
                                                    </div>
                                                       
                                                       
                                                 <?php
+                                                } else{
+                                                  ?>
+                                                  <input type="text"class="form-control" name="idorg_nuevo" id="irorg_nuevo" aria-describedby="helpId" value="<?php echo $rows['id_org'];?>"  >
+                                                   
+                                                  <div class="col-6"> 
+                                                   
+                                                   <label for="vacante"  class="row form- label col-md-4">Vacante # <?php echo $counter2; $counter2++; ?></label>
+                                                      <!-- <label for="lic" class="row form-label col-md-4">Licenciatura</label>
+                                                      <input type="text" class="form-control border" name="lic" id="lic" aria-describedby="helpId" value="<?php echo $campos['licenciatura']; ?>"> -->
+                                                      <div class="mb-3">
+                                                         <label for="" class="form-label">Licenciatura o Maestria</label>
+                                                         <select class="form-select form-select-md" name="lic" id="lic">
+                                                            <option selected>Selecciona el Grado:</option>
+                                                            <option value="Administración">Administración</option>
+                                                            <option value="Biología Molecular">Biología Molecular</option>
+                                                            <option value="Ciencias de la Comunicación">Ciencias de la Comunicación</option>
+                                                            <option value="Derecho">Derecho</option>
+                                                            <option value="Diseño">Diseño</option>
+                                                            <option value="Estudios Socioterritoriales">Estudios Socioterritoriales</option>
+                                                            <option value="Humanidades">Humanidades</option>
+                                                            <option value="Ingeniería Biológica">Ingeniería Biológica</option>
+                                                            <option value="Ingeniería en Computación">Ingeniería en Computación</option>
+                                                            <option value="Maestría en Ciencias Sociales y Humanidades">Maestría en Ciencias Sociales y Humanidades</option>
+                                                            <option value="Maestría en Diseño, Información y Comunicación">Maestría en Diseño, Información y Comunicación</option>
+                                                            <option value="Matemáticas Aplicadas">Matemáticas Aplicadas</option>
+                                                            <option value="Tecnologías y Sistemas de Información">Tecnologías y Sistemas de Información</option>
+                                                         </select>
+                                                      </div>
+                                                </div>
+                                                
+                                                <div class="col-6">
+                                                   <br>
+                                                   <label for="area" class="form-label">Area o Proyecto</label>
+                                                     <input type="text" class="form-control border" name="area" id="area" aria-describedby="helpId" >
+                                                </div>
+                                                <div class="col-6">
+                                                   <label for="actividad" class="form-label">Actividad</label>
+                                                     <input type="text" class="form-control border" name="actividad" id="actividad" aria-describedby="helpId">
+                                                </div>
+                                                <div class="col-6">
+                                                   <div class="mb-3">
+                                                      <label for="modalidad" class="form-label">Modalidad Particular</label>
+                                                      <select class="form-select form-select-md" name="modalidad" id="modalidad">
+                                                         <option selected disabled>Selecciona</option>
+                                                         <option value="Tres a uno">Tres a Uno</option>
+                                                         <option value="Individual">Individual</option>
+                                                         <option value="Sin especificar">Sin especificar</option>
+                                                      </select>
+                                                   </div>
+                                                </div>
+                                                <div class="col-6">
+                                                   <div class="mb-3">
+                                                      <label for="modalidad" class="form-label">Modalidad de Trabajo</label>
+                                                      <select class="form-select form-select-md" name="modalidad_trabajo" id="modalidad_trabajo">
+                                                         <option selected disabled>Selecciona</option>
+                                                         <option value="Presencial">Presencial</option>
+                                                         <option value="Híbrida">Híbrida</option>
+                                                         <option value="Home Office">Home Office</option>
+                                                         <option value="Sin especificar">Sin especificar</option>
+                                                      </select>
+                                                   </div>
+                                                </div>
+                                                <div class="col-6">
+                                                   <div class="mb-3">
+                                                      <div class="mb-3">
+                                                        <label for="" class="form-label">Apoyo</label>
+                                                        <input type="text"
+                                                          class="form-control" name="apoyo" id="apoyo" aria-describedby="helpId">
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="col-6">
+                                                   <div class="mb-3">
+                                                      <div class="mb-3">
+                                                        <label for="" class="form-label">Lugares</label>
+                                                        <input type="number"
+                                                          class="form-control" name="lugares" id="lugares" aria-describedby="helpId">
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="col-6">
+                                                   <div class="mb-3">
+                                                      <div class="mb-3">
+                                                        <label for="" class="form-label">Requisitos</label>
+                                                        <input type="text"
+                                                          class="form-control" name="requisitos" id="requisitos" aria-describedby="helpId" >
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                   <div class="col-7">
+                                                   <br>   
+                                                   <button type="submit" class="btn btn-primary">Agregar +</button>
+                                                   
+                                                   <br><br><br><br>   
+                                                </div>
+
+
+
+                                                <?php
                                                 }
+                                             }
                                                 ?>
                                                       <br><br>
                                             

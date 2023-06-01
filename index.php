@@ -125,7 +125,7 @@ $cat_carreras = view_cat_carreras();
                                     <a href="#">Inicio</a>
                                  </li>
                                  <li>
-                                    <a href="#que_son">¿Qué <?php echo strtolower('son?');?></a>
+                                    <a href="#que_son">¿Qué <?php echo ' son?';?></a>
                                  </li>
 
                                  <li>

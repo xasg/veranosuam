@@ -191,11 +191,11 @@ button:focus {
 }
 
 .uppercase {
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 .capitalize {
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 
 input {
@@ -745,7 +745,7 @@ input[type=color] {
 .offcanvas__contact h4 {
   font-size: 22px;
   margin-bottom: 20px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-weight: var(--bd-fw-bold);
   color: var(--clr-common-heading);
 }
@@ -889,7 +889,7 @@ input[type=color] {
   display: inline-block;
   position: relative;
   top: -6px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   margin-bottom: 20px;
   color: #4b4b4b;
 }
@@ -905,7 +905,7 @@ input[type=color] {
   line-height: 1;
   display: inline-block;
   top: -6px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   margin-bottom: 20px;
   color: #4b4b4b;
   position: relative;
@@ -1010,7 +1010,7 @@ input[type=color] {
   color: var(--clr-theme-5);
   margin-bottom: 25px;
   display: block;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 .section__title-3 {
@@ -4498,7 +4498,7 @@ input[type=color] {
   font-size: 26px;
   font-weight: 600;
   font-style: italic;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   margin-bottom: 27px;
   line-height: 1.5;
 }

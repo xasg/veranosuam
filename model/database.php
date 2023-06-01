@@ -58,10 +58,10 @@ function insertar_estudiante($nombres,$a_paterno,$a_materno,$matricula,$licencia
     global $mysqli;
     $mysqli->query("INSERT INTO estudiantes(id,nombres,a_paterno,a_materno,matricula,licenciatura,creditos,edad,sexo,correo,telefono)  VALUES (null, '{$nombres}','{$a_paterno}','{$a_materno}','{$matricula}','{$licenciatura}','{$creditos}','{$edad}','{$sexo}','{$correo}','{$telefono}' ");
 }
-function actualiza_org($nombre,$id){
-    global $mysqli;
-    $mysqli->query("UPDATE organizacion SET nombre = '{$nombre}' where id_org='{$id}'");
-}
+// function actualiza_org($nombre,$id){
+//     global $mysqli;
+//     $mysqli->query("UPDATE organizacion SET nombre = '{$nombre}' where id_org='{$id}'");
+// }
 
 
 

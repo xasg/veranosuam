@@ -166,7 +166,7 @@ if (isset($_SESSION['name'])) {
         // function mostrarPopup() {
                    Swal.fire({
                 icon: 'success',
-                title: 'Organizacion : <?php echo $_REQUEST['exitoso']; ?> creada correctamente',
+                title: 'Organizacion : <?php echo $_REQUEST['exitoso']; ?>  creada o actualizada correctamente',
                 showConfirmButton: true,
                 customClass: {
                confirmButton: 'mi-clase-boton-confirmar'
