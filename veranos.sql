@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2023 a las 02:33:36
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Tiempo de generación: 02-06-2023 a las 21:25:21
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cat_carrera` (
   `id_carrera` int(11) NOT NULL,
-  `nivel` set('Licenciatura','Ingeniería','Maestría','Posgrado','Doctorado') NOT NULL,
-  `nombre` varchar(250) NOT NULL,
-  `area` varchar(50) DEFAULT NULL,
+  `nivel` set('Licenciatura','Ingeniería','Maestría','Posgrado','Doctorado') COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
+  `area` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   `id_rel_grado_carrera` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -73,17 +73,7 @@ CREATE TABLE `documentos_estudiante` (
   `formato_pago` varchar(250) NOT NULL,
   `cuenta_bancaria` varchar(250) NOT NULL,
   `formato_postulacion` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `documentos_estudiante`
---
-
-INSERT INTO `documentos_estudiante` (`id`, `matricula`, `ine`, `curp`, `comprobante_domicilio`, `seguro`, `cv`, `constancia_creditos`, `carta_compromiso`, `formato_pago`, `cuenta_bancaria`, `formato_postulacion`) VALUES
-(88, 2203024384, '2203024384_ine.pdf', '2203024384_curp.pdf', '2203024384_domicilio.pdf', '2203024384_seguro.pdf', '2203024384_cv.pdf', '2203024384_constancia.pdf', '2203024384_carta.pdf', '2203024384_formato.pdf', '2203024384_estado.pdf', '2203024384_formatopostulacion.pdf'),
-(90, 1231231231, '1231231231_ine.pdf', '1231231231_curp.pdf', '1231231231_domicilio.pdf', '1231231231_seguro.pdf', '1231231231_cv.pdf', '1231231231_constancia.pdf', '1231231231_carta.pdf', '1231231231_formato.pdf', '1231231231_estado.pdf', '1231231231_formatopostulacion.pdf'),
-(91, 2232323232, '2232323232_ine.pdf', '2232323232_curp.pdf', '2232323232_domicilio.pdf', '2232323232_seguro.pdf', '2232323232_cv.pdf', '2232323232_constancia.pdf', '2232323232_carta.pdf', '2232323232_formato.pdf', '2232323232_estado.pdf', '2232323232_formatopostulacion.pdf'),
-(92, 230402323, '0230402323_ine.pdf', '0230402323_curp.pdf', '0230402323_domicilio.pdf', '0230402323_seguro.pdf', '0230402323_cv.pdf', '0230402323_constancia.pdf', '0230402323_carta.pdf', '0230402323_formato.pdf', '0230402323_estado.pdf', '0230402323_formatopostulacion.pdf');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -94,16 +84,16 @@ INSERT INTO `documentos_estudiante` (`id`, `matricula`, `ine`, `curp`, `comproba
 CREATE TABLE `espacio_disponible` (
   `id_espacio` int(11) NOT NULL,
   `id_organizacion` int(11) NOT NULL,
-  `licenciatura` varchar(250) DEFAULT NULL,
+  `licenciatura` varchar(250) COLLATE utf8_spanish_ci DEFAULT NULL,
   `id_dt_carrera` int(11) NOT NULL,
-  `area_proyecto` varchar(250) DEFAULT NULL,
-  `actividad` varchar(250) DEFAULT NULL,
-  `modalidad_part` set('Tres a uno','Individual','Sin especificar') DEFAULT NULL,
-  `modalidad_trabajo` set('Presencial','Híbrida','Home office','Sin especificar') DEFAULT NULL,
-  `apoyo` varchar(200) DEFAULT NULL,
+  `area_proyecto` varchar(250) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `actividad` varchar(250) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `modalidad_part` set('Tres a uno','Individual','Sin especificar') COLLATE utf8_spanish_ci DEFAULT NULL,
+  `modalidad_trabajo` set('Presencial','Híbrida','Home office','Sin especificar') COLLATE utf8_spanish_ci DEFAULT NULL,
+  `apoyo` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `lugares` int(11) NOT NULL DEFAULT 0,
-  `requisitos` varchar(200) DEFAULT NULL,
-  `dt_create` timestamp NOT NULL DEFAULT current_timestamp()
+  `requisitos` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `dt_create` varchar(200) COLLATE utf8_spanish_ci NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -193,7 +183,8 @@ INSERT INTO `espacio_disponible` (`id_espacio`, `id_organizacion`, `licenciatura
 (80, 25, 'Administración', 1, 'Administrativa', 'Análisis financieros, relación de gastos e ingresos y apoyo administrativo.', 'Individual', 'Presencial', NULL, 2, 'N/A', '0000-00-00 00:00:00'),
 (81, 26, 'Derecho', 4, 'Jurídico', 'Apoyo con las actividades de litigio interno e internacional.', 'Individual', 'Híbrida', NULL, 2, 'N/A', '0000-00-00 00:00:00'),
 (82, 26, 'Derecho', 4, 'Desarrollo Institucional', 'Apoyo en las actividades de recaudación de fondos y proyectos con donantes internacionales.', 'Individual', 'Home office', NULL, 1, 'N/A', '0000-00-00 00:00:00'),
-(83, 26, 'Ciencias de la Comunicación', 3, 'Comunicación', 'Apoyo con la estrategia de comunicación y manejo de redes sociales.', 'Individual', 'Híbrida', NULL, 1, 'N/A', '0000-00-00 00:00:00');
+(83, 26, 'Ciencias de la Comunicación', 3, 'Comunicación', 'Apoyo con la estrategia de comunicación y manejo de redes sociales.', 'Individual', 'Híbrida', NULL, 1, 'N/A', '0000-00-00 00:00:00'),
+(175, 28, 'Selecciona el Grado:', 0, '', '', '', '', '', 0, '', '02-06-2023 12:54:51');
 
 -- --------------------------------------------------------
 
@@ -203,32 +194,18 @@ INSERT INTO `espacio_disponible` (`id_espacio`, `id_organizacion`, `licenciatura
 
 CREATE TABLE `estudiantes` (
   `id` int(11) NOT NULL,
-  `nombres` varchar(150) NOT NULL,
-  `a_paterno` varchar(100) NOT NULL,
-  `a_materno` varchar(100) NOT NULL,
-  `matricula` varchar(50) NOT NULL,
-  `licenciatura` varchar(150) DEFAULT NULL,
+  `nombres` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `a_paterno` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `a_materno` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `matricula` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `licenciatura` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL,
   `creditos` int(11) DEFAULT NULL,
   `edad` int(11) DEFAULT NULL,
-  `sexo` varchar(10) DEFAULT NULL,
-  `correo` varchar(80) DEFAULT NULL,
+  `sexo` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `correo` varchar(80) COLLATE utf8_spanish_ci DEFAULT NULL,
   `telefono` bigint(11) DEFAULT NULL,
-  `cretate` varchar(250) NOT NULL DEFAULT current_timestamp()
+  `cretate` varchar(250) COLLATE utf8_spanish_ci NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `estudiantes`
---
-
-INSERT INTO `estudiantes` (`id`, `nombres`, `a_paterno`, `a_materno`, `matricula`, `licenciatura`, `creditos`, `edad`, `sexo`, `correo`, `telefono`, `cretate`) VALUES
-(20, 'ANDRES ALEXIS', 'MALFAVAUN', 'TAPIA', '2203024384', 'Tecnologías y Sistemas de Información', 128, 22, 'Masculino', 'ANDRES.MALFAVAUN@CUA.UAM.MX', 5637269723, '20-05-2023 10:33:34'),
-(21, 'GUILLERMO ALEJANDRO ', 'MALFAVAUN ', 'TAPIA', '1231231231', 'Biologia Molecular', 123, 24, 'Masculino', 'ADMIN@ADMIN.COM', 5637269723, '24-05-2023 21:34:12'),
-(22, 'KAREN NAOMI', 'MALFAVAUN ', 'TAPIA', '2232323232', 'Diseño', 156, 34, 'Femenino', 'MIRIAM@GMAIL.COM', 5555555555, '24-05-2023 21:41:42'),
-(23, 'JULIAN', 'GARCIA', ' ', '0230402323', 'Diseño', 230, 25, 'Masculino', 'ALEXISMALFAVAUN1@GMAIL.COM', 2030203432, '24-05-2023 21:47:34'),
-(24, 'ATG', 'Y', 'T', '78797976', 'Administracion', 800, 23, 'Femenino', 'FINANZAS@MARISACOLECCION.COM', 5539696960, '25-05-2023 00:35:07'),
-(25, 'KAREN NAOMI', 'MALFAVAUN', 'TAPIA', '2223068202', 'Diseño', 50, 20, 'Femenino', 'NAOMIMALFAVAUN@GMAIL.COM', 5548099525, '25-05-2023 09:31:34'),
-(26, 'ITZEL', 'GONZALEZ', 'FERNANDEZ', '2133066576', 'Administracion', 100, 25, 'Femenino', 'ALEXIS@FESE.MX', 5558146509, '25-05-2023 17:12:41'),
-(27, 'ALEX', 'MONTIEL', ' ', '2203024375', 'Derecho', 124, 22, 'Masculino', 'ALEX@MAIL.COM', 1233242342, '28-05-2023 22:42:49');
 
 -- --------------------------------------------------------
 
@@ -238,9 +215,9 @@ INSERT INTO `estudiantes` (`id`, `nombres`, `a_paterno`, `a_materno`, `matricula
 
 CREATE TABLE `organizacion` (
   `id_org` int(11) NOT NULL,
-  `nombre` varchar(250) NOT NULL,
-  `direccion` varchar(250) DEFAULT NULL,
-  `dt_create` varchar(200) NOT NULL DEFAULT current_timestamp(),
+  `nombre` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
+  `direccion` varchar(250) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `dt_create` varchar(200) COLLATE utf8_spanish_ci NOT NULL DEFAULT current_timestamp(),
   `estatus` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -249,7 +226,7 @@ CREATE TABLE `organizacion` (
 --
 
 INSERT INTO `organizacion` (`id_org`, `nombre`, `direccion`, `dt_create`, `estatus`) VALUES
-(1, 'Instituto Nacional de Medicina Genómica (INMEGEN)', 'Periférico Sur 4809, Col. Arenal Tepepan, Alcaldía Tlalpan, C.P. 14610 CDMX', '31-05-2023 17:49:00', 1),
+(1, 'Instituto Nacional de Medicina Genómica (INMEGEN)', 'Periférico Sur 4809, Col. Arenal Tepepan, Alcaldía Tlalpan, C.P. 14610 CDMX', '2023-05-15 12:17:50', 1),
 (2, 'Enseńa por México A.C.', 'Londres 241, Juárez, Cuauhtémoc, 06600, CDMX', '2023-05-15 12:17:50', 1),
 (3, 'De la O & Asociados Diseńo S.A. de C.V.', 'Río Nilo 61, Alcaldía Cuahutémoc', '2023-05-15 12:17:50', 1),
 (4, 'Lab. de Apicomplexas, UNAM', 'Circuito Interior, Ciuedad Universitaria, Av. Universidad 3000, CP 04510.', '2023-05-15 12:17:50', 1),
@@ -274,7 +251,7 @@ INSERT INTO `organizacion` (`id_org`, `nombre`, `direccion`, `dt_create`, `estat
 (23, 'Vanglar SAPI de CV', 'Av. Patriotismo 767, piso 6, San Juan, 03730, Ciudad de México, CDMX.', '2023-05-15 12:17:50', 1),
 (24, 'Desarrollo Educativo Suenińos A.C.', 'Periferico Norte #1D Col. Ojo Agua C.P. 29210 San Cristobal de las Casas, Chiapas.', '2023-05-15 12:17:50', 1),
 (25, 'Publimetro Querétaro', 'Av. Salvación 791 Int. 103 Plaza Levant Torre C, Menchaca 76147.', '2023-05-15 12:17:50', 1),
-(26, 'IDHEAS, Litigio Estratégico en derechos humanos, A.C.', 'Calle 21, 77. San Pedro de Los Pinos. Benito Juárez, CDMX, 03800.', '2023-05-15 12:17:50', 1);
+(26, 'IDHEAS, Litigio Estratégico en derechos humanos, A.C.', 'Calle 21, 77. San Pedro de Los Pinos. Benito Juárez, CDMX, 03800.', '02-06-2023 13:03:00', 1);
 
 -- --------------------------------------------------------
 
@@ -285,7 +262,7 @@ INSERT INTO `organizacion` (`id_org`, `nombre`, `direccion`, `dt_create`, `estat
 CREATE TABLE `rel_grado_carrera` (
   `id_grado` int(10) NOT NULL,
   `nombre_grado` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `rel_grado_carrera`
@@ -304,11 +281,11 @@ INSERT INTO `rel_grado_carrera` (`id_grado`, `nombre_grado`) VALUES
 
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
-  `correo` varchar(250) NOT NULL,
-  `name` varchar(80) NOT NULL,
-  `password` varchar(15) NOT NULL,
+  `correo` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
+  `name` varchar(80) COLLATE utf8_spanish_ci NOT NULL,
+  `password` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `tp_user` int(11) NOT NULL DEFAULT 1,
-  `date_create` varchar(250) NOT NULL DEFAULT current_timestamp()
+  `date_create` varchar(250) COLLATE utf8_spanish_ci NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -317,8 +294,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `correo`, `name`, `password`, `tp_user`, `date_create`) VALUES
 (1, 'alexis@fese.mx', 'ALEXIS', 'VINCULACION2023', 1, '2023-05-24 20:50:36'),
-(2, 'ITZ@GMAIL.COM', 'ITZEL', '123', 1, '0000-00-00 00:00:00'),
-(5, 'ALEXA@GMAIL.COM', 'ALEJANDRA', '123', 1, '28-05-2023 23:05:58');
+(2, 'enlace.vinculacion@cua.uam.mx', 'ITZEL', 'VINCULACION2023', 1, '0000-00-00 00:00:00');
 
 --
 -- Índices para tablas volcadas
@@ -330,6 +306,12 @@ INSERT INTO `usuarios` (`id`, `correo`, `name`, `password`, `tp_user`, `date_cre
 ALTER TABLE `documentos_estudiante`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `matricula` (`matricula`);
+
+--
+-- Indices de la tabla `espacio_disponible`
+--
+ALTER TABLE `espacio_disponible`
+  ADD PRIMARY KEY (`id_espacio`);
 
 --
 -- Indices de la tabla `estudiantes`
@@ -367,6 +349,12 @@ ALTER TABLE `documentos_estudiante`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
+-- AUTO_INCREMENT de la tabla `espacio_disponible`
+--
+ALTER TABLE `espacio_disponible`
+  MODIFY `id_espacio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
+
+--
 -- AUTO_INCREMENT de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
@@ -376,13 +364,13 @@ ALTER TABLE `estudiantes`
 -- AUTO_INCREMENT de la tabla `organizacion`
 --
 ALTER TABLE `organizacion`
-  MODIFY `id_org` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_org` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
