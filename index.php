@@ -152,7 +152,7 @@ $cat_carreras = view_cat_carreras();
                   <div class="col-xl-2 col-lg-2 col-6">
                      <div class="header__right d-flex align-items-center justify-content-end">
                         <div class="header__btn d-none d-xl-block">
-                           <a class="border__btn s-3" target="_blank" href="https://www.cua.uam.mx/conoce-la-uam-unidad-cuajimalpa/coordinaciones-administrativas/coordinacion-de-vinculacion/vinculacion-y-desarrollo-profesional/estancias-profesionales-de-verano/informacion-para-alumnos">Convocatoria</a>
+                           <a class="border__btn s-3" target="_blank" href="https://www.cua.uam.mx/conoce-la-uam-unidad-cuajimalpa/coordinaciones-administrativas/coordinacion-de-vinculacion/desarrollo-profesional/estancias-profesionales-de-verano/informacion-para-alumnos?/epv">Convocatoria</a>
                         </div>
                         <div class="header__toggle d-xl-none">
                            <a class="sidebar__active" href="javascript:void(0)">
@@ -195,7 +195,7 @@ $cat_carreras = view_cat_carreras();
                            pon en práctica los conocimientos y competencias adquiridas durante tu formación académica.</p>
                         </div>
                         <div class="hero__btn-link wow fadeInUp" data-wow-delay=".8s">
-                           <a class="solid__btn" target="_blank" href="https://www.cua.uam.mx/conoce-la-uam-unidad-cuajimalpa/coordinaciones-administrativas/coordinacion-de-vinculacion/vinculacion-y-desarrollo-profesional/estancias-profesionales-de-verano/informacion-para-alumnos">Convocatoria</a>
+                           <a class="solid__btn" target="_blank" href="https://www.cua.uam.mx/conoce-la-uam-unidad-cuajimalpa/coordinaciones-administrativas/coordinacion-de-vinculacion/desarrollo-profesional/estancias-profesionales-de-verano/informacion-para-alumnos?/epv">Convocatoria</a>
                            <!--<a class="hero__link popup-video" href="https://www.youtube.com/watch?v=fSv6UgCkuTU"> <i class="fa-solid fa-play"></i></a>-->
                         </div>
                      </div>
@@ -231,27 +231,55 @@ $cat_carreras = view_cat_carreras();
                      <div class="swiper-wrapper">
                         <div class="swiper-slide">
                            <div class="singel__brand">
-                              <img src="assets/img/brand/1.png" alt="image not found">
+                              <img src="assets/logos/empresa1.svg" alt="image not found">
                            </div>
                         </div>
                         <div class="swiper-slide">
                            <div class="singel__brand">
-                              <img src="assets/img/brand/2.png" alt="image not found">
+                              <img src="assets/logos/empresa2.svg" alt="image not found">
+                              <!-- <img src="assets/img/brand/2.png" alt="image not found"> -->
                            </div>
                         </div>
                         <div class="swiper-slide">
                            <div class="singel__brand">
-                              <img src="assets/img/brand/3.png" alt="image not found">
+                              <img src="assets/logos/empresa3.svg" alt="image not found">
+                              <!-- <img src="assets/img/brand/3.png" alt="image not found"> -->
                            </div>
                         </div>
                         <div class="swiper-slide">
                            <div class="singel__brand">
-                              <img src="assets/img/brand/4.png" alt="image not found">
+                              <img src="assets/logos/empresa4.svg" alt="image not found">
+                              <!-- <img src="assets/img/brand/4.png" alt="image not found"> -->
                            </div>
                         </div>
                         <div class="swiper-slide">
                            <div class="singel__brand">
-                              <img src="assets/img/brand/5.png" alt="image not found">
+                              <img src="assets/logos/empresa5.svg" alt="image not found">
+                              <!-- <img src="assets/img/brand/5.png" alt="image not found"> -->
+                           </div>
+                        </div>
+                        <div class="swiper-slide">
+                           <div class="singel__brand">
+                              <img src="assets/logos/empresa6.svg" alt="image not found">
+                              <!-- <img src="assets/img/brand/5.png" alt="image not found"> -->
+                           </div>
+                        </div>
+                        <div class="swiper-slide">
+                           <div class="singel__brand">
+                              <img src="assets/logos/empresa7.svg" alt="image not found">
+                              <!-- <img src="assets/img/brand/5.png" alt="image not found"> -->
+                           </div>
+                        </div>
+                        <div class="swiper-slide">
+                           <div class="singel__brand">
+                              <img src="assets/logos/empresa8.svg" alt="image not found">
+                              <!-- <img src="assets/img/brand/5.png" alt="image not found"> -->
+                           </div>
+                        </div>
+                        <div class="swiper-slide">
+                           <div class="singel__brand">
+                              <img src="assets/logos/empresa9.svg" alt="image not found">
+                              <!-- <img src="assets/img/brand/5.png" alt="image not found"> -->
                            </div>
                         </div>
                      </div>

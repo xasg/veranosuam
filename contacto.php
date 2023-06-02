@@ -104,7 +104,7 @@
                               <a href="tel:55 5814 6509"> 55 5814 6509</a>
                            </div>
                         </li>
-                        <li class="d-flex align-items-center">
+                        <li class="d-flex align-items-center"> 
                            <div class="offcanvas__contact-icon mr-15">
                               <i class="fal fa-envelope"></i>
                            </div>
@@ -172,7 +172,7 @@
                   <div class="col-xl-2 col-lg-2 col-6">
                      <div class="header__right d-flex align-items-center justify-content-end">
                         <div class="header__btn d-none d-xl-block">
-                           <a class="border__btn s-3" target="_blank" href="https://www.cua.uam.mx/conoce-la-uam-unidad-cuajimalpa/coordinaciones-administrativas/coordinacion-de-vinculacion/vinculacion-y-desarrollo-profesional/estancias-profesionales-de-verano/informacion-para-alumnos">Convocatoria</a>
+                           <a class="border__btn s-3" target="_blank" href="https://www.cua.uam.mx/conoce-la-uam-unidad-cuajimalpa/coordinaciones-administrativas/coordinacion-de-vinculacion/desarrollo-profesional/estancias-profesionales-de-verano/informacion-para-alumnos?/epv">Convocatoria</a>
                         </div>
                         <div class="header__toggle d-xl-none">
                            <a class="sidebar__active" href="javascript:void(0)">
@@ -209,7 +209,7 @@
                            Contactanos
                         </h2>
                      </div>
-                      <div class="container m-0 row justify-content-center">
+                      <!-- <div class="container m-0 row justify-content-center">
                         <form class="w-75 shadow" action="contacto.php" method="post">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
@@ -223,10 +223,6 @@
                                 <label for="exampleInputPassword1" class="form-label" required>Asunto</label>
                                 <input type="text" class="form-control" id="asunto" name="asunto">
                             </div>
-                            <!-- <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1"></label>
-                            </div> -->
                             <div class="mb-3">
                               <label for="mensaje" class="form-label">Mensaje</label>
                               <textarea class="form-control" name="mensaje" id="mensaje" rows="3"></textarea>
@@ -258,7 +254,19 @@
                         ?>
 
                         <br><br><br><br>
-                      </div>      
+                      </div>       -->
+
+                      <div class="container row">
+                        <h3 class="col-md-6">
+                           <b>Correo:</b><br>
+                           <a href="mailto:enlace.vinculacion@cua.uam.mx"><span><i style="border-bottom:5px solid #000">enlace.vinculacion@cua.uam.mx</i></span></a>
+                        </h3>
+                        <h3 class="col-md-6">
+                           <b>Telefono:</b>
+                           <br>
+                           <a href="tel:+012-345-6789"><span class="mailto:enlace.vinculacion@cua.uam.mx"><i style="border-bottom:5px solid #000">55- 5814 6509</i></span></a>
+                        </h3>
+                      </div>
 
                      
 
@@ -267,13 +275,11 @@
                <div class="col-xl-4 col-lg-6 ">
                   <div class="boost__thumb-wrapper mb-60">
                      <div class="boost__thumb w-img p-relative">
-                        <!-- <img src="assets/img/boost/boost-01.png" alt="image not found"> -->
+                        
                         <br><br><br>
                         <div class="boost__shape-1"></div>
                      </div>
                      <div class="boost__shape-2">
-                        <!-- <svg id="Group_27289" data-name="Group 27289" xmlns="http://www.w3.org/2000/svg" width="25.594" height="1.655" viewBox="0 0 25.594 19.655"> -->
-                           <!-- <path id="Path_26014" data-name="Path 26014" d="M321.713,46.082l-25.594,3.962,0,.008.163,1.6a23.645,23.645,0,0,0,7.662,14.089Z" transform="translate(-296.119 -46.082)" fill="#f8d458"/> -->
                          </svg>                         
                      </div>
                      <div class="boost__shape-3"></div>
