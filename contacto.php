@@ -237,10 +237,12 @@
                             $email = $_POST['email'];
                             $asunto = $_POST['asunto'];
                             $mensaje = $_POST['mensaje'];
-                            $header =  "From: pagina@vinculacion.com" . "\r\n";
-                            $header.= "Reply-To: alexis@fese.mx" .  "\r\n";
-                            $header.="X-Mailer: PHP/".phpversion();
-                            $mail = @mail($email,$asunto,$mensaje,$header);
+                            $asuntoCorreo = "Nuevo mensaje de contacto";
+                            $destinatario =  "enlace.vinculacion@cua.uam.mx";
+                            $header =  "Correo electronico: $email" . "\r\n";
+                            $header.= "Asunto: $asunto " .  "\r\n";
+                            $header.="Mensaje: $mensaje";
+                            $mail = @mail($destinatario,$asuntoCorreo,$header);
                             if ($mail) {
                                 # code...
                                 ?>
@@ -261,9 +263,9 @@
                            <b>Correo:</b><br>
                            <a href="mailto:enlace.vinculacion@cua.uam.mx"><span><i style="border-bottom:5px solid #000">enlace.vinculacion@cua.uam.mx</i></span></a>
                         </h3>
-                        <h3 class="col-md-6">
+                        <h3 class="">
                            <b>Telefono:</b>
-                           <br>
+                           
                            <a href="tel:+012-345-6789"><span class="mailto:enlace.vinculacion@cua.uam.mx"><i style="border-bottom:5px solid #000">55- 5814 6509</i></span></a>
                         </h3>
                       </div>
