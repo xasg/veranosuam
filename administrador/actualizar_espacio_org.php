@@ -2,9 +2,26 @@
 
 require('../controller/conect.php');
 sleep(1);
-if (isset($_POST['idorg_nuevo'])) {
-    $id_organizacion_inserta = $_POST['idorg_nuevo'];    
-    $licenciatura_inserta = $_POST['lic'];  
+if (isset($_POST['id_espacio']) && isset($_POST['accion'])) {
+    $accion = $_POST['accion'];
+    $id_espacio = $_POST['id_espacio'];    
+    if ($accion === 'Eliminar') {
+        # code...
+        $query="DELETE FROM espacio_disponible WHERE id_espacio = '{$id_espacio}'";
+        $result = $mysqli->query($query);
+        if ($result) {
+            # code...
+            header("Location: organizaciones.php?eliminado='Vacante Eliminada'");
+        }else {
+            # code...
+            header("Location: organizaciones.php?noeliminado='Error Al eliminar'");
+        }
+
+    }elseif($accion ==='actualizar') {
+        # code...
+    
+    $id_organizacion_act = $_POST['idorg'];    
+    $licenciatura_inserta = $_POST['lic_act'];  
     switch ($licenciatura_inserta) {
         case 'Administración':
             $id_dt_carrera_inserta = 1;
@@ -50,25 +67,25 @@ if (isset($_POST['idorg_nuevo'])) {
             # code...
             break;
     }
-    $area = $_POST['area'];    
-    $actividad_inserta = $_POST['actividad'];   
-    $modalidad = $_POST['modalidad'];   
-    $modalidad_trabajo_inserta = $_POST['modalidad_trabajo'];   
-    $apoyo_inserta = $_POST['apoyo'];   
-    $lugares_inserta = $_POST['lugares'];   
-    $requisitos_inserta = $_POST['requisitos'];   
+    $area = $_POST['area_act'];    
+    $actividad_inserta = $_POST['actividad_act'];   
+    $modalidad = $_POST['modalidad_act'];   
+    $modalidad_trabajo_inserta = $_POST['modalidad_trabajo_act'];   
+    $apoyo_inserta = $_POST['apoyo_act'];   
+    $lugares_inserta = $_POST['lugares_act'];   
+    $requisitos_inserta = $_POST['requisitos_act'];   
     date_default_timezone_set('America/Mexico_City');
     $tiempo = date('d-m-Y H:i:s');     
-    $result = $mysqli->query(
-        'INSERT INTO espacio_disponible(id_organizacion,licenciatura,id_dt_carrera,area_proyecto,actividad,modalidad_part,modalidad_trabajo,apoyo,lugares,requisitos,dt_create) values("'.$id_organizacion_inserta.'","'.$licenciatura_inserta.'","'.$id_dt_carrera_inserta.'","'.$area.'","'.$actividad_inserta.'","'.$modalidad.'","'.$modalidad_trabajo_inserta.'","'.$apoyo_inserta.'","'.$lugares_inserta.'","'.$requisitos_inserta.'","'.$tiempo.'")'
-    );
+    $query = "UPDATE espacio_disponible SET licenciatura='{$licenciatura_inserta}',id_dt_carrera='{$id_dt_carrera_inserta}',area_proyecto='{$area}',actividad='{$actividad_inserta}',modalidad_part='{$modalidad}',modalidad_trabajo='{$modalidad_trabajo_inserta}',apoyo='{$apoyo_inserta}',lugares='{$lugares_inserta}',requisitos='{$requisitos_inserta}',dt_create='{$tiempo}'  where id_espacio='{$id_espacio}'  ";
+    $result = $mysqli->query($query);
  
     if ($result) {
         // echo '<sub class="form-text text-danger"><strong>Oh no!</strong> Este Email ya se encuentra registrado.</sub>';
-        header("Location: organizaciones.php?creada=$nombre");
+        header("Location: organizaciones.php?exitoso=$nombre");
     } else {
         header("Location: organizaciones.php?noexitoso=$nombre");
         // echo '<div class="text-success"><strong>Enhorabuena!</strong> Usuario disponible.</div>';
+    }
     }
 }
 

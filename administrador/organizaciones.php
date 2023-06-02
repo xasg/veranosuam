@@ -126,25 +126,50 @@ $(document).ready(function() {
 $usuario = $_SESSION['name'];
 ?>
 <?php
-   if (isset($_REQUEST['usuarionuevo'])) {
-?>
- <script>
-        // function mostrarPopup() {
-            Swal.fire({
-                icon: 'success',
-                title: 'Usuario con el correo: <?php echo $_REQUEST['usuarionuevo']; ?> creado correctamente',
-                showConfirmButton: true,
-                customClass: {
-               confirmButton: 'mi-clase-boton-confirmar'
-               },
-                timer: 13500
-            });
-        // }
-    </script>
-<?php
-   }
-?>
+if (isset($_REQUEST['eliminado'])) {
+   # code...
+   // echo "<script> alert('Vacante eliminada correctamente'); </script>";
+   echo "<script>  Swal.fire({
+      icon: 'success',
+      title: 'Vacante Eliminada Correctamente',
+      showConfirmButton: true,
+      customClass: {
+         confirmButton: 'mi-clase-boton-confirmar'
+       },
+      timer: 12500
+  });
+  </script>";
+}
+if (isset($_REQUEST['exitoso'])) {
+   # code...
+   // echo "<script> alert('Vacante eliminada correctamente'); </script>";
+   echo "<script>  Swal.fire({
+      icon: 'success',
+      title: 'Organizacion actualizada correctamente',
+      showConfirmButton: true,
+      customClass: {
+         confirmButton: 'mi-clase-boton-confirmar'
+       },
+      timer: 12500
+  });
+  </script>";
+}
+if (isset($_REQUEST['creada'])) {
+   # code...
+   // echo "<script> alert('Vacante eliminada correctamente'); </script>";
+   echo "<script>  Swal.fire({
+      icon: 'success',
+      title: 'Vacante Registrada correctamente',
+      showConfirmButton: true,
+      customClass: {
+         confirmButton: 'mi-clase-boton-confirmar'
+       },
+      timer: 12500
+  });
+  </script>";
+}
 
+?>
 
       <!--[if lte IE 9]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -534,128 +559,11 @@ $usuario = $_SESSION['name'];
                                                    <br>
 
                                                 <form action="crear_espacios_org.php" class="row" method="post">
-                                                <?php
-                                                $sql = "SELECT * FROM organizacion LEFT JOIN espacio_disponible on organizacion.id_org = espacio_disponible.id_organizacion where id_org ='{$rows['id_org']}'"; 
-                                                $espacios = $mysqli->query($sql);
-                                                $counter2 = 1;
-                                                foreach ($espacios as $campos) {
-                                                   # code...
-                                                   
-                                                ?>   
-                                                <br>
-                                                <div class="border-bottom">
-                                                   <!-- a -->
-                                                </div>
-                                                <input type="text"class="form-control" name="id_espacio" id="id_espacio" aria-describedby="helpId" value="<?php echo $campos['id_espacio'];?>" >
-                                                <input type="text"class="form-control" name="idorg" id="irorg" aria-describedby="helpId" value="<?php echo $campos['id_organizacion'];?>"  >
-                                                
-                                                
-                                                <?php
-                                                   if ($campos['id_espacio'] != null || $campos['id_espacio'] != 0 ) {
-                                                      # code...
-                                                   
-                                                ?>
+
+                                                <input type="text"class="form-control" name="idorg_nuevo" id="irorg_nuevo" aria-describedby="helpId" value="<?php echo $rows['id_org'];?>"  hidden="true">
                                                 <div class="col-6"> 
                                                    
-                                                      <label for="vacante"  class="row form- label col-md-4">Vacante # <?php echo $counter2; $counter2++; ?></label>
-                                                         <!-- <label for="lic" class="row form-label col-md-4">Licenciatura</label>
-                                                         <input type="text" class="form-control border" name="lic" id="lic" aria-describedby="helpId" value="<?php echo $campos['licenciatura']; ?>"> -->
-                                                         <div class="mb-3">
-                                                            <label for="" class="form-label">Licenciatura o Maestria</label>
-                                                            <select class="form-select form-select-md" name="lic_act" id="lic_act">
-                                                               <option selected><?php echo $campos['licenciatura']; ?></option>
-                                                               <option value="Administración">Administración</option>
-                                                               <option value="Biología Molecular">Biología Molecular</option>
-                                                               <option value="Ciencias de la Comunicación">Ciencias de la Comunicación</option>
-                                                               <option value="Derecho">Derecho</option>
-                                                               <option value="Diseño">Diseño</option>
-                                                               <option value="Estudios Socioterritoriales">Estudios Socioterritoriales</option>
-                                                               <option value="Humanidades">Humanidades</option>
-                                                               <option value="Ingeniería Biológica">Ingeniería Biológica</option>
-                                                               <option value="Ingeniería en Computación">Ingeniería en Computación</option>
-                                                               <option value="Maestría en Ciencias Sociales y Humanidades">Maestría en Ciencias Sociales y Humanidades</option>
-                                                               <option value="Maestría en Diseño, Información y Comunicación">Maestría en Diseño, Información y Comunicación</option>
-                                                               <option value="Matemáticas Aplicadas">Matemáticas Aplicadas</option>
-                                                               <option value="Tecnologías y Sistemas de Información">Tecnologías y Sistemas de Información</option>
-                                                            </select>
-                                                         </div>
-                                                   </div>
-                                                   
-                                                   <div class="col-6">
-                                                      <br>
-                                                      <label for="area" class="form-label">Area o Proyecto</label>
-                                                        <input type="text" class="form-control border" name="area_act" id="area_act" aria-describedby="helpId" value="<?php echo $campos['area_proyecto']; ?>" >
-                                                   </div>
-                                                   <div class="col-6">
-                                                      <label for="actividad" class="form-label">Actividad</label>
-                                                        <input type="text" class="form-control border" name="actividad_act" id="actividad_act" aria-describedby="helpId" value="<?php echo $campos['actividad']; ?>">
-                                                   </div>
-                                                   <div class="col-6">
-                                                      <div class="mb-3">
-                                                         <label for="modalidad" class="form-label">Modalidad Particular</label>
-                                                         <select class="form-select form-select-md" name="modalidad_act" id="modalidad_act">
-                                                            <option selected disabled><?php echo $campos['modalidad_part']; ?></option>
-                                                            <option value="Tres a uno">Tres a Uno</option>
-                                                            <option value="Individual">Individual</option>
-                                                            <option value="Sin especificar">Sin especificar</option>
-                                                         </select>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-6">
-                                                      <div class="mb-3">
-                                                         <label for="modalidad" class="form-label">Modalidad de Trabajo</label>
-                                                         <select class="form-select form-select-md" name="modalidad_trabajo_act" id="modalidad_trabajo_act">
-                                                            <option selected disabled><?php echo $campos['modalidad_trabajo']; ?></option>
-                                                            <option value="Presencial">Presencial</option>
-                                                            <option value="Híbrida">Híbrida</option>
-                                                            <option value="Home Office">Home Office</option>
-                                                            <option value="Sin especificar">Sin especificar</option>
-                                                         </select>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-6">
-                                                      <div class="mb-3">
-                                                         <div class="mb-3">
-                                                           <label for="" class="form-label">Apoyo</label>
-                                                           <input type="text"
-                                                             class="form-control" name="apoyo_act" id="apoyo_act" aria-describedby="helpId" value="<?php echo $campos['apoyo']; ?>">
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-6">
-                                                      <div class="mb-3">
-                                                         <div class="mb-3">
-                                                           <label for="" class="form-label">Lugares</label>
-                                                           <input type="number"
-                                                             class="form-control" name="lugares_act" id="lugares_act" aria-describedby="helpId" value="<?php echo $campos['lugares']; ?>">
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-6">
-                                                      <div class="mb-3">
-                                                         <div class="mb-3">
-                                                           <label for="" class="form-label">Requisitos</label>
-                                                           <input type="text"
-                                                             class="form-control" name="requisitos_act" id="requisitos_act" aria-describedby="helpId" value="<?php echo $campos['requisitos']; ?>">
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                      <div class="col-7">
-                                                      <br>   
-                                                      <button type="submit" class="btn btn-primary">Actualizar</button>
-                                                      <button type="submit" class="btn text-light btn-danger">Eliminar</button>
-                                                      <br><br><br><br>   
-                                                   </div>
-                                                      
-                                                      
-                                                <?php
-                                                } else{
-                                                  ?>
-                                                  <input type="text"class="form-control" name="idorg_nuevo" id="irorg_nuevo" aria-describedby="helpId" value="<?php echo $rows['id_org'];?>"  >
-                                                   
-                                                  <div class="col-6"> 
-                                                   
-                                                   <label for="vacante"  class="row form- label col-md-4">Vacante # <?php echo $counter2; $counter2++; ?></label>
+                                                   <label for="vacante"  class="row text-light text-center bg-dark"><b>Agregar Vacante</b></label>
                                                       <!-- <label for="lic" class="row form-label col-md-4">Licenciatura</label>
                                                       <input type="text" class="form-control border" name="lic" id="lic" aria-describedby="helpId" value="<?php echo $campos['licenciatura']; ?>"> -->
                                                       <div class="mb-3">
@@ -744,18 +652,147 @@ $usuario = $_SESSION['name'];
                                                    
                                                    <br><br><br><br>   
                                                 </div>
-
-
-
+                                                </form>
+                                                <form action="actualizar_espacio_org.php" class="row" method="post">
+                                                <label for="vacantes"  class="row text-light text-center bg-dark"><b>Vacantes Disponibles</b></label>
                                                 <?php
-                                                }
+                                                $sql = "SELECT * FROM organizacion LEFT JOIN espacio_disponible on organizacion.id_org = espacio_disponible.id_organizacion where id_org ='{$rows['id_org']}'"; 
+                                                $espacios = $mysqli->query($sql);
+                                                $counter2 = 1;
+                                                foreach ($espacios as $campos) {
+                                                   # code...
+                                                   
+                                                ?>   
+                                                <br>
+                                                <div class="border-bottom">
+                                                   <!-- a -->
+                                                </div>
+                                                <input type="text"class="form-control" name="id_espacio" id="id_espacio" aria-describedby="helpId" value="<?php echo $campos['id_espacio'];?>" hidden="true" >
+                                                <input type="text"class="form-control" name="idorg" id="idorg" aria-describedby="helpId" value="<?php echo $campos['id_organizacion'];?>"  hidden="true">
+                                                <label for="vacantes"  class="row text-light text-center bg-dark">-</label>
+                                                
+                                                <?php
+                                                   if ($campos['id_espacio'] != null || $campos['id_espacio'] != 0 ) {
+                                                      # code...
+                                                   
+                                                ?>
+                                                
+                                                <div class="col-6"> 
+                                                <br>
+                                                      <label for="vacante"  class="row form- label col-md-4">Vacante # <?php echo $counter2; $counter2++; ?></label>
+                                                         <!-- <label for="lic" class="row form-label col-md-4">Licenciatura</label>
+                                                         <input type="text" class="form-control border" name="lic" id="lic" aria-describedby="helpId" value="<?php echo $campos['licenciatura']; ?>"> -->
+                                                         <div class="mb-3">
+                                                            <label for="" class="form-label">Licenciatura o Maestria</label>
+                                                            <select class="form-select form-select-md" name="lic_act" id="lic_act">
+                                                               <option selected><?php echo $campos['licenciatura']; ?></option>
+                                                               <option value="Administración">Administración</option>
+                                                               <option value="Biología Molecular">Biología Molecular</option>
+                                                               <option value="Ciencias de la Comunicación">Ciencias de la Comunicación</option>
+                                                               <option value="Derecho">Derecho</option>
+                                                               <option value="Diseño">Diseño</option>
+                                                               <option value="Estudios Socioterritoriales">Estudios Socioterritoriales</option>
+                                                               <option value="Humanidades">Humanidades</option>
+                                                               <option value="Ingeniería Biológica">Ingeniería Biológica</option>
+                                                               <option value="Ingeniería en Computación">Ingeniería en Computación</option>
+                                                               <option value="Maestría en Ciencias Sociales y Humanidades">Maestría en Ciencias Sociales y Humanidades</option>
+                                                               <option value="Maestría en Diseño, Información y Comunicación">Maestría en Diseño, Información y Comunicación</option>
+                                                               <option value="Matemáticas Aplicadas">Matemáticas Aplicadas</option>
+                                                               <option value="Tecnologías y Sistemas de Información">Tecnologías y Sistemas de Información</option>
+                                                            </select>
+                                                         </div>
+                                                   </div>
+                                                   
+                                                   <div class="col-6">
+                                                      <br><br>
+                                                      <label for="area" class="form-label">Area o Proyecto</label>
+                                                        <input type="text" class="form-control border" name="area_act" id="area_act" aria-describedby="helpId" value="<?php echo $campos['area_proyecto']; ?>" >
+                                                   </div>
+                                                   <div class="col-6">
+                                                      <label for="actividad" class="form-label">Actividad</label>
+                                                        <input type="text" class="form-control border" name="actividad_act" id="actividad_act" aria-describedby="helpId" value="<?php echo $campos['actividad']; ?>">
+                                                   </div>
+                                                   <div class="col-6">
+                                                      <div class="mb-3">
+                                                         <label for="modalidad" class="form-label">Modalidad Particular</label>
+                                                         <select class="form-select form-select-md" name="modalidad_act" id="modalidad_act">
+                                                            <option selected disabled><?php echo $campos['modalidad_part']; ?></option>
+                                                            <option value="Tres a uno">Tres a Uno</option>
+                                                            <option value="Individual">Individual</option>
+                                                            <option value="Sin especificar">Sin especificar</option>
+                                                         </select>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-6">
+                                                      <div class="mb-3">
+                                                         <label for="modalidad" class="form-label">Modalidad de Trabajo</label>
+                                                         <select class="form-select form-select-md" name="modalidad_trabajo_act" id="modalidad_trabajo_act">
+                                                            <option selected disabled><?php echo $campos['modalidad_trabajo']; ?></option>
+                                                            <option value="Presencial">Presencial</option>
+                                                            <option value="Híbrida">Híbrida</option>
+                                                            <option value="Home Office">Home Office</option>
+                                                            <option value="Sin especificar">Sin especificar</option>
+                                                         </select>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-6">
+                                                      <div class="mb-3">
+                                                         <div class="mb-3">
+                                                           <label for="" class="form-label">Apoyo</label>
+                                                           <input type="text"
+                                                             class="form-control" name="apoyo_act" id="apoyo_act" aria-describedby="helpId" value="<?php echo $campos['apoyo']; ?>">
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-6">
+                                                      <div class="mb-3">
+                                                         <div class="mb-3">
+                                                           <label for="" class="form-label">Lugares</label>
+                                                           <input type="number"
+                                                             class="form-control" name="lugares_act" id="lugares_act" aria-describedby="helpId" value="<?php echo $campos['lugares']; ?>">
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-6">
+                                                      <div class="mb-3">
+                                                         <div class="mb-3">
+                                                           <label for="" class="form-label">Requisitos</label>
+                                                           <input type="text"
+                                                             class="form-control" name="requisitos_act" id="requisitos_act" aria-describedby="helpId" value="<?php echo $campos['requisitos']; ?>">
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-check">
+                                                     <input class="form-check-input" type="checkbox" value="eliminar" id="eliminar">
+                                                     <label class="form-check-label" for="eliminar">
+                                                       Eliminar
+                                                     </label>
+                                                   </div>
+                                                   <!-- <div class="form-check">
+                                                     <input class="form-check-input" type="checkbox" value="" id="" checked>
+                                                     <label class="form-check-label" for="">
+                                                       Checked checkbox
+                                                     </label>
+                                                   </div> -->
+                                                   <div class="col-7">
+                                                      <br>   
+                                                      <button type="submit" class="btn btn-primary" name="accion" value="actualizar">Actualizar</button>
+                                                      <button type="submit" class="btn btn-danger" name="accion" value="Eliminar">Eliminar</button>
+                                                      
+                                                   </div>
+                                              <?php
+                                                } 
+                                                  ?> 
+                                                  
+                                                <?php
+                                                
                                              }
                                                 ?>
                                                       <br><br>
                                             
                                                    </div>
                                                 </form>
-
+                                                
                                                 
                                                 
                                              
@@ -1050,7 +1087,6 @@ $usuario = $_SESSION['name'];
             }
         }
     </script>
-
 
    </body>
   

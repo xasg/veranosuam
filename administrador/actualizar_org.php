@@ -15,7 +15,7 @@ $result = $mysqli->query($query);
 
 if ($result) {
 // insertar_estudiante($nombres,$a_paterno,$a_materno,$matricula,$licenciatura,$creditos,$edad,$sexo,$correo,$telefono,$tiempo);
-    header("Location: index.php?exitoso=$nombre");
+    header("Location: organizaciones.php?exitoso=$nombre");
 }else {
     # code...
     header("Location: index.php?noexitoso=$nombre");
