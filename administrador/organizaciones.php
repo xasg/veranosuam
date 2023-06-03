@@ -396,8 +396,8 @@ if (isset($_REQUEST['creada'])) {
                            <?php 
                               require("../controller/conect.php");
 
-                            //   $query = "SELECT *,COUNT(DISTINCT espacio_disponible.id_organizacion) FROM organizacion left join espacio_disponible on organizacion.id_org = espacio_disponible.id_organizacion GROUP BY organizacion.nombre";
-                              $query = "SELECT * FROM organizacion ORDER BY id_org";
+                              $query = "SELECT *,COUNT(espacio_disponible.id_organizacion) as espacios, SUM(lugares) as lugar FROM organizacion left join espacio_disponible on organizacion.id_org = espacio_disponible.id_organizacion GROUP BY organizacion.nombre";
+                              // $query = "SELECT * FROM organizacion ORDER BY id_org";
                               $result = $mysqli->query($query);
                               // $row = mysqli_fetch_assoc($result);
                               
@@ -409,7 +409,8 @@ if (isset($_REQUEST['creada'])) {
                                  <th scope="col">ID</th>
                                  <th scope="col">Nombre de la Organizacion</th>
                                  <th scope="col">Direccion</th>
-                                 <!-- <th scope="col">Vacantes</th> -->
+                                 <th scope="col">vacantes</th>
+                                 <th scope="col">Lugares</th>
                                  <th scope="col">Estatus</th>
                                  <th scope="col">Acciones</th>
                                  <!-- <th scope="col">Licenciatura o carrera</th>
@@ -432,6 +433,8 @@ if (isset($_REQUEST['creada'])) {
                               <td class="text-center"><?php echo $counter++ ?></td>
                                  <td scope="row"><?php echo $rows['nombre'] ?> </td>
                                  <td scope="row"><?php echo $rows['direccion'] ?> </td>
+                                 <td scope="row"><?php echo $rows['espacios'] ?> </td>
+                                 <td scope="row"><?php echo $rows['lugar'] ?> </td>
                                  <!-- <td scope="row"><?php echo $rows['dt_create'] ?> </td> -->
                                  <td scope="row"><?php if ($rows['estatus'] == 1) {
                                      # code...
