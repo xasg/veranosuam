@@ -128,7 +128,7 @@ if (isset($_SESSION['name'])) {
     $usuario = $_SESSION['name'];
         echo "<script>  Swal.fire({
             icon: 'success',
-            title: 'Bienvenid@ {$usuario} al panel de ADMIN',
+            title: 'Bienvenid@ {$usuario} al panel de ADMINISTRADOR',
             showConfirmButton: true,
             customClass: {
                confirmButton: 'mi-clase-boton-confirmar'
