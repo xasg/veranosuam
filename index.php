@@ -74,7 +74,7 @@ $cat_carreras = view_cat_carreras();
                               <i class="far fa-phone"></i>
                            </div>
                            <div class="offcanvas__contact-text">
-                              <a href="tel:55 5814 6509"> 55 5814 6509</a>
+                              <a href="tel:tel:+5215558146509"> 55 5814 6509</a>
                            </div>
                         </li>
                         <li class="d-flex align-items-center">
@@ -82,7 +82,7 @@ $cat_carreras = view_cat_carreras();
                               <i class="fal fa-envelope"></i>
                            </div>
                            <div class="offcanvas__contact-text">
-                              <a href="tel:+012-345-6789"><span class="mailto:enlace.vinculacion@cua.uam.mx">enlace.vinculacion@cua.uam.mx</span></a>
+                              <a href="mailto:enlace.vinculacion@cua.uam.mx"><span>enlace.vinculacion@cua.uam.mx</span></a>
                            </div>
                         </li>
                      </ul>
@@ -1116,8 +1116,10 @@ $cat_carreras = view_cat_carreras();
                   
                   <div class="container">
                      <div class="row footer__widget">
-                        <div class="footer__logo mb-20">
+                        <br><br><br><br>
+                        <div class="footer__logo">
                            <a href="index.html">
+                              <br><br><br><br>
                               <img src="assets/img/logo/logo.png" alt="logo not found">
                            </a>
                         </div>
@@ -1128,6 +1130,8 @@ $cat_carreras = view_cat_carreras();
                         </div>
                         <div class="touch__social col-md-auto w-50">
                            <form class="w-100 " action="index.php" method="post">
+                              <h4 class="text-center">Contactanos</h4>
+                              <br>
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
                                 <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="emailHelp" required>

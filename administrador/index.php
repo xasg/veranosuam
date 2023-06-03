@@ -235,10 +235,10 @@ if (isset($_SESSION['name'])) {
                   </div>
                   <div class="offcanvas__social">
                      <ul>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <!-- <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li> -->
                      </ul>
                   </div>
                </div>
@@ -338,10 +338,11 @@ if (isset($_SESSION['name'])) {
                      </div>
 
                      <div class="table-responsive-xxl">
-                     <button type="button" class="solid__btn " data-bs-toggle="modal" data-bs-target="#modalId">
-                          Gestiona Usuarios
-                        </button>
-                        <a name="" id="" class="solid__btn" href="organizaciones.php" role="button">Gestiona ORGS</a>
+                        <a name="" id="" class="solid__btn" style="background:none; color:#3887fe;"  href="#" role="button">Estudiantes</a>
+                        <a name="" id="" class="solid__btn" href="organizaciones.php" role="button">Organizaciones</a>
+                        <button type="button" class="solid__btn " data-bs-toggle="modal" data-bs-target="#modalId">
+                             Agregar Usuarios
+                           </button>
                         <br><br>
                         <table class="table table-sm table-dark ">
                            <?php 
@@ -628,12 +629,12 @@ if (isset($_SESSION['name'])) {
                            <span>Cuajimalpa de Morelos, 05348</span>
                            <span>Ciudad de México, CDMX</span>
                         </div>
-                        <div class="touch__social">
+                        <!-- <div class="touch__social">
                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
                            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                        </div>
+                        </div> -->
                      </div>
                   </div>
                </div>

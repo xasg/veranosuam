@@ -24,6 +24,7 @@
       <link rel="stylesheet" href="assets/app/css/main.css">
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     
 <style>
@@ -101,7 +102,7 @@
                               <i class="far fa-phone"></i>
                            </div>
                            <div class="offcanvas__contact-text">
-                              <a href="tel:55 5814 6509"> 55 5814 6509</a>
+                              <a href="tel:+5215558146509"> 55 5814 6509</a>
                            </div>
                         </li>
                         <li class="d-flex align-items-center"> 
@@ -109,18 +110,18 @@
                               <i class="fal fa-envelope"></i>
                            </div>
                            <div class="offcanvas__contact-text">
-                              <a href="tel:+012-345-6789"><span class="mailto:enlace.vinculacion@cua.uam.mx">enlace.vinculacion@cua.uam.mx</span></a>
+                              <a href="mailto:enlace.vinculacion@cua.uam.mx"><span>enlace.vinculacion@cua.uam.mx</span></a>
                            </div>
                         </li>
                      </ul>
                   </div>
                   <div class="offcanvas__social">
-                     <ul>
+                     <!-- <ul>
                         <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fab fa-youtube"></i></a></li>
                         <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                     </ul>
+                     </ul> -->
                   </div>
                </div>
             </div>
@@ -162,6 +163,9 @@
                                  
                                  <li>
                                     <a href="index.php#participa">Participa</a>
+                                 </li>
+                                 <li>
+                                    <a href="#">Contacto</a>
                                  </li>
                                  
                               </ul>
@@ -208,9 +212,49 @@
                         <h2 class="section__title-2">
                            Contactanos
                         </h2>
+                        <p>
+                        Si tienes alguna duda, comentario o sugerencia puedes dejarnos un mensaje en la forma de contacto, o marcarnos al número telefónico.
+                        </p>
+                        <div class="container row">
+                           <section class="col-md-4">
+                              <h3 class="h3-formulario">
+                                 Ubicación
+                              </h3>
+                              <p>
+                              Av. Vasco de Quiroga 4871, Col. Santa Fe Cuajimalpa, Delegación Cuajimalpa de Morelos, Ciudad de México,  C.P. 05348.
+                              </p>
+                              <p>
+                              Horario de atención: Lunes a viernes de 9am a 5pm 
+                              </p>
+                           </section>
+                           <section class="col-md-auto">
+                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3764.367589777984!2d-99.28315802394573!3d19.353229843209306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d2074a4aea180d%3A0x1151e61121fd01f3!2sUniversidad%20Aut%C3%B3noma%20Metropolitana%20Unidad%20Cuajimalpa!5e0!3m2!1ses-419!2smx!4v1685769645597!5m2!1ses-419!2smx" width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                           </section>
+                        </div>
+
+                        <div class="container row">
+                           <section class="col-md-4">
+                              <h3 class="h3-formulario">
+                                 Contactanos por medio de:
+                              </h3>
+                              <p>
+                                 <b>Correo:</b><br>
+                                 <a href="mailto:enlace.vinculacion@cua.uam.mx"><i class="formulario-contacto">enlace.vinculacion@cua.uam.mx</i></a>
+                              </p>
+
+                              <p>
+                                 <b>Telefono:</b><br>
+                                 <a href="tel:+5215558146509"><i class="formulario-contacto">55 5814 6509</i></a>   
+                              </p>
+                           </section>
+                        </div>
                      </div>
-                      <!-- <div class="container m-0 row justify-content-center">
-                        <form class="w-75 shadow" action="contacto.php" method="post">
+                      <div class="container m-0 row justify-content-center">
+                           <h3 class="h3-formulario">
+                                 Comentarios:
+                           </h3><br>
+                        <form class="w-100 " action="contacto.php" method="post">
+                           
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
                                 <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="emailHelp" required>
@@ -220,53 +264,76 @@
                                 <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label" required>Asunto</label>
-                                <input type="text" class="form-control" id="asunto" name="asunto">
+                                <label for="exampleInputPassword1" class="form-label">Asunto</label>
+                                <input type="text" class="form-control" id="asunto" name="asunto" required>
                             </div>
                             <div class="mb-3">
                               <label for="mensaje" class="form-label">Mensaje</label>
-                              <textarea class="form-control" name="mensaje" id="mensaje" rows="3"></textarea>
+                              <textarea class="form-control" name="mensaje" id="mensaje" rows="3" required></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary" style="background: #3249b3;">Enviar Mensaje</button>
                             <br><br>
                         </form>
                         
+                        
+
                         <?php
                         if(isset($_POST['nombre'])){
-                            $name = $_POST['nombre'];
-                            $email = $_POST['email'];
-                            $asunto = $_POST['asunto'];
-                            $mensaje = $_POST['mensaje'];
-                            $asuntoCorreo = "Nuevo mensaje de contacto";
-                            $destinatario =  "enlace.vinculacion@cua.uam.mx";
-                            $header =  "Correo electronico: $email" . "\r\n";
-                            $header.= "Asunto: $asunto " .  "\r\n";
-                            $header.="Mensaje: $mensaje";
-                            $mail = @mail($destinatario,$asuntoCorreo,$header);
-                            if ($mail) {
-                                # code...
-                                ?>
-                                <h4>
-                                    enviado exitosamente
-                                </h4>
+                           $name = $_POST['nombre'];
+                           $email = $_POST['email'];
+                           $asunto = $_POST['asunto'];
+                           $mensaje = $_POST['mensaje'];
+                           $destinatario =  "alexis@fese.mx";
+                           $asuntoCorreo = "Nuevo mensaje de Dudas";
+                          //  $destinatario =  "enlace.vinculacion@cua.uam.mx";
+                           $header =  "Correo electronico: $email" . "\r\n";
+                           $header.= "Asunto: $asunto " .  "\r\n";
+                           $header.="Mensaje: $mensaje";
+                           $mail = mail($destinatario,$asuntoCorreo,$header);
+                           if ($mail) {
+                               # code...
+                               ?>
+                               <script >
+                                allert("correo enviado correctamente");
+                               </script>
+                               <?php
+                           }
+                       }
+                           
+                       ?>
+                       <?php
+                        // if(isset($_POST['nombre'])){
+                        //     $name = $_POST['nombre'];
+                        //     $email = $_POST['email'];
+                        //     $asunto = $_POST['asunto'];
+                        //     $mensaje = $_POST['mensaje'];
+                        //     $asuntoCorreo = "Nuevo mensaje de contacto";
+                        //     $destinatario =  "enlace.vinculacion@cua.uam.mx";
+                        //     $header =  "Correo electronico: $email" . "\r\n";
+                        //     $header.= "Asunto: $asunto " .  "\r\n";
+                        //     $header.="Mensaje: $mensaje";
+                        //     $mail = @mail($destinatario,$asuntoCorreo,$header);
+                        //     if ($mail) {
+                        //         # code...
+                        //         ?>
+                        <!-- //         <h4> -->
+                        <!-- //             enviado exitosamente -->
+                        <!-- //         </h4> -->
                                 <?php
-                            }
-                        }
+                        //     }
+                        // }
                             
                         ?>
 
                         <br><br><br><br>
-                      </div>       -->
+                      </div>      
 
                       <div class="container row">
                         <h3 class="col-md-6">
-                           <b>Correo:</b><br>
-                           <a href="mailto:enlace.vinculacion@cua.uam.mx"><span><i style="border-bottom:5px solid #000">enlace.vinculacion@cua.uam.mx</i></span></a>
+                           
                         </h3>
                         <h3 class="">
-                           <b>Telefono:</b>
                            
-                           <a href="tel:+012-345-6789"><span class="mailto:enlace.vinculacion@cua.uam.mx"><i style="border-bottom:5px solid #000">55- 5814 6509</i></span></a>
                         </h3>
                       </div>
 
@@ -307,6 +374,7 @@
             <div class="container">
                <div class="row">
                   
+                  
                   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                      <div class="footer__widget mb-55">
                         <div class="footer__logo mb-20">
@@ -319,12 +387,12 @@
                            <span>Cuajimalpa de Morelos, 05348</span>
                            <span>Ciudad de México, CDMX</span>
                         </div>
-                        <div class="touch__social">
+                        <!-- <div class="touch__social">
                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
                            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                        </div>
+                        </div> -->
                      </div>
                   </div>
                </div>

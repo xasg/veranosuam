@@ -220,19 +220,12 @@ if (isset($_REQUEST['creada'])) {
                               <i class="fal fa-envelope"></i>
                            </div>
                            <div class="offcanvas__contact-text">
-                              <a href="tel:+012-345-6789"><span class="mailto:enlace.vinculacion@cua.uam.mx">enlace.vinculacion@cua.uam.mx</span></a>
+                              <a href="mailto:enlace.vinculacion@cua.uam.mx"><span >enlace.vinculacion@cua.uam.mx</span></a>
                            </div>
                         </li>
                      </ul>
                   </div>
-                  <div class="offcanvas__social">
-                     <ul>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                     </ul>
-                  </div>
+                  
                </div>
             </div>
          </div>
@@ -330,11 +323,12 @@ if (isset($_REQUEST['creada'])) {
                      </div>
 
                      <div class="table-responsive-xxl">
-                     <button type="button" class="solid__btn " data-bs-toggle="modal" data-bs-target="#modalId">
-                          Agregar Usuarios
-                     </button>
-                        <a name="" id="" class="solid__btn" href="organizaciones.php" role="button">Gestiona ORGS</a>
                         <a name="" id="" class="solid__btn" href="index.php" role="button">Estudiantes</a>
+                        <a name="" id="" class="solid__btn" href="#" style="background:none; color:#3887fe;" role="button">Organizaciones</a>
+                        <button type="button" class="solid__btn " data-bs-toggle="modal" data-bs-target="#modalId">
+                          Agregar Usuarios
+                        </button>
+                        
                         <br><br>
                         <table class="table table-sm table-dark ">
                            <!-- Button trigger modal Agregar Organización -->
@@ -415,7 +409,7 @@ if (isset($_REQUEST['creada'])) {
                                  <th scope="col">ID</th>
                                  <th scope="col">Nombre de la Organizacion</th>
                                  <th scope="col">Direccion</th>
-                                 <th scope="col">Día en que se registro la ORG</th>
+                                 <!-- <th scope="col">Vacantes</th> -->
                                  <th scope="col">Estatus</th>
                                  <th scope="col">Acciones</th>
                                  <!-- <th scope="col">Licenciatura o carrera</th>
@@ -438,7 +432,7 @@ if (isset($_REQUEST['creada'])) {
                               <td class="text-center"><?php echo $counter++ ?></td>
                                  <td scope="row"><?php echo $rows['nombre'] ?> </td>
                                  <td scope="row"><?php echo $rows['direccion'] ?> </td>
-                                 <td scope="row"><?php echo $rows['dt_create'] ?> </td>
+                                 <!-- <td scope="row"><?php echo $rows['dt_create'] ?> </td> -->
                                  <td scope="row"><?php if ($rows['estatus'] == 1) {
                                      # code...
                                      echo 'Disponible';}else{ echo 'No disponible';}  ?> </td>
@@ -940,12 +934,6 @@ if (isset($_REQUEST['creada'])) {
                            <span>Vasco de Quiroga 4871, Contadero, </span>
                            <span>Cuajimalpa de Morelos, 05348</span>
                            <span>Ciudad de México, CDMX</span>
-                        </div>
-                        <div class="touch__social">
-                           <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                           <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                           <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                           <a href="#"><i class="fa-brands fa-linkedin"></i></a>
                         </div>
                      </div>
                   </div>

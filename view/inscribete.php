@@ -178,7 +178,7 @@ if (isset($_GET['matricula'])) {
                               <i class="far fa-phone"></i>
                            </div>
                            <div class="offcanvas__contact-text">
-                              <a href="tel:55 5814 6509"> 55 5814 6509</a>
+                              <a href=" tel:+5215558146509"> 55 5814 6509</a>
                            </div>
                         </li>
                         <li class="d-flex align-items-center">
@@ -186,17 +186,17 @@ if (isset($_GET['matricula'])) {
                               <i class="fal fa-envelope"></i>
                            </div>
                            <div class="offcanvas__contact-text">
-                              <a href="tel:+012-345-6789"><span class="mailto:enlace.vinculacion@cua.uam.mx">enlace.vinculacion@cua.uam.mx</span></a>
+                              <a href="mailto:enlace.vinculacion@cua.uam.mx"><span>enlace.vinculacion@cua.uam.mx</span></a>
                            </div>
                         </li>
                      </ul>
                   </div>
                   <div class="offcanvas__social">
                      <ul>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <!-- <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li> -->
                      </ul>
                   </div>
                </div>
@@ -239,6 +239,9 @@ if (isset($_GET['matricula'])) {
                                  <li>
                                     <a href="../#participa">Participa</a>
                                  </li>
+                                 <li>
+                                    <a href="../contacto.php">Contacto</a>
+                                 </li>
                                  
                                  
                                  <li>
@@ -252,7 +255,7 @@ if (isset($_GET['matricula'])) {
                   <div class="col-xl-2 col-lg-2 col-6">
                      <div class="header__right d-flex align-items-center justify-content-end">
                         <div class="header__btn d-none d-xl-block">
-                           <a class="border__btn s-3" target="_blank" href="https://www.cua.uam.mx/conoce-la-uam-unidad-cuajimalpa/coordinaciones-administrativas/coordinacion-de-vinculacion/vinculacion-y-desarrollo-profesional/estancias-profesionales-de-verano/informacion-para-alumnos">Convocatoria</a>
+                           <a class="border__btn s-3" target="_blank" href="https://www.cua.uam.mx/conoce-la-uam-unidad-cuajimalpa/coordinaciones-administrativas/coordinacion-de-vinculacion/desarrollo-profesional/estancias-profesionales-de-verano/informacion-para-alumnos?/epv">Convocatoria</a>
                         </div>
                         <div class="header__toggle d-xl-none">
                            <a class="sidebar__active" href="javascript:void(0)">
@@ -625,28 +628,72 @@ if (isset($_GET['matricula'])) {
       <footer>
          <section class="footer__border footer-bg grey__bg p-relative z-index-11 pt-120 pb-60">
             <div class="footer__shape">
-               <img src="../assets/img/shape/footer-shape.png" alt="">
+               <img src="assets/img/shape/footer-shape.png" alt="">
             </div>
             <div class="container">
                <div class="row">
                   
-                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                     <div class="footer__widget mb-55">
-                        <div class="footer__logo mb-20">
+                  <div class="container">
+                     <div class="row footer__widget">
+                        <br><br><br><br>
+                        <div class="footer__logo">
                            <a href="index.html">
+                              <br><br><br><br>
                               <img src="../assets/img/logo/logo.png" alt="logo not found">
                            </a>
                         </div>
-                        <div class="footer__contact mb-30">
+                        <div class="footer__contact mb-30 col-md-4">
                            <span>Vasco de Quiroga 4871, Contadero, </span>
                            <span>Cuajimalpa de Morelos, 05348</span>
                            <span>Ciudad de México, CDMX</span>
                         </div>
-                        <div class="touch__social">
-                           <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                           <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                           <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                           <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                        <div class="touch__social col-md-auto w-50">
+                           <form class="w-100 " action="index.php" method="post">
+                              <h4 class="text-center">Contactanos</h4>
+                              <br>
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="emailHelp" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">correo</label>
+                                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label" required>Asunto</label>
+                                <input type="text" class="form-control" id="asunto" name="asunto">
+                            </div>
+                            <div class="mb-3">
+                              <label for="mensaje" class="form-label">Mensaje</label>
+                              <textarea class="form-control" name="mensaje" id="mensaje" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <br><br>
+                        </form>
+                        <?php
+                        if(isset($_POST['nombre'])){
+                            $name = $_POST['nombre'];
+                            $email = $_POST['email'];
+                            $asunto = $_POST['asunto'];
+                            $mensaje = $_POST['mensaje'];
+                            $destinatario =  "alexis@fese.mx";
+                            $asuntoCorreo = "Nuevo mensaje de Dudas";
+                           //  $destinatario =  "enlace.vinculacion@cua.uam.mx";
+                            $header =  "Correo electronico: $email" . "\r\n";
+                            $header.= "Asunto: $asunto " .  "\r\n";
+                            $header.="Mensaje: $mensaje";
+                            $mail = mail($destinatario,$asuntoCorreo,$header);
+                            if ($mail) {
+                                # code...
+                                ?>
+                                <script >
+                                 allert("correo enviado correctamente");
+                                </script>
+                                <?php
+                            }
+                        }
+                            
+                        ?>
                         </div>
                      </div>
                   </div>
