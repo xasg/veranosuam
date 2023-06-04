@@ -330,6 +330,7 @@ if (isset($_REQUEST['creada'])) {
                         </button>
                         
                         <br><br>
+                        <!-- <form action=""> -->
                         <table class="table table-sm table-dark ">
                            <!-- Button trigger modal Agregar Organización -->
                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalid2">
@@ -430,7 +431,9 @@ if (isset($_REQUEST['creada'])) {
                            ?>
                            <tbody class="">
                               <tr class="table-secondary">
-                              <td class="text-center"><?php echo $counter++ ?></td>
+                              
+                                 <!-- <td class="text-center" id="organizacion_id" name="organizacion_id"><?php echo $rows['id_org']; ?></td> -->
+                                 <td class="text-center"><?php echo $counter++ ?></td>
                                  <td scope="row"><?php echo $rows['nombre'] ?> </td>
                                  <td scope="row"><?php echo $rows['direccion'] ?> </td>
                                  <td scope="row"><?php echo $rows['espacios'] ?> </td>
@@ -444,6 +447,38 @@ if (isset($_REQUEST['creada'])) {
                                  <button type="button" class="btn btn-primary btn-md" data-bs-toggle="modal" data-bs-target="#modalId<?php echo $rows['id_org']; ?>">
                                    acciones
                                  </button>
+                                    <?php
+                                       if ($rows['espacios'] == 0) {
+                                          # code...
+
+                                    ?>
+                                       <form action="" method="post">
+                                       <input type="text" id="organizacion_id_eliminar" name="organizacion_id_eliminar" value="<?php echo $rows['id_org'];?>" hidden="true">          
+                                       <button type="submit" class="btn btn-danger btn-md" name="accion_org" value="eliminar"  >
+                                             Eliminar
+                                          </button>
+                                       </form>
+                                    <?php
+                                       if (isset($_POST['organizacion_id_eliminar'])) {
+                                          # code...
+                                             // $accio='';
+                                             // $accion = $_POST['accion_org'];
+                                          // if ($accion === 'eliminar') {
+                                             # code...
+                                             $id = $_POST['organizacion_id_eliminar'];
+                                             $query="DELETE FROM organizacion WHERE id_org = '{$id}'";
+                                             $resp = $mysqli->query($query);
+                                             if ($resp) {
+                                                # code...
+                                                echo "<script> window.location('index.php'); </script>";
+                                             }
+
+                                          
+                                       // }
+                                          
+                                       }
+                                       }
+                                    ?>
                                  
                                  <!-- Modal Body-->
                                  <div class="modal fade" id="modalId<?php echo $rows['id_org']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalTitleId<?php echo $rows['id_org']; ?>" aria-hidden="true">
@@ -477,44 +512,7 @@ if (isset($_REQUEST['creada'])) {
                                                    }
                                                    # code...
                                                 ?>                                                         
-                                                <!-- <div class="table-responsive">
-                                                   <table class="table table-striped
-                                                   table-hover	
-                                                   table-borderless
-                                                   table-dark
-                                                   align-middle">
-                                                      <thead class="table-light">
-                                                         <caption>Info de la ORG</caption>
-                                                         <tr class="text-center">
-                                                            <th>Estatus</th>
-                                                            <th>Licenciatura</th>
-                                                            <th>Area o Proyecto</th>
-                                                            <th>Actividad</th>
-                                                            <th>Modalidad</th>
-                                                            <th>Modalidad de Trabajo</th>
-                                                            <th>Apoyo</th>
-                                                            <th>Lugares Disponibles</th>
-                                                            <th>Requisitos</th>
-                                                         </tr>
-                                                         </thead>
-                                                         <tbody class="table-group-divider">
-                                                            <tr class="table-secondary text-center" >
-                                                               <td scope="row">
-                                                                  <div class="mb-5">
-                                                                     
-                                                                     <label for="" class="form-label"><?php echo $estats; ?></label>
-                                                                     
-                                                                  </div>
-                                                               </td>
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['curp']; ?>" target="_blank">Visualizar</a></td>
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['comprobante_domicilio']; ?>" target="_blank">Visualizar</a></td>
-                                                            </tr>
-                                                         </tbody>
-                                                      
-                                                         <tfoot>
-                                                         </tfoot>
-                                                   </table>
-                                                </div> -->
+                                          
 
                                                 <form action="actualizar_org.php" class="row" method="post">
 
@@ -821,6 +819,7 @@ if (isset($_REQUEST['creada'])) {
                            ?>
 
                         </table>
+                        <!-- </form> -->
                         <br><br><br>
                      </div>
                      <div class="col-md-12 text-center">
