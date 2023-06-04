@@ -588,7 +588,7 @@ $cat_carreras = view_cat_carreras();
                         <div class="features__shape-content">
                            <div class="features__traffic s-2">
                               <div class="content">
-                                 <span>Instituciones registradas</span>
+                                 <span>Organizaciones registradas</span>
                                  <h5><?php echo $orgs ?></h5>
                               </div>
                               <div class="icon">
@@ -624,7 +624,7 @@ $cat_carreras = view_cat_carreras();
                               <label for="" class="form-label">Selecciona tu carrera</label>
                               <select class="form-select form-select-lg" name="cat_carrera" id="cat_carrera">
                               
-                              <option value = "0" selected>Selecciona tu Grado</option>
+                              <option value = "0" selected>Selecciona tu grado</option>
                               <?php
                                     foreach ($carreras as $resul) {
                                        # code...

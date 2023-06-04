@@ -126,12 +126,11 @@ $(document).ready(function() {
 $usuario = $_SESSION['name'];
 ?>
 <?php
-if (isset($_REQUEST['eliminado'])) {
+if (isset($_REQUEST['eliminado'])) {//Esta Validación verifica que se haya eliminado una vacante correctamente
    # code...
-   // echo "<script> alert('Vacante eliminada correctamente'); </script>";
    echo "<script>  Swal.fire({
       icon: 'success',
-      title: 'Vacante Eliminada Correctamente',
+      title: 'Vacante eliminada correctamente',
       showConfirmButton: true,
       customClass: {
          confirmButton: 'mi-clase-boton-confirmar'
@@ -140,12 +139,11 @@ if (isset($_REQUEST['eliminado'])) {
   });
   </script>";
 }
-if (isset($_REQUEST['exitoso'])) {
+if (isset($_REQUEST['exitoso'])) {//Esta Validación verifica que se haya actualizaco una organización correctamente
    # code...
-   // echo "<script> alert('Vacante eliminada correctamente'); </script>";
    echo "<script>  Swal.fire({
       icon: 'success',
-      title: 'Organizacion actualizada correctamente',
+      title: 'Organización actualizada correctamente',
       showConfirmButton: true,
       customClass: {
          confirmButton: 'mi-clase-boton-confirmar'
@@ -154,12 +152,25 @@ if (isset($_REQUEST['exitoso'])) {
   });
   </script>";
 }
-if (isset($_REQUEST['creada'])) {
+
+if (isset($_REQUEST['eliminada_organizacion'])) { //Esta Validación verifica que se haya eliminado una organización correctamente
    # code...
-   // echo "<script> alert('Vacante eliminada correctamente'); </script>";
    echo "<script>  Swal.fire({
       icon: 'success',
-      title: 'Vacante Registrada correctamente',
+      title: 'Organización eliminada correctamente',
+      showConfirmButton: true,
+      customClass: {
+         confirmButton: 'mi-clase-boton-confirmar'
+       },
+      timer: 12500
+  });
+  </script>";
+}
+if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registrado una vacante correctamente
+   # code...
+   echo "<script>  Swal.fire({
+      icon: 'success',
+      title: 'Vacante registrada correctamente',
       showConfirmButton: true,
       customClass: {
          confirmButton: 'mi-clase-boton-confirmar'
@@ -253,7 +264,7 @@ if (isset($_REQUEST['creada'])) {
                               <ul>
                                  
                                  <li>
-                                    <a href="logout.php">Cerrar Sesion</a>
+                                    <a href="logout.php">Cerrar Sesión</a>
                                  </li>
                                  <li>
                                     <h5>
@@ -333,7 +344,7 @@ if (isset($_REQUEST['creada'])) {
                         <!-- <form action=""> -->
                         <table class="table table-sm table-dark ">
                            <!-- Button trigger modal Agregar Organización -->
-                           <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalid2">
+                           <button type="button" class="solid__btn" style="width:150px; font-size:14px; height: 55px; margin-bottom:20px;" data-bs-toggle="modal" data-bs-target="#modalid2">
                              Agrega una ORG
                            </button>
                            <br>
@@ -362,14 +373,14 @@ if (isset($_REQUEST['creada'])) {
                                                     </div>
                                                         <div class="mb-3">
                                                          <label for="estatus" class="form-label">Disponible</label>
-                                                         <select class="form-select form-select-md w-50" name="estatus" id="estatus">
+                                                         <select class="form-select form-select-md w-50" name="estatus" id="estatus" required>
                                                             <option selected disabled>Selecciona la disponibilidad</option>
                                                             <option value="1">SI</option>
                                                             <option value="0">NO</option>
                                                          </select>
                                                         </div>
                                                       </div>
-                                                   <button type="submit" class="btn solid__btn" >Registrar usuario </button>
+                                                   <button type="submit" class="btn solid__btn" >Registrar organización </button>
                                                 </form>
                                        </div>
                                     </div>
@@ -408,20 +419,12 @@ if (isset($_REQUEST['creada'])) {
                               <tr>
 
                                  <th scope="col">ID</th>
-                                 <th scope="col">Nombre de la Organizacion</th>
-                                 <th scope="col">Direccion</th>
+                                 <th scope="col">Nombre de la Organización</th>
+                                 <th scope="col">Dirección</th>
                                  <th scope="col">vacantes</th>
                                  <th scope="col">Lugares</th>
                                  <th scope="col">Estatus</th>
                                  <th scope="col">Acciones</th>
-                                 <!-- <th scope="col">Licenciatura o carrera</th>
-                                 <th scope="col">Creditos</th>
-                                 <th scope="col">edad</th>
-                                 <th scope="col">Sexo</th>
-                                 <th scope="col">correo</th>
-                                 <th scope="col">telefono</th>
-                                 <th scope="col">fecha de registro</th>
-                                 <th scope="col">Ver documentos</th> -->
                               </tr>
                            </thead>
                            
@@ -432,13 +435,13 @@ if (isset($_REQUEST['creada'])) {
                            <tbody class="">
                               <tr class="table-secondary">
                               
-                                 <!-- <td class="text-center" id="organizacion_id" name="organizacion_id"><?php echo $rows['id_org']; ?></td> -->
+                                 <!-- <td class="text-center" id="organizacion_id" name="organizacion_id"><?php echo $rows['id_org']; ?></td> ID de la ORG en el registro de la base-->
                                  <td class="text-center"><?php echo $counter++ ?></td>
                                  <td scope="row"><?php echo $rows['nombre'] ?> </td>
                                  <td scope="row"><?php echo $rows['direccion'] ?> </td>
                                  <td scope="row"><?php echo $rows['espacios'] ?> </td>
                                  <td scope="row"><?php echo $rows['lugar'] ?> </td>
-                                 <!-- <td scope="row"><?php echo $rows['dt_create'] ?> </td> -->
+                                 <!-- <td scope="row"><?php echo $rows['dt_create'] ?> </td> Por si se necesita saber la fecha de cuando se creo -->
                                  <td scope="row"><?php if ($rows['estatus'] == 1) {
                                      # code...
                                      echo 'Disponible';}else{ echo 'No disponible';}  ?> </td>
@@ -452,31 +455,13 @@ if (isset($_REQUEST['creada'])) {
                                           # code...
 
                                     ?>
-                                       <form action="" method="post">
+                                       <form action="eliminar_org.php" method="post">
                                        <input type="text" id="organizacion_id_eliminar" name="organizacion_id_eliminar" value="<?php echo $rows['id_org'];?>" hidden="true">          
-                                       <button type="submit" class="btn btn-danger btn-md" name="accion_org" value="eliminar"  >
+                                       <button type="submit" class="btn btn-danger btn-md" >
                                              Eliminar
                                           </button>
                                        </form>
                                     <?php
-                                       if (isset($_POST['organizacion_id_eliminar'])) {
-                                          # code...
-                                             // $accio='';
-                                             // $accion = $_POST['accion_org'];
-                                          // if ($accion === 'eliminar') {
-                                             # code...
-                                             $id = $_POST['organizacion_id_eliminar'];
-                                             $query="DELETE FROM organizacion WHERE id_org = '{$id}'";
-                                             $resp = $mysqli->query($query);
-                                             if ($resp) {
-                                                # code...
-                                                echo "<script> window.location('index.php'); </script>";
-                                             }
-
-                                          
-                                       // }
-                                          
-                                       }
                                        }
                                     ?>
                                  
@@ -484,14 +469,14 @@ if (isset($_REQUEST['creada'])) {
                                  <div class="modal fade" id="modalId<?php echo $rows['id_org']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalTitleId<?php echo $rows['id_org']; ?>" aria-hidden="true">
                                     <div class="modal-dialog modal-lg" >
                                        <div class="modal-content">
-                                             <div class="modal-header">
-                                                   <h5 class="modal-title" id="modalTitleId<?php echo $rows['id_org']; ?>">Documentos llenados</h5>
-                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                             <div class="modal-header bg-dark text-light text-center">
+                                                   <h5 class="modal-title bg-dark text-light text-center" id="modalTitleId<?php echo $rows['id_org']; ?>">Registro de vacantes de la organización</h5>
+                                                   <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                          <div class="modal-body">
+                                          <div class="modal-body bg-secondary text-light">
                                              <div class="container-fluid">
                                                 <h4 class="bg-dark text-center border-bottom-0 text-light rounded">
-                                                   Informacion de ORG : 
+                                                   Información de ORG : 
                                                    <i>
                                                       <?php echo $rows['nombre']; ?> <br>
                                                    </i> 
@@ -563,8 +548,8 @@ if (isset($_REQUEST['creada'])) {
                                                       <input type="text" class="form-control border" name="lic" id="lic" aria-describedby="helpId" value="<?php echo $campos['licenciatura']; ?>"> -->
                                                       <div class="mb-3">
                                                          <label for="" class="form-label">Licenciatura o Maestria</label>
-                                                         <select class="form-select form-select-md" name="lic" id="lic">
-                                                            <option selected>Selecciona el Grado:</option>
+                                                         <select class="form-select form-select-md" name="lic" id="lic" required>
+                                                            <option selected disabled>Selecciona el Grado:</option>
                                                             <option value="Administración">Administración</option>
                                                             <option value="Biología Molecular">Biología Molecular</option>
                                                             <option value="Ciencias de la Comunicación">Ciencias de la Comunicación</option>
@@ -584,13 +569,17 @@ if (isset($_REQUEST['creada'])) {
                                                 
                                                 <div class="col-6">
                                                    <br>
-                                                   <label for="area" class="form-label">Area o Proyecto</label>
-                                                     <input type="text" class="form-control border" name="area" id="area" aria-describedby="helpId" >
+                                                   <label for="area" class="form-label">Área o Proyecto</label>
+                                                     <input type="text" class="form-control border" name="area" id="area" aria-describedby="helpId" required>
                                                 </div>
                                                 <div class="col-6">
-                                                   <label for="actividad" class="form-label">Actividad</label>
-                                                     <input type="text" class="form-control border" name="actividad" id="actividad" aria-describedby="helpId">
-                                                </div>
+                                                   <!-- <label for="actividad" class="form-label">Actividad</label>
+                                                     <input type="text" class="form-control border" name="actividad" id="actividad" aria-describedby="helpId"> -->
+                                                     <div class="mb-3">
+                                                        <label for="actividad" class="form-label">Actividad</label>
+                                                       <textarea class="form-control" name="actividad" id="actividad" rows="3" required></textarea>
+                                                     </div>
+                                                   </div>
                                                 <div class="col-6">
                                                    <div class="mb-3">
                                                       <label for="modalidad" class="form-label">Modalidad Particular</label>
@@ -628,7 +617,7 @@ if (isset($_REQUEST['creada'])) {
                                                       <div class="mb-3">
                                                         <label for="" class="form-label">Lugares</label>
                                                         <input type="number"
-                                                          class="form-control" name="lugares" id="lugares" aria-describedby="helpId">
+                                                          class="form-control" name="lugares" id="lugares" aria-describedby="helpId" required>
                                                       </div>
                                                    </div>
                                                 </div>
@@ -704,8 +693,12 @@ if (isset($_REQUEST['creada'])) {
                                                         <input type="text" class="form-control border" name="area_act" id="area_act" aria-describedby="helpId" value="<?php echo $campos['area_proyecto']; ?>" >
                                                    </div>
                                                    <div class="col-6">
-                                                      <label for="actividad" class="form-label">Actividad</label>
-                                                        <input type="text" class="form-control border" name="actividad_act" id="actividad_act" aria-describedby="helpId" value="<?php echo $campos['actividad']; ?>">
+                                                      <!-- <label for="actividad" class="form-label">Actividad</label>
+                                                      <input type="text" class="form-control border" name="actividad_act" id="actividad_act" aria-describedby="helpId" value="<?php echo $campos['actividad']; ?>"> -->
+                                                      <div class="mb-3">
+                                                        <label for="actividad" class="form-label">Actividad</label>
+                                                       <textarea class="form-control" name="actividad_act" id="actividad_act" rows="3"><?php echo $campos['actividad']; ?></textarea>
+                                                     </div>
                                                    </div>
                                                    <div class="col-6">
                                                       <div class="mb-3">
@@ -757,18 +750,6 @@ if (isset($_REQUEST['creada'])) {
                                                          </div>
                                                       </div>
                                                    </div>
-                                                   <div class="form-check">
-                                                     <input class="form-check-input" type="checkbox" value="eliminar" id="eliminar">
-                                                     <label class="form-check-label" for="eliminar">
-                                                       Eliminar
-                                                     </label>
-                                                   </div>
-                                                   <!-- <div class="form-check">
-                                                     <input class="form-check-input" type="checkbox" value="" id="" checked>
-                                                     <label class="form-check-label" for="">
-                                                       Checked checkbox
-                                                     </label>
-                                                   </div> -->
                                                    <div class="col-7">
                                                       <br>   
                                                       <button type="submit" class="btn btn-primary" name="accion" value="actualizar">Actualizar</button>
@@ -796,7 +777,7 @@ if (isset($_REQUEST['creada'])) {
 
                                              </div>
                                           </div>
-                                          <div class="modal-footer">
+                                          <div class="modal-footer bg-dark text-light">
                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
 
                                           </div>

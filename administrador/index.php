@@ -408,7 +408,7 @@ if (isset($_SESSION['name'])) {
                                                       <?php echo $rows['nombres']." ".$rows['a_paterno']."  ".$rows['a_materno'] ?> <br>
                                                    </i> 
                                                 </h4>
-                                                Puedes previsualizar y Descarga los documentos <br>
+                                                Puedes previsualizar y descarga los documentos <br>
 
                                                 <div class="table-responsive">
                                                    <table class="table table-striped
