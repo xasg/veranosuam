@@ -6,3 +6,4 @@ img/*
 *.pyc
 *.class
 *.txt
+*.pem
