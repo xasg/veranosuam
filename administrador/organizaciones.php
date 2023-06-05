@@ -271,22 +271,6 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                                        <i> <?php echo $usuario; ?></i>
                                     </h5>
                                  </li>
-                                 <!-- <li>
-                                    <a href="../#que_son">¿Qué son?</a>
-                                 </li>
-
-                                 <li>
-                                    <a href="../#ors">OR´s</a>
-                                 </li>
-                                 
-                                 <li>
-                                    <a href="../#participa">Participa</a>
-                                 </li> -->
-                                 
-                                 
-                                 <li>
-                                    <!-- <a href="#participa">Registro</a> -->
-                                 </li>
                               </ul>
                            </nav>
                         </div>
@@ -341,7 +325,6 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                         </button>
                         
                         <br><br>
-                        <!-- <form action=""> -->
                         <table class="table table-sm table-dark ">
                            <!-- Button trigger modal Agregar Organización -->
                            <button type="button" class="solid__btn" style="width:150px; font-size:14px; height: 55px; margin-bottom:20px;" data-bs-toggle="modal" data-bs-target="#modalid2">
@@ -408,7 +391,7 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                            <?php 
                               require("../controller/conect.php");
 
-                              $query = "SELECT *,COUNT(espacio_disponible.id_organizacion) as espacios, SUM(lugares) as lugar FROM organizacion left join espacio_disponible on organizacion.id_org = espacio_disponible.id_organizacion GROUP BY organizacion.nombre";
+                              $query = "SELECT *,COUNT(espacio_disponible.id_organizacion) as espacios, SUM(lugares) as lugar FROM organizacion left join espacio_disponible on organizacion.id_org = espacio_disponible.id_organizacion GROUP BY organizacion.nombre ORDER BY id_org DESC, id_espacio DESC";
                               // $query = "SELECT * FROM organizacion ORDER BY id_org";
                               $result = $mysqli->query($query);
                               // $row = mysqli_fetch_assoc($result);
@@ -573,8 +556,6 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                                                      <input type="text" class="form-control border" name="area" id="area" aria-describedby="helpId" required>
                                                 </div>
                                                 <div class="col-6">
-                                                   <!-- <label for="actividad" class="form-label">Actividad</label>
-                                                     <input type="text" class="form-control border" name="actividad" id="actividad" aria-describedby="helpId"> -->
                                                      <div class="mb-3">
                                                         <label for="actividad" class="form-label">Actividad</label>
                                                        <textarea class="form-control" name="actividad" id="actividad" rows="3" required></textarea>
@@ -637,8 +618,6 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                                                    <br><br><br><br>   
                                                 </div>
                                                 </form>
-                                                <form action="actualizar_espacio_org.php" class="row" method="post">
-                                                <label for="vacantes"  class="row text-light text-center bg-dark"><b>Vacantes Disponibles</b></label>
                                                 <?php
                                                 $sql = "SELECT * FROM organizacion LEFT JOIN espacio_disponible on organizacion.id_org = espacio_disponible.id_organizacion where id_org ='{$rows['id_org']}'"; 
                                                 $espacios = $mysqli->query($sql);
@@ -646,7 +625,10 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                                                 foreach ($espacios as $campos) {
                                                    # code...
                                                    
-                                                ?>   
+                                                ?> 
+                                                <form action="actualizar_espacio_org.php" class="row" method="post">
+                                                <label for="vacantes"  class="row text-light text-center bg-dark"><b>Vacantes Disponibles</b></label>
+                                                 
                                                 <br>
                                                 <div class="border-bottom">
                                                    <!-- a -->
@@ -663,9 +645,9 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                                                 
                                                 <div class="col-6"> 
                                                 <br>
+                                                
                                                       <label for="vacante"  class="row form- label col-md-4">Vacante # <?php echo $counter2; $counter2++; ?></label>
-                                                         <!-- <label for="lic" class="row form-label col-md-4">Licenciatura</label>
-                                                         <input type="text" class="form-control border" name="lic" id="lic" aria-describedby="helpId" value="<?php echo $campos['licenciatura']; ?>"> -->
+
                                                          <div class="mb-3">
                                                             <label for="" class="form-label">Licenciatura o Maestria</label>
                                                             <select class="form-select form-select-md" name="lic_act" id="lic_act">
@@ -752,22 +734,18 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                                                    </div>
                                                    <div class="col-7">
                                                       <br>   
-                                                      <button type="submit" class="btn btn-primary" name="accion" value="actualizar">Actualizar</button>
-                                                      <button type="submit" class="btn btn-danger" name="accion" value="Eliminar">Eliminar</button>
-                                                      
-                                                   </div>
-                                              <?php
+                                                      <button type= "submit" class="btn btn-danger" name="accion" value="Eliminar">Eliminar</button>
+                                                      <button type="submit" class="btn btn-primary" name="accion" value="actualizar">Actualizar</button> 
+                                                     <?php  
                                                 } 
-                                                  ?> 
-                                                  
-                                                <?php
-                                                
+                                                  ?>    
+                                                   </div>
+                                                   <br><br>
+                                                </form>
+
+                                                <?php                                                
                                              }
                                                 ?>
-                                                      <br><br>
-                                            
-                                                   </div>
-                                                </form>
                                                 
                                                 
                                                 

@@ -55,7 +55,11 @@
 require('../controller/conect.php');
 sleep(1);
 if (isset($_POST) != "") {
+
     $matricula = $_POST['matricula'];    
+    if ($matricula == null || $matricula == 0 ) {
+      echo '<div class=" alert alert-danger"><strong>Oh no!</strong> aun no se encuentran documentos registrados registrada.</div>';
+    }else{
     $result = $mysqli->query("SELECT * FROM estudiantes WHERE matricula = {$matricula} ");
     foreach($result as $datos){
         $nombre = $datos['nombres'];
@@ -65,6 +69,9 @@ if (isset($_POST) != "") {
     }
     $siexite ='';
     $matriculaValida = $matricula;
+    
+      
+      # code...
     if ($result->num_rows > 0) {
       $result2 = $mysqli->query("SELECT * FROM documentos_estudiante WHERE matricula = {$matricula} ");
       foreach ($result2 as $matriculado) {
@@ -132,14 +139,16 @@ if (isset($_POST) != "") {
                            </div>
 
                            <div class="button-container">
-                              <button type="submit" class="solid__btn" >Enviar</button>
+                              <button type="submit" class="solid__btn" style="margin-top:10px; margin:10px; whidth: 60px; heigth: 20px; font-size:16px; ">Enviar</button>
                            </div>
                         </form>
 
 <?php
       }
+    
     } else {
         echo '<div class=" alert alert-danger"><strong>Oh no!</strong> aun no se encuentran documentos registrados registrada.</div>';
     }
+}
 }
 ?>

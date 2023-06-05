@@ -424,9 +424,9 @@ if (isset($_GET['matricula'])) {
                         <div class="modal fade" id="modalId3" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
                            <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
-                                    <div class="modal-header">
-                                          <h5 class="modal-title" id="modalTitleId">Continua llenando tus Documentos</h5>
-                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="modal-header bg-primary">
+                                          <h5 class="modal-title" style="color: #fff;" id="modalTitleId">Continua llenando tus Documentos</h5>
+                                          <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
                                        </div>
 
                                     <div class="modal-body">
@@ -437,14 +437,14 @@ if (isset($_GET['matricula'])) {
                                                         <input type="number" class="form-control" min="10" maxlength="10" id="matriculaValida_formato" name="matriculaValida_formato" value="" oninput="validarCampoNumerico(this)" required>
                                                         <span id="mensajeError" style="color: red;"></span>
                                                         <div id="result-matricula-valida-formato"></div> 
-                                                        <button type="button" class="btn btn-primary btn-sm ">Validar</button>
+                                                        <button type="button" class="btn btn-primary btn-sm " style="margin-top: 5px;">Validar</button>
                                                         
                                                     </div>
                                     </div>
                                     </form>
                                  </div>
-                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                 <div class="modal-footer bg-primary">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar Ventana</button>
                                     <!-- <button type="button" class="btn btn-primary">Save</button> -->
                                  </div>
                               </div>
@@ -487,7 +487,7 @@ if (isset($_GET['matricula'])) {
                                                         <input type="number" class="form-control" min="10" maxlength="10" id="matriculaValida" name="matriculaValida" value="" oninput="validarCampoNumerico(this)" required>
                                                         <span id="mensajeError" style="color: red;"></span>
                                                         <div id="result-matricula-valida"></div> 
-                                                        <button type="button" class="btn btn-primary btn-sm ">Validar</button>
+                                                        <button type="button" class="btn btn-primary btn-sm " >Validar</button>
                                                         <!-- <button type="submit" class="btn btn-primary btn-sm ">Enviar</button> -->
                                                     </div>
                                                     <!-- <button type="sumbit" class="btn solid__btn">Button</button> -->
@@ -513,9 +513,9 @@ if (isset($_GET['matricula'])) {
                         <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
                                 <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modalTitleId">Datos Generales</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="modal-header bg-primary text-white">
+                                        <h5 class="modal-title text-white" id="modalTitleId">Datos Generales</h5>
+                                            <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                             <form  action="../includes/crear_Usuario.php" method="post">   
@@ -599,11 +599,11 @@ if (isset($_GET['matricula'])) {
                                                         </div>
                                                    <!-- </div> -->
                                                    <!-- </div> -->
-                                                   <button type="submit" class="btn solid__btn" >Enviar Solicitud </button>
+                                                   <button type="submit" class="btn solid__btn" style="margin-top:10px;" >Enviar Solicitud </button>
                                                 </form>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <div class="modal-footer bg-primary">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar ventana</button>
                                     </div>
                                 </div>
                             </div>
