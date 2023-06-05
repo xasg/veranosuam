@@ -349,25 +349,23 @@ $usuario = $_SESSION['name'];
                               </tr>
                            </thead>
                            <?php
-                                        if (isset($_POST['matricula']) && isset($_POST['accion'])) {
-                                            # code...
-                                            $accion = $_POST['accion'];
-                                            $matricula_eliminar = $_POST['matricula'];
-                                            if ($accion === 'eliminar') {
-                                                # code...
-                                                
-                                                $sql = "DELETE FROM estudiantes where matricula = '{$matricula_eliminar}'";
-                                                if ($mysqli->query($sql)) {
-                                                    # code...
-                                                    echo'<div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                   
-                                                    <strong>Usuario Eliminado!</strong> Correctamente
-                                                   </div>';
-                                                }
-                                            }
-                                        }
-                                        ?>
+                           if (isset($_REQUEST['eliminado'])) {
+                            # code...
+                            echo'<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                                       
+                            <strong>Usuario Eliminado!</strong> Correctamente
+                            </div>';
+                           }
+                           if (isset($_REQUEST['actualizado'])) {
+                            # code...
+                            echo'<div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                                       
+                            <strong>Usuario Actualizado!</strong> Correctamente
+                            </div>';
+                           }
+                           ?>
                            
                            <?php
                            foreach ($result as $rows) {
@@ -386,11 +384,119 @@ $usuario = $_SESSION['name'];
                                  <td scope="row"><?php echo $rows['telefono'] ?> </td>
                                  <td scope="row"><?php echo $rows['cretate'] ?> </td>
                                  <td scope="row">
-                                    <form action="#" method ="post">
+                                    <form action="eliminar_estudiantes.php" method ="post">
                                     <input type="number" id="matricula" name="matricula" value="<?php echo $rows['matricula'] ?>" hidden="true">
                                     <!-- <button type="submit" class="btn btn-danger btn-md" name="accion" value="eliminar">Eliminar</button> -->
                                     <button type="submit" class="btn btn-danger btn-md" name="accion" value="eliminar">Eliminar</button>
                                     </form>
+                                    <!-- Modal trigger button -->
+                                    <button type="button" class="btn btn-warning text-light btn-md" data-bs-toggle="modal" data-bs-target="#modalId">
+                                      Editar
+                                    </button>
+                                    
+                                    <!-- Modal Body -->
+                                    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                                    <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalTitleId">Información general del usuario</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="editar_estudiante.php" class="row">
+                                                    <div class="col-md-4">
+                                                        <label for="nombres" class="form-label">Nombre(s)</label>
+                                                        <input type="text" class="form-control" id="nombres" name="nombres" value="<?php echo $rows['nombres'] ?>" required>
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <label for="a_paterno" class="form-label">Apellido Paterno</label>
+                                                        <input type="text" class="form-control" id="a_paterno" name="a_paterno" value="<?php echo $rows['a_paterno'] ?>" required>
+                                                    </div>
+                                                    
+                                                    <div class="col-md-4">
+                                                        <label for="a_materno" class="form-label">Apellido Materno</label>
+                                                        <input type="text" class="form-control" id="a_materno" name="a_materno" value="<?php echo $rows['a_materno'] ?>" required>
+                                                    </div>
+                                                    
+                                                    <div class="col-md-4">
+                                                        <label for="matricula" class="form-label">Matricula</label>
+                                                        <input type="number" class="form-control" min="10" maxlength="10" id="matricula_id" name="matricula_id" value="<?php echo $rows['matricula'] ?>"  hidden="true">
+                                                        <input type="number" class="form-control" min="10" maxlength="10" id="matricula" name="matricula" value="<?php echo $rows['matricula'] ?>" oninput="validarCampoNumerico(this)" required>
+                                                        <span id="mensajeError" style="color: red;"></span>
+                                                        <div id="result-matricula"></div> 
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="licenciatura" class="form-label">Licenciatura</label>
+                                                        <select class="form-select " name="licenciatura" id="licenciatura">
+                                                                <option selected><?php echo $rows['licenciatura'] ?></option>
+                                                                <option value="Administracion">Administración</option>
+                                                                <option value="Biologia Molecular">Biología Molecular</option>                                                                
+                                                                <option value="Ciencias de la Comunicacion">Ciencias de la Comunicación</option>                                                                
+                                                                <option value="Derecho">Derecho</option>                                                                
+                                                                <option value="Diseño">Diseño</option>                                                                
+                                                                <option value="Doctorado en Ciencias Biologicas y de la Salud">Doctorado en Ciencias Biológicas y de la Salud</option>                                                                
+                                                                <option value="Estudios Socioterritoriales">Estudios Socioterritoriales</option>                                                                
+                                                                <option value="Humanidades">Humanidades</option>                                                                
+                                                                <option value="Ingenieria Biologica">Ingeniería Biológica</option>                                                                
+                                                                <option value="Ingenieria en Computacion">Ingeniería en Computación</option>                                                                
+                                                                <option value="Matemáticas Aplicadas">Matemáticas Aplicadas</option>                                                                
+                                                                <option value="Maestría en Diseño, Información y Comunicación">Maestría en Diseño, Información y Comunicación</option>                                                                
+                                                                <option value="Posgrado en Ciencias Naturales e Ingeniería">Posgrado en Ciencias Naturales e Ingeniería</option>                                                                
+                                                                <option value="Posgrado en Ciencias Sociales y Humanidades">Posgrado en Ciencias Sociales y Humanidades</option>                                                                
+                                                                <option value="Tecnologías y Sistemas de Información">Tecnologías y Sistemas de Información</option>                                                                
+                                                            </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="creditos" class="form-label">Creditos</label>
+                                                        <input type="number"  class="form-control" min="2" maxlength="3" id="creditos" name="creditos" value="<?php echo $rows['creditos'] ?>" oninput="validarCampoNumerico3(this)" required>
+                                                        <span id="mensajeError3" style="color: red;"></span>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="edad" class="form-label">Edad</label>
+                                                        <input type="number" class="form-control" id="edad" name="edad" value="<?php echo $rows['edad'] ?>" required>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="correo" class="form-label">Correo</label>
+                                                        <input type="email" class="form-control" id="correo" name="correo" value="<?php echo $rows['correo'] ?>" required>
+                                                        <!-- <div id="result-username"></div>  -->
+                                                      </div>
+                                                     
+                                                    <div class="col-md-4">
+                                                       <label for="sexo" class="form-label">Sexo</label>
+                                                       <select class="form-select " name="sexo" id="sexo">
+                                                          <option selected><?php echo $rows['sexo'] ?></option>
+                                                          <option value="Masculino">Masculino</option>
+                                                          <option value="Femenino">Femenino</option>                                                                
+                                                         </select>
+                                                         
+                                                      </div>
+                                                      
+                                                      <div class="col-md-4">
+                                                        <label for="telefono" class="form-label">Telefono</label>
+                                                        <input type="number" class="form-control" min="10" maxlength="10" id="telefono" name="telefono" value="<?php echo $rows['telefono'] ?>" oninput="validarCampoNumerico2(this)" required>
+                                                       
+                                                        <span id="mensajeError2" style="color: red;"></span>
+                                                        </div><br>
+                                                   <button type="submit" class="btn solid__btn btn-md" name="accion" value="actualziar" style="margin-top:80px; width:150px;" >Realizar cambios</button>
+                                                        
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar ventana</button>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <!-- Optional: Place to the bottom of scripts -->
+                                    <script>
+                                        const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
+                                    
+                                    </script>
                                     
                                  </td>
                                  
