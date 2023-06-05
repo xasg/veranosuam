@@ -1,1 +1,6 @@
 assets/*
+controller/*
+empresas/*
+img/*
+includes/*.php
+*.sql
