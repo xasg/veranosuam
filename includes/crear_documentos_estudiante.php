@@ -50,8 +50,6 @@ if ($_POST) {
 
         $formato_postulacion = $matricula_estudiante.'_'. $_FILES['formato_postulacion']["name"];
         $formato_postulacion_tmp = $_FILES['formato_postulacion']["tmp_name"];
-        // echo $_POST["ine_"];
-        // echo "<script> window.location(../index.php); </script>";
             
             $carpeta_documentos = "files/";
             $archivo = $carpeta_documentos . basename($ine);
@@ -72,11 +70,11 @@ if ($_POST) {
                         // echo "El archivo se agrego correctamente";
                         global $mysqli;
                         $sql =  "INSERT INTO  documentos_estudiante(matricula,ine,curp,comprobante_domicilio,seguro,cv,constancia_creditos,carta_compromiso,formato_pago,cuenta_bancaria,formato_postulacion)  values( '{$matricula_estudiante}','{$ine}','{$curp}','{$comprobante_domicilio}','{$seguro}','{$cv}','{$constancia}','{$carta_compromiso}','{$formato_pago}','{$cuenta_bancaria}','{$formato_postulacion}')";
+                        $query = "UPDATE estudiantes SET estatus = 1 where matricula = '{$matricula_estudiante}'";                        
                         
-
-                        if ($mysqli->query($sql)) {
+                        if ($mysqli->query($sql) && $mysqli->query($query)) {
                             # code...
-                            header("Location: ../index.php");
+                            header("Location: ../index.php?envio=$matricula_estudiante");
                         }
 
                     }else{

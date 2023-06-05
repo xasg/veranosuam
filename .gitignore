@@ -2,5 +2,7 @@ assets/*
 controller/*
 empresas/*
 img/*
-includes/*.php
-*.sql
+*.o
+*.pyc
+*.class
+*.txt

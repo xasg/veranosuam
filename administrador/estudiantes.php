@@ -123,22 +123,7 @@ $(document).ready(function() {
    </head>
    <body>
    <?php
-
-if (isset($_SESSION['name'])) {
-    $usuario = $_SESSION['name'];
-        echo "<script>  Swal.fire({
-            icon: 'success',
-            title: 'Bienvenid@ {$usuario} al panel de ADMINISTRADOR',
-            showConfirmButton: true,
-            customClass: {
-               confirmButton: 'mi-clase-boton-confirmar'
-             },
-            timer: 12500
-        });
-        </script>";
-    
-    // header("Location: ../view/inscribete.php?registrado='si'");
-}
+$usuario = $_SESSION['name'];
 ?>
 <?php
    if (isset($_REQUEST['usuarionuevo'])) {
@@ -325,11 +310,11 @@ if (isset($_SESSION['name'])) {
 
                         <ul class="nav nav-tabs" id="navId" role="tablist">
                            <li class="nav-item">
-                              <a href="#tab1Id" class="nav-link active" data-bs-toggle="tab" aria-current="page">Registro de documentación completa</a>
+                              <a href="index.php" class="nav-link " >Registro de documentación completa</a>
                            </li>
 
-                           <li class="nav-item" >
-                              <a href="estudiantes.php" class="nav-link" >Estudiantes que no enviaron su documentación</a>
+                           <li class="nav-item" role="presentation">
+                              <a href="#" class="nav-link active" >Estudiantes que no enviaron su documentación</a>
                            </li>
                           
                         </ul>
@@ -340,13 +325,14 @@ if (isset($_SESSION['name'])) {
                            <?php 
                               require("../controller/conect.php");
 
-                              $query = "SELECT * FROM documentos_estudiante left join estudiantes on estudiantes.matricula = documentos_estudiante.matricula";
+                              $query = "SELECT * FROM estudiantes WHERE estatus = 0";
                               $result = $mysqli->query($query);
                               // $row = mysqli_fetch_assoc($result);
                               
                                  # code...
                            ?>
                            <thead class="border-bottom">
+                            
                               <tr>
                                  <th scope="col">Matricula del alumno</th>
                                  <th scope="col">Nombre</th>
@@ -359,16 +345,36 @@ if (isset($_SESSION['name'])) {
                                  <th scope="col">correo</th>
                                  <th scope="col">telefono</th>
                                  <th scope="col">fecha de registro</th>
-                                 <th scope="col">Ver documentos</th>
+                                 <th scope="col">acciones</th>
                               </tr>
                            </thead>
+                           <?php
+                                        if (isset($_POST['matricula']) && isset($_POST['accion'])) {
+                                            # code...
+                                            $accion = $_POST['accion'];
+                                            $matricula_eliminar = $_POST['matricula'];
+                                            if ($accion === 'eliminar') {
+                                                # code...
+                                                
+                                                $sql = "DELETE FROM estudiantes where matricula = '{$matricula_eliminar}'";
+                                                if ($mysqli->query($sql)) {
+                                                    # code...
+                                                    echo'<div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                   
+                                                    <strong>Usuario Eliminado!</strong> Correctamente
+                                                   </div>';
+                                                }
+                                            }
+                                        }
+                                        ?>
                            
                            <?php
                            foreach ($result as $rows) {
                            ?>
                            <tbody class="">
                               <tr class="table-secondary">
-                                 <td scope="row"><?php echo $rows['matricula'] ?> </td>
+                                 <td scope="row"><?php echo $rows['matricula'] ?> </td>                                
                                  <td scope="row"><?php echo $rows['nombres'] ?> </td>
                                  <td scope="row"><?php echo $rows['a_paterno'] ?> </td>
                                  <td scope="row"><?php echo $rows['a_materno'] ?> </td>
@@ -379,122 +385,16 @@ if (isset($_SESSION['name'])) {
                                  <td scope="row"><?php echo $rows['correo'] ?> </td>
                                  <td scope="row"><?php echo $rows['telefono'] ?> </td>
                                  <td scope="row"><?php echo $rows['cretate'] ?> </td>
-                                 <td scope="row"> <!--  Modal trigger button  -->
-                                 <button type="button" class="btn btn-primary btn-md" data-bs-toggle="modal" data-bs-target="#modalId<?php echo $rows['id']; ?>">
-                                   ver documentos
-                                 </button>
+                                 <td scope="row">
+                                    <form action="#" method ="post">
+                                    <input type="number" id="matricula" name="matricula" value="<?php echo $rows['matricula'] ?>" hidden="true">
+                                    <!-- <button type="submit" class="btn btn-danger btn-md" name="accion" value="eliminar">Eliminar</button> -->
+                                    <button type="submit" class="btn btn-danger btn-md" name="accion" value="eliminar">Eliminar</button>
+                                    </form>
+                                    
+                                 </td>
                                  
-                                 <!-- Modal Body-->
-                                 <div class="modal fade" id="modalId<?php echo $rows['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalTitleId<?php echo $rows['id']; ?>" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" >
-                                       <div class="modal-content">
-                                             <div class="modal-header">
-                                                   <h5 class="modal-title" id="modalTitleId<?php echo $rows['id']; ?>">Documentos llenados</h5>
-                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                          <div class="modal-body">
-                                             <div class="container-fluid">
-                                                <h4 class="bg-dark text-center border-bottom-0 text-light rounded">
-                                                   Documentos de 
-                                                   <i>
-                                                      <?php echo $rows['nombres']." ".$rows['a_paterno']."  ".$rows['a_materno'] ?> <br>
-                                                   </i> 
-                                                </h4>
-                                                Puedes previsualizar y descarga los documentos <br>
-
-                                                <div class="table-responsive">
-                                                   <table class="table table-striped
-                                                   table-hover	
-                                                   table-borderless
-                                                   table-dark
-                                                   align-middle">
-                                                      <thead class="table-light">
-                                                         <caption>Documentación</caption>
-                                                         <tr class="text-center">
-                                                            <th>INE</th>
-                                                            <th>CURP</th>
-                                                            <th>Comprobante de Domicilio</th>
-                                                         </tr>
-                                                         </thead>
-                                                         <tbody class="table-group-divider">
-                                                            <tr class="table-secondary text-center" >
-                                                               <td scope="row"><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['ine'] ?>" target="_blank">Visualizar</a></td>
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['curp']; ?>" target="_blank">Visualizar</a></td>
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['comprobante_domicilio']; ?>" target="_blank">Visualizar</a></td>
-                                                            </tr>
-                                                         </tbody>
-                                                         <thead>
-                                                            <tr class="text-center">
-                                                               <th>
-                                                               Comprobante de Seguro Facultativo
-                                                               </th>
-                                                               <th>
-                                                               Curriculum Vitae
-                                                               </th>
-                                                               <th>
-                                                               Constancia de Creditos y Promedio
-                                                               </th>
-                                                            </tr>
-                                                         </thead>
-                                                         <tbody>
-                                                         <tr class="table-secondary text-center">
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['seguro']; ?>" target="_blank">Visualizar</a></td>
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['cv'] ?>" target="_blank">Visualizar</a></td>
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['constancia_creditos'] ?>" target="_blank">Visualizar</a></td>
-                                                            </tr>
-                                                         </tbody>
-                                                         <thead>
-                                                            <tr class="text-center">
-                                                               <th>Carta Compromiso</th>
-                                                               <th>Formato de Pago</th>
-                                                               <th>Cuenta Bancaria</th>
-                                                            </tr>
-                                                         </thead>
-                                                         <tbody>
-                                                            <tr class="table-secondary text-center">
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['carta_compromiso'] ?>" target="_blank">Visualizar</a></td>
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['formato_pago'] ?>" target="_blank">Visualizar</a></td>
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['cuenta_bancaria'] ?>" target="_blank">Visualizar</a></td>
-                                                            </tr>
-                                                         </tbody>
-                                                         <thead>
-                                                            <tr>
-                                                               <th>Formato de Postulación</th>
-                                                               <th></th>
-                                                               <th></th>
-                                                            </tr>
-                                                         </thead>
-                                                         <tbody>
-                                                            <tr class="table-secondary text-center">
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['formato_postulacion'] ?>" target="_blank">Visualizar</a></td>
-                                                               <td></td>
-                                                               <td></td>
-                                                            </tr>
-                                                         </tbody>
-                                                         <tfoot>
-                                                         </tfoot>
-                                                   </table>
-                                                </div>
-                                                
-
-                                                <!-- <h3><span>1 - </span> Matricula -> <a class="btn btn-primary btn-sm" href="../includes/files/<?php #echo $rows['ine'] ?>" target="_blank">Visualizar</a></h3><br>  -->
-
-                                             </div>
-                                          </div>
-                                          <div class="modal-footer">
-                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                             
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 
-                                 
-                                 
-                                 
-                                  </td>
-                                 <!-- <td></td>
-                                 <td>R1C3</td> -->
+                              
                               </tr>
                 
                            </tbody>
@@ -506,9 +406,8 @@ if (isset($_SESSION['name'])) {
                         </table>
                         <br><br><br>
                      </div>
-                     <div class="col-md-12 text-center">
-<ul class="pagination pagination-lg pager" id="developer_page"></ul>
-</div>
+                           
+                           
                      
 
                   </div>

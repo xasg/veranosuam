@@ -31,14 +31,52 @@ $cat_carreras = view_cat_carreras();
       <link rel="stylesheet" href="assets/app/css/fontawesome-pro.css">
       <link rel="stylesheet" href="assets/app/css/spacing.css">
       <link rel="stylesheet" href="assets/app/css/main.css">
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+      <style>
+       .mi-clase-boton-confirmar {
+  background-color: #007bff !important;
+  border-radius: 10px !important;
+  color: #FFFFFF !important;
+  box-shadow: 1px 0px 8px #000 !important;
+}
+    </style>
    </head>
+
    <body>
 
       <!--[if lte IE 9]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
       <![endif]-->
 
-      <!-- Offcanvas area start -->
+      <!-- Mensaje Modal de envio de Documentos -->
+      <?php
+   if (isset($_REQUEST['envio'])) {
+                 $matricula = $_REQUEST['envio'];
+                 $destinatario =  "alexis@fese.mx";
+                 $asuntoCorreo = "Usuario Registrado";
+                  //  $destinatario =  "enlace.vinculacion@cua.uam.mx";
+                  $header =  "Se registro" . "\r\n";
+                  $header.= "Asunto: Un usuario subio todos sus documentos " .  "\r\n";
+                  $header.="Mensaje: El usuario con la matricula '{$matricula}' subio todos sus documentos";
+                  $mail = mail($destinatario,$asuntoCorreo,$header);
+                  if ($mail) {
+
+                  echo "<script>  Swal.fire({
+                     icon: 'success',
+                     title: 'Tus documentos se enviaron correctamente',
+                     showConfirmButton: true,
+                     customClass: {
+                        confirmButton: 'mi-clase-boton-confirmar'
+                        },
+                     timer: 12500
+                  });
+                  </script>";
+                      }
+  }
+   
+   ?>
       <div class="fix">
          <div class="offcanvas__info">
             <div class="offcanvas__wrapper">

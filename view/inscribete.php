@@ -685,11 +685,7 @@ if (isset($_GET['matricula'])) {
                             $mail = mail($destinatario,$asuntoCorreo,$header);
                             if ($mail) {
                                 # code...
-                                ?>
-                                <script >
-                                 allert("correo enviado correctamente");
-                                </script>
-                                <?php
+                                echo"correo enviado";
                             }
                         }
                             
