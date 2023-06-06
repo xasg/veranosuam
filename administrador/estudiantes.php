@@ -404,7 +404,7 @@ $usuario = $_SESSION['name'];
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="editar_estudiante.php" class="row">
+                                                    <form action="editar_estudiante.php" class="row" method="post">
                                                     <div class="col-md-4">
                                                         <label for="nombres" class="form-label">Nombre(s)</label>
                                                         <input type="text" class="form-control" id="nombres" name="nombres" value="<?php echo $rows['nombres'] ?>" required>
@@ -422,7 +422,7 @@ $usuario = $_SESSION['name'];
                                                     
                                                     <div class="col-md-4">
                                                         <label for="matricula" class="form-label">Matricula</label>
-                                                        <input type="number" class="form-control" min="10" maxlength="10" id="matricula_id" name="matricula_id" value="<?php echo $rows['matricula'] ?>"  hidden="true">
+                                                        <input type="number" class="form-control" id="user_id" name="user_id" value="<?php echo $rows['id'] ?>"  hidden="true">
                                                         <input type="number" class="form-control" min="10" maxlength="10" id="matricula" name="matricula" value="<?php echo $rows['matricula'] ?>" oninput="validarCampoNumerico(this)" required>
                                                         <span id="mensajeError" style="color: red;"></span>
                                                         <div id="result-matricula"></div> 
@@ -479,7 +479,7 @@ $usuario = $_SESSION['name'];
                                                        
                                                         <span id="mensajeError2" style="color: red;"></span>
                                                         </div><br>
-                                                   <button type="submit" class="btn solid__btn btn-md" name="accion" value="actualziar" style="margin-top:80px; width:150px;" >Realizar cambios</button>
+                                                   <button type="submit" class="btn solid__btn btn-md"  style="margin-top:80px; width:150px;" >Realizar cambios</button>
                                                         
                                                     </form>
                                                 </div>
