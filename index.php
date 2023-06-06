@@ -53,14 +53,14 @@ $cat_carreras = view_cat_carreras();
       <!-- Mensaje Modal de envio de Documentos -->
       <?php
    if (isset($_REQUEST['envio'])) {
-                 $matricula = $_REQUEST['envio'];
-                 $destinatario =  "alexis@fese.mx";
-                 $asuntoCorreo = "Usuario Registrado";
-                  //  $destinatario =  "enlace.vinculacion@cua.uam.mx";
-                  $header =  "Se registro" . "\r\n";
-                  $header.= "Asunto: Un usuario subio todos sus documentos " .  "\r\n";
-                  $header.="Mensaje: El usuario con la matricula '{$matricula}' subio todos sus documentos";
-                  $mail = mail($destinatario,$asuntoCorreo,$header);
+               //   $matricula = $_REQUEST['envio'];
+               //   $destinatario =  "alexis@fese.mx";
+               //   $asuntoCorreo = "Usuario Registrado";
+               //    //  $destinatario =  "enlace.vinculacion@cua.uam.mx";
+               //    $header =  "Se registro" . "\r\n";
+               //    $header.= "Asunto: Un usuario subio todos sus documentos " .  "\r\n";
+               //    $header.="Mensaje: El usuario con la matricula '{$matricula}' subio todos sus documentos";
+               //    $mail = mail($destinatario,$asuntoCorreo,$header);
                   if ($mail) {
 
                   echo "<script>  Swal.fire({
