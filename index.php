@@ -61,7 +61,7 @@ $cat_carreras = view_cat_carreras();
                //    $header.= "Asunto: Un usuario subio todos sus documentos " .  "\r\n";
                //    $header.="Mensaje: El usuario con la matricula '{$matricula}' subio todos sus documentos";
                //    $mail = mail($destinatario,$asuntoCorreo,$header);
-                  if ($mail) {
+                  // if ($mail) {
 
                   echo "<script>  Swal.fire({
                      icon: 'success',
@@ -73,7 +73,7 @@ $cat_carreras = view_cat_carreras();
                      timer: 12500
                   });
                   </script>";
-                      }
+                     //  }
   }
    
    ?>
