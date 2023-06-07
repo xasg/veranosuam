@@ -43,7 +43,19 @@ $cat_carreras = view_cat_carreras();
 }
     </style>
      <style>
-        .whatsapp-button {
+
+            /* Estilos opcionales para el botón */
+    /* .whatsapp-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: green;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    } */
+    .whatsapp-button {
             position: fixed;
             bottom: 20px;
             left: 50px;
@@ -58,11 +70,83 @@ $cat_carreras = view_cat_carreras();
             cursor: pointer;
             box-shadow: 0px 0px 4px #000;
         }
+    .whatsapp-popup {
+      position: fixed;
+      z-index: 900;
+      bottom: 80px;
+      left: -300px; /* Cambiamos el valor para que la ventana esté oculta fuera del lado izquierdo */
+      width: 300px;
+      height: auto;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: opacity 0.3s ease, left 0.3s ease; /* Actualizamos la transición para que se aplique a la propiedad left */
+      padding: 20px;
+      border-radius: 5px;
+      background-color: #00b341;
+     
+
+    }
+
+    .whatsapp-popup.open {
+      opacity: 1;
+      left: 20px; /* Cambiamos el valor para que la ventana aparezca desde el lado izquierdo */
+    }
+
+    .whatsapp-popup h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .whatsapp-popup p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .whatsapp-popup .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .whatsapp-popup .send-button {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: green;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .whatsapp-popup .input-field {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .head-whatssap{
+        background-color: #00b341;
+        color: #fff;
+        width: 100%;
+    }
+    textarea {
+    resize: none;
+}
     </style>
    </head>
 
    <body>
-   <div class="whatsapp-button" onclick="abrirWhatsApp()">
+   <!-- <div class="whatsapp-button" onclick="abrirWhatsApp()"> -->
+   <div class="whatsapp-button" onclick="toggleWhatsAppPopup()">
         <!-- <i class="fab fa-whatsapp"></i> -->
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -70,6 +154,19 @@ $cat_carreras = view_cat_carreras();
             <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
           </svg>
     </div>
+    <!-- <button class="whatsapp-button" onclick="toggleWhatsAppPopup()">Abrir WhatsApp</button> -->
+
+<div id="whatsappPopup" class="whatsapp-popup">
+  <button class="close-button" onclick="toggleWhatsAppPopup()">X</button>
+  <h2 class="text-light">¡Hola!</h2>
+  <p class="text-light" >Gracias por visitar nuestro sitio web. ¿Cómo podemos ayudarte hoy?</p>
+
+  <textarea class="input-field" id="whatsappMessage" placeholder="Escribe tu mensaje"></textarea>
+
+  <button class="send-button" onclick="sendWhatsAppMessage()">Enviar</button>
+  <button class="send-button" onclick="clearWhatsAppMessage()">Limpiar</button>
+</div>
+
 
       <!--[if lte IE 9]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -1328,7 +1425,7 @@ $cat_carreras = view_cat_carreras();
             }
          });
       </script>
-<script>
+<!-- <script>
         function abrirWhatsApp() {
             // Reemplaza "xxxxxxxxxxxxx" con el número de teléfono de destino
             var numeroTelefono = "5637269723";
@@ -1339,8 +1436,28 @@ $cat_carreras = view_cat_carreras();
             // Abre una nueva ventana o pestaña con el enlace de WhatsApp
             window.open(url);
         }
-    </script>    
-    
+    </script>     -->
+    <script>
+    function toggleWhatsAppPopup() {
+      var whatsappPopup = document.getElementById('whatsappPopup');
+      whatsappPopup.classList.toggle('open');
+    }
+
+    function sendWhatsAppMessage() {
+      var message = document.getElementById('whatsappMessage').value;
+      var phoneNumber = '5637269723'; // Reemplaza con tu número de teléfono de WhatsApp
+
+      var url = 'https://api.whatsapp.com/send?phone=' + phoneNumber + '&text=' + encodeURIComponent(message);
+
+      // Ventana emergente sin redirección
+      var popup = window.open(url, '_blank', 'width=400,height=600,scrollbars=yes,resizable=yes');
+      popup.focus();
+    }
+
+    function clearWhatsAppMessage() {
+      document.getElementById('whatsappMessage').value = '';
+    }
+  </script>
    </body>
   
 </html>
