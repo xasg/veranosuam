@@ -16,7 +16,7 @@
         date_default_timezone_set('America/Mexico_City');
         $tiempo = date('d-m-Y H:i:s'); 
                                                 
-        $sql = "UPDATE estudiantes SET nombres='{$nombres_act}',a_paterno='{$a_paterno_act}',a_materno='{$a_materno_act}',matricula='{$matricula_act}',licenciatura='{$lic_act}',creditos ='{$creditos_act}',sexo ='{$sexo_act}',correo='{$correo_act}',telefono='{$telefono_act}',cretate='{$tiempo}' WHERE id='{$actualiza_id}'";
+        $sql = "UPDATE estudiantes SET nombres='{$nombres_act}',a_paterno='{$a_paterno_act}',a_materno='{$a_materno_act}',matricula='{$matricula_act}',licenciatura='{$lic_act}',creditos ='{$creditos_act}',edad='{$edad_act}',sexo ='{$sexo_act}',correo='{$correo_act}',telefono='{$telefono_act}',cretate='{$tiempo}' WHERE id='{$actualiza_id}'";
         if ($mysqli->query($sql)) {
         # code...
         header("Location: estudiantes.php?actualizado=$matricula_act");
