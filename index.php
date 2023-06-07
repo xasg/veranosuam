@@ -42,9 +42,34 @@ $cat_carreras = view_cat_carreras();
   box-shadow: 1px 0px 8px #000 !important;
 }
     </style>
+     <style>
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50px;
+            width: 54px;
+
+            z-index: 15;
+            background-color: #00b341;
+            color: white;
+            padding: 12px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0px 0px 4px #000;
+        }
+    </style>
    </head>
 
    <body>
+   <div class="whatsapp-button" onclick="abrirWhatsApp()">
+        <!-- <i class="fab fa-whatsapp"></i> -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+            <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+          </svg>
+    </div>
 
       <!--[if lte IE 9]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -1303,7 +1328,18 @@ $cat_carreras = view_cat_carreras();
             }
          });
       </script>
-    
+<script>
+        function abrirWhatsApp() {
+            // Reemplaza "xxxxxxxxxxxxx" con el número de teléfono de destino
+            var numeroTelefono = "5637269723";
+            
+            // Crea el enlace para abrir WhatsApp con el número de teléfono
+            var url = "https://api.whatsapp.com/send?phone=" + numeroTelefono;
+
+            // Abre una nueva ventana o pestaña con el enlace de WhatsApp
+            window.open(url);
+        }
+    </script>    
     
    </body>
   

@@ -34,9 +34,32 @@
   color: #FFFFFF !important;
   box-shadow: 1px 0px 8px #000 !important;
 }
+.whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50px;
+            width: 54px;
+
+            z-index: 15;
+            background-color: #00b341;
+            color: white;
+            padding: 12px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0px 0px 4px #000;
+        }
     </style>
    </head>
    <body>
+   <div class="whatsapp-button" onclick="abrirWhatsApp()">
+        <!-- <i class="fab fa-whatsapp"></i> -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+            <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+          </svg>
+    </div>
    <?php
 // $usuario = $_SESSION['name'];
 ?>
@@ -216,7 +239,7 @@
                         Si tienes alguna duda, comentario o sugerencia puedes dejarnos un mensaje en la forma de contacto, o marcarnos al número telefónico.
                         </p>
                         <div class="container row">
-                           <section class="col-md-4">
+                           <section class="col-md-8">
                               <h3 class="h3-formulario">
                                  Ubicación
                               </h3>
@@ -228,7 +251,7 @@
                               </p>
                            </section>
                            <section class="col-md-auto">
-                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3764.367589777984!2d-99.28315802394573!3d19.353229843209306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d2074a4aea180d%3A0x1151e61121fd01f3!2sUniversidad%20Aut%C3%B3noma%20Metropolitana%20Unidad%20Cuajimalpa!5e0!3m2!1ses-419!2smx!4v1685769645597!5m2!1ses-419!2smx" width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3764.367589777984!2d-99.28315802394573!3d19.353229843209306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d2074a4aea180d%3A0x1151e61121fd01f3!2sUniversidad%20Aut%C3%B3noma%20Metropolitana%20Unidad%20Cuajimalpa!5e0!3m2!1ses-419!2smx!4v1685769645597!5m2!1ses-419!2smx" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                            </section>
                         </div>
 
@@ -437,7 +460,19 @@
       <script src="assets/app/js/isotope.pkgd.min.js"></script>
       <script src="assets/app/js/ajax-form.js"></script>
       <script src="assets/app/js/main.js"></script>
-      
+      <script>
+        function abrirWhatsApp() {
+            // Reemplaza "xxxxxxxxxxxxx" con el número de teléfono de destino
+            var numeroTelefono = "5637269723";
+            
+            // Crea el enlace para abrir WhatsApp con el número de teléfono
+            var url = "https://api.whatsapp.com/send?phone=" + numeroTelefono;
+
+            // Abre una nueva ventana o pestaña con el enlace de WhatsApp
+            window.open(url);
+        }
+    </script> 
+   </body>
   
 </html>
 

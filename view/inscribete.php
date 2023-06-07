@@ -104,9 +104,32 @@ $(document).ready(function() {
   color: #FFFFFF !important;
   box-shadow: 1px 0px 8px #000 !important;
 }
+.whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50px;
+            width: 54px;
+
+            z-index: 15;
+            background-color: #00b341;
+            color: white;
+            padding: 12px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0px 0px 4px #000;
+        }
     </style>
    </head>
    <body>
+   <div class="whatsapp-button" onclick="abrirWhatsApp()">
+        <!-- <i class="fab fa-whatsapp"></i> -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+            <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+          </svg>
+    </div>
    <?php
 
 if (isset($_GET['matricula'])) {
@@ -648,7 +671,7 @@ if (isset($_GET['matricula'])) {
                            <span>Ciudad de México, CDMX</span>
                         </div>
                         <div class="touch__social col-md-auto w-50">
-                           <form class="w-100 " action="index.php" method="post">
+                           <!-- <form class="w-100 " action="index.php" method="post">
                               <h4 class="text-center">Contactanos</h4>
                               <br>
                             <div class="mb-3">
@@ -669,7 +692,7 @@ if (isset($_GET['matricula'])) {
                             </div>
                             <button type="submit" class="btn btn-primary">Enviar</button>
                             <br><br>
-                        </form>
+                        </form> -->
                         <?php
                         if(isset($_POST['nombre'])){
                             $name = $_POST['nombre'];
@@ -831,7 +854,18 @@ if (isset($_GET['matricula'])) {
             }
         }
     </script>
+<script>
+        function abrirWhatsApp() {
+            // Reemplaza "xxxxxxxxxxxxx" con el número de teléfono de destino
+            var numeroTelefono = "5637269723";
+            
+            // Crea el enlace para abrir WhatsApp con el número de teléfono
+            var url = "https://api.whatsapp.com/send?phone=" + numeroTelefono;
 
+            // Abre una nueva ventana o pestaña con el enlace de WhatsApp
+            window.open(url);
+        }
+    </script> 
 
    </body>
   
