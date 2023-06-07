@@ -4,10 +4,6 @@ require_once('../controller/conect.php');
 if ($_POST) {
         // header("../index.php");
         $matricula_estudiante = $_POST["matricula_estudiante"];
-                        
-
-
-        
         $ine = $matricula_estudiante.'_'. $_FILES['ine']["name"];
         $ine_tmp = $_FILES['ine']["tmp_name"];
 
@@ -38,7 +34,8 @@ if ($_POST) {
         $formato_postulacion = $matricula_estudiante.'_'. $_FILES['formato_postulacion']["name"];
         $formato_postulacion_tmp = $_FILES['formato_postulacion']["tmp_name"];
             
-            $carpeta_documentos = "./files/";
+            // $carpeta_documentos = "./files/";
+            $carpeta_documentos = __DIR__ . '/files/';;
             $archivo = $carpeta_documentos . basename($ine);
             $archivo2 = $carpeta_documentos . basename($curp);
             // echo $archivo;
