@@ -65,7 +65,7 @@ if ($_POST) {
                         }
 
                     }else{
-                        echo "HUBO UN ERROR";
+                        echo "HUBO UN ERROR AL INSERTAR LOS DATOS";
 
                     }
             }else {
