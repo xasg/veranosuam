@@ -1,5 +1,5 @@
 <?php
-require('../controller/conect.php');
+require_once('../controller/conect.php');
 
 if ($_POST) {
         // header("../index.php");
@@ -55,7 +55,7 @@ if ($_POST) {
                         
 
                         // echo "El archivo se agrego correctamente";
-                        global $mysqli;
+                        // global $mysqli;
                         $sql =  "INSERT INTO  documentos_estudiante(matricula,ine,curp,comprobante_domicilio,seguro,cv,constancia_creditos,carta_compromiso,formato_pago,cuenta_bancaria,formato_postulacion)  values( '{$matricula_estudiante}','{$ine}','{$curp}','{$comprobante_domicilio}','{$seguro}','{$cv}','{$constancia}','{$carta_compromiso}','{$formato_pago}','{$cuenta_bancaria}','{$formato_postulacion}')";
                         $query = "UPDATE estudiantes SET estatus = 1 where matricula = '{$matricula_estudiante}'";                        
                         
