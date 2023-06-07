@@ -38,7 +38,7 @@ if ($_POST) {
         $formato_postulacion = $matricula_estudiante.'_'. $_FILES['formato_postulacion']["name"];
         $formato_postulacion_tmp = $_FILES['formato_postulacion']["tmp_name"];
             
-            $carpeta_documentos = "files/";
+            $carpeta_documentos = "./files/";
             $archivo = $carpeta_documentos . basename($ine);
             $archivo2 = $carpeta_documentos . basename($curp);
             // echo $archivo;
