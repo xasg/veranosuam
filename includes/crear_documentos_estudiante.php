@@ -1,22 +1,9 @@
 <?php
-require_once('../controller/conect.php');
+require('../controller/conect.php');
 
 if ($_POST) {
         // header("../index.php");
         $matricula_estudiante = $_POST["matricula_estudiante"];
-    
-        //Validacion de usuario en base de datos con documentos
-        // $siexiste = '';
-        // global $mysqli;
-        //                 $sql =  "SELECT * FROM  documentos_estudiante WHERE matricula = '{$matricula_estudiante}'";
-        //                 $result = $mysqli->query($sql);
-        //                 foreach($result as $matriculaexiste){
-        //                     $siexiste = $matriculaexiste['matricula'];
-        //                 }
-        //                 if ($matricula_estudiante == $siexiste) {
-        //                     # code...
-        //                     header("Location: ../view/inscribete.php?existe=1");
-        //                 }elseif($siexiste == '' || $siexiste == null) {
                         
 
 
