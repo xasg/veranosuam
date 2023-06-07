@@ -249,7 +249,7 @@
                            </section>
                         </div>
                      </div>
-                      <div class="container m-0 row justify-content-center">
+                      <!-- <div class="container m-0 row justify-content-center">
                            <h3 class="h3-formulario">
                                  Comentarios:
                            </h3><br>
@@ -275,7 +275,7 @@
                             <br><br>
                         </form>
                         
-                        
+                         -->
 
                         <?php
                         if(isset($_POST['nombre'])){

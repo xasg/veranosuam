@@ -1167,7 +1167,7 @@ $cat_carreras = view_cat_carreras();
                            <span>Ciudad de México, CDMX</span>
                         </div>
                         <div class="touch__social col-md-auto w-50">
-                           <form class="w-100 " action="index.php" method="post">
+                           <!-- <form class="w-100 " action="index.php" method="post">
                               <h4 class="text-center">Contactanos</h4>
                               <br>
                             <div class="mb-3">
@@ -1188,7 +1188,7 @@ $cat_carreras = view_cat_carreras();
                             </div>
                             <button type="submit" class="btn btn-primary">Enviar</button>
                             <br><br>
-                        </form>
+                        </form> -->
                         <?php
                         if(isset($_POST['nombre'])){
                             $name = $_POST['nombre'];
