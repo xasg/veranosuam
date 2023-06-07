@@ -62,6 +62,9 @@ if ($_POST) {
                         if ($mysqli->query($sql) && $mysqli->query($query)) {
                             # code...
                             header("Location: ../index.php?envio=$matricula_estudiante");
+                        }else {
+                            # code...
+                            echo "Error en la consulta";
                         }
 
                     }else{
