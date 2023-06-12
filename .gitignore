@@ -1,0 +1,9 @@
+assets/*
+controller/*
+empresas/*
+img/*
+*.o
+*.pyc
+*.class
+*.txt
+*.pem
