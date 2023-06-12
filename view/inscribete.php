@@ -528,7 +528,7 @@ if (isset($_GET['matricula'])) {
                         
                         <!-- Modal trigger button -->
                         <button type="button" class="solid__btn " data-bs-toggle="modal" data-bs-target="#modalId">
-                          Inscribete
+                          Registro
                         </button>
                         <br>
                         <!-- Button trigger modal -->

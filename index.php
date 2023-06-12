@@ -18,7 +18,7 @@ $cat_carreras = view_cat_carreras();
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Place favicon.ico in the root directory -->
-      <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+      <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png"><!--LOGO DEL ICONO DE LAS ESTANCIAS DE VERANO -->
 
       <!-- CSS here -->
       <link rel="stylesheet" href="assets/app/css/bootstrap.min.css">
@@ -206,7 +206,7 @@ $cat_carreras = view_cat_carreras();
                   <div class="offcanvas__top mb-40 d-flex justify-content-between align-items-center">
                      <div class="offcanvas__logo">
                         <a href="index.html">
-                        <img src="assets/img/logo/logo.png" alt="logo not found">
+                        <img src="assets/img/logo/logo.png" alt="logo de estancias profesionales de verano">
                         </a>
                      </div>
                      <div class="offcanvas__close">
@@ -221,7 +221,7 @@ $cat_carreras = view_cat_carreras();
 
                      <h4>Contacto</h4>
                      <ul>
-                        <li class="d-flex align-items-center">
+                        <li class="d-flex align-items-center">  <!--ELEMENTO DEL MENU, EL CUAL NOS MUESTRA LA UBICACION DE LA UNIVERSIDAD POR UN ENLACE DE GOOGLE MAPS-->
                            <div class="offcanvas__contact-icon mr-15">
                               <i class="fal fa-map-marker-alt"></i>
                            </div>
@@ -229,7 +229,7 @@ $cat_carreras = view_cat_carreras();
                               <a target="_blank" href="https://www.google.com/maps/place/Universidad+Aut%C3%B3noma+Metropolitana+Unidad+Cuajimalpa/@19.3520841,-99.2826256,15z/data=!4m6!3m5!1s0x85d2074a4aea180d:0x1151e61121fd01f3!8m2!3d19.3520841!4d-99.2826256!16s%2Fm%2F03qdkrv" >UAMC</a>
                            </div>
                         </li>
-                        <li class="d-flex align-items-center">
+                        <li class="d-flex align-items-center">  <!--ELEMENTO DEL MENU PARA PONERSE EN CONTACTO POR TELEFONO -->
                            <div class="offcanvas__contact-icon mr-15">
                               <i class="far fa-phone"></i>
                            </div>
@@ -237,7 +237,7 @@ $cat_carreras = view_cat_carreras();
                               <a href="tel:tel:+5215558146509"> 55 5814 6509</a>
                            </div>
                         </li>
-                        <li class="d-flex align-items-center">
+                        <li class="d-flex align-items-center">   <!--ELEMENTO DEL MENU, PARA PODER MANDAR UN CORREO A "enlace.vinculacion@cua.uam.mx"-->
                            <div class="offcanvas__contact-icon mr-15">
                               <i class="fal fa-envelope"></i>
                            </div>
@@ -268,33 +268,33 @@ $cat_carreras = view_cat_carreras();
                   <div class="col-xl-2 col-lg-2 col-6">
                      <div class="header__logo">
                         <a href="index.html">
-                           <img src="assets/img/logo/logo.png" alt="logo not found">
+                           <img src="assets/img/logo/logo.png" alt="logo de estancias profesionales de verano">
                         </a>
                      </div>
                   </div>
                   <div class="col-xl-8 col-lg-8 d-none d-lg-block">
                      <div class="menu__main-wrapper-3 d-flex justify-content-end">
                         <div class="main-menu main-menu-3 d-none d-none d-lg-block">
-                           <nav id="mobile-menu">
+                           <nav id="mobile-menu"> <!--MENU PARA DISPOSITIVOS MOVILES -->
                               <ul>
                                  
                                  <li>
-                                    <a href="#">Inicio</a>
+                                    <a href="#">Inicio</a> <!--ENLACE DENTRO DE LA ONE PAGE, PARA IRNOS A LA PARTE SUPERIOR DE ESTA-->   
                                  </li>
                                  <li>
-                                    <a href="#que_son">¿Qué <?php echo ' son?';?></a>
+                                    <a href="#que_son">¿Qué <?php echo ' son?';?></a><!--ESTE ENLACE NOS LLEVA A LA PARTE "que son"-->
                                  </li>
 
                                  <li>
-                                    <a href="#ors">OR´s</a>
+                                    <a href="#ors">OR´s</a> <!--ESTE ENLACE NOS LLEVA A LA PARTE DE SELECCIONAR QUE INSTITUCION HAY VACANTES DEPENDIENDO LA CARRERA  -->
                                  </li>
                                  
                                  <li>
-                                    <a href="#participa">Participa</a>
+                                    <a href="#participa">Participa</a><!--ESTE ENLACE NOS LLEVA A LA PARTE DE PARTICIPA LA CUAL NOS INDICA LOS PASOS QUE DEBEMOS DE SEGUIR -->
                                  </li>
                                  
                                  <li>
-                                    <a href="./contacto.php">Contacto</a>
+                                    <a href="./contacto.php">Contacto</a>    <!--ESTE ENLACE NOS LLEVA A UNA NUEVA PAGINA CON LA INFORMACION DE CONTACTO-->
                                  </li>
                                  
                                  
@@ -309,7 +309,7 @@ $cat_carreras = view_cat_carreras();
                   <div class="col-xl-2 col-lg-2 col-6">
                      <div class="header__right d-flex align-items-center justify-content-end">
                         <div class="header__btn d-none d-xl-block">
-                           <a class="border__btn s-3" target="_blank" href="view/inscribete.php">Inscribete</a>
+                           <a class="border__btn s-3" target="_blank" href="view/inscribete.php">Inscribete</a>   <!---BOTON PARA REALIZAR EL REGISTRO DEL USUARIO--->
                         </div>
                         <div class="header__toggle d-xl-none">
                            <a class="sidebar__active" href="javascript:void(0)">
@@ -380,7 +380,7 @@ $cat_carreras = view_cat_carreras();
       <!-- Hero area end -->
 
       <!-- Brand area start -->
-      <div class="brand__area pt-120 pb-120">
+      <div class="brand__area pt-120 pb-120">    <!--  imagenes de empresas, estas imagenes se encuentra arriba de "que son"-->
          <div class="container">
             <div class="row justify-content-center wow fadeInUp" data-wow-delay=".3s">
                <div class="col-12">
@@ -447,7 +447,7 @@ $cat_carreras = view_cat_carreras();
       </div>
       <!-- Brand area start -->
 
-      <!-- About area start -->
+      <!-- About area start -->   <!--Estas son las imagenes de fondo que se usan en todo la pagina-->
       <a name="que_son"></a>
       <div class="about__area grey-bg z-index-11 p-relative pt-120 pb-60">
          <div class="about__shape-1">
@@ -478,7 +478,7 @@ $cat_carreras = view_cat_carreras();
                         <span class="section__subtitle-2">
                            <span>¿Qué</span> son?
                         </span>
-                        <h2 class="section__title-2">
+                        <h2 class="section__title-2">    <!--ESta es la seccion de "Que son"-->
                            Estancias Profesionales de Verano
                         </h2>
                      </div>
@@ -706,12 +706,12 @@ $cat_carreras = view_cat_carreras();
                </div>
             </div>
          </div>
-      </div>
+      </div>-->
       <!-- Recent area end -->
 
       <!-- Features area start -->
 
-      <a name="ors"></a>
+      <a name="ors"></a> <!--Esta es la seccion de OR'S-->     
       <section class="features__area p-relative features-bg pt-120 pb-30">
          <div class="features__pattern">
             <img src="assets/img/shape/features-shape.png" alt="image not found">
@@ -729,7 +729,7 @@ $cat_carreras = view_cat_carreras();
                         <div class="features__shape-content">
                            <div class="features__traffic">
                               <div class="content">
-                                 <span>Lugares disponibles</span>
+                                 <span>Lugares disponibles</span>   <!--ESTA SECCION SON LA CANTIDAD DE LUGARES DE LOS CUADROSDE DIALOGO-->
                                  <h5><?php  echo $lugares ;  ?> espacios</h5>
                               </div>
                               <div class="icon">
@@ -781,15 +781,15 @@ $cat_carreras = view_cat_carreras();
                      <div class="bd-faq__wrapper mb-60">
                            <!-- Hover added -->
                            <div class="mb-3">
-                              <label for="" class="form-label">Selecciona tu carrera</label>
-                              <select class="form-select form-select-lg" name="cat_carrera" id="cat_carrera">
+                              <label for="" class="form-label">Selecciona tu carrera</label>   
+                              <select class="form-select form-select-lg" name="cat_carrera" id="cat_carrera">  
                               
                               <option value = "0" selected>Selecciona tu grado</option>
                               <?php
                                     foreach ($carreras as $resul) {
                                        # code...
                                        // while($resul = $carreras->fetch_assoc()){
-                                       echo '<option value="'.$resul['id_grado'].'">'.$resul['nombre_grado'].'</option>';    
+                                       echo '<option value="'.$resul['id_grado'].'">'.$resul['nombre_grado'].'</option>';   //En esta seccion desplegamos las opciones de nivel academico de las cuales hay vacantes
                                        
                                     }
                                     // while($carreras = $resul->fetch_assoc()){
@@ -802,7 +802,7 @@ $cat_carreras = view_cat_carreras();
                               <br>
                               
                               <select id="catalogo" name="catalogo" class="form-select form-select-lg"   hidden="true">
-                                 <option selected disabled >Selecciona tu carrera <?php //echo $valorglobal; ?></option>
+                                 <option selected disabled >Selecciona tu carrera <?php //echo $valorglobal; ?></option> <!--en este select desplegamos la carreraras de las cuales hay vacantes-->
                               </select>
                               <br> 
                               <!-- <select id="catalogo_org" name="catalogo_org" class="form-select form-select-lg"   hidden="true">
@@ -1138,7 +1138,7 @@ $cat_carreras = view_cat_carreras();
                   <div class="boost__content-wrapper mb-60">
                      <div class="section__title-wrapper mb-40">
                         <span class="section__subtitle-2">
-                           <span>Part</span>icipa
+                           <span>Part</span>icipa   <!--AQUI  EMPIEZA LA SECCION DE PARTICIPA -->
                         </span>
                         <h2 class="section__title-2">
                            Postúlate
@@ -1151,7 +1151,7 @@ $cat_carreras = view_cat_carreras();
                               <img src="assets/img/svg/arrow-2.svg" alt="">                            
                            </div>
                            <div class="approach__text">
-                              <span>Datos generales</span>
+                              <span>Datos generales</span>  <!--ESTOS SON LOS PUNTOS A CUMPLIR PARA LA POSTULACION-->
                            </div>
                         </div>
                         <div class="approach__features-item">

@@ -191,19 +191,11 @@ button:focus {
 }
 
 .uppercase {
-<<<<<<< HEAD
-  text-transform: uppercase;
-}
-
-.capitalize {
-  text-transform: capitalize;
-=======
   /* text-transform: uppercase; */
 }
 
 .capitalize {
   /* text-transform: capitalize; */
->>>>>>> 72cc12c8f898f36e09ee51042e7b5f5218163f80
 }
 
 input {
@@ -753,11 +745,7 @@ input[type=color] {
 .offcanvas__contact h4 {
   font-size: 22px;
   margin-bottom: 20px;
-<<<<<<< HEAD
-  text-transform: uppercase;
-=======
   /* text-transform: uppercase; */
->>>>>>> 72cc12c8f898f36e09ee51042e7b5f5218163f80
   font-weight: var(--bd-fw-bold);
   color: var(--clr-common-heading);
 }
@@ -901,11 +889,7 @@ input[type=color] {
   display: inline-block;
   position: relative;
   top: -6px;
-<<<<<<< HEAD
-  text-transform: uppercase;
-=======
   /* text-transform: uppercase; */
->>>>>>> 72cc12c8f898f36e09ee51042e7b5f5218163f80
   margin-bottom: 20px;
   color: #4b4b4b;
 }
@@ -921,11 +905,7 @@ input[type=color] {
   line-height: 1;
   display: inline-block;
   top: -6px;
-<<<<<<< HEAD
-  text-transform: uppercase;
-=======
   /* text-transform: uppercase; */
->>>>>>> 72cc12c8f898f36e09ee51042e7b5f5218163f80
   margin-bottom: 20px;
   color: #4b4b4b;
   position: relative;
@@ -1030,11 +1010,7 @@ input[type=color] {
   color: var(--clr-theme-5);
   margin-bottom: 25px;
   display: block;
-<<<<<<< HEAD
-  text-transform: uppercase;
-=======
   /* text-transform: uppercase; */
->>>>>>> 72cc12c8f898f36e09ee51042e7b5f5218163f80
 }
 
 .section__title-3 {
@@ -1114,11 +1090,7 @@ input[type=color] {
 .breadcrumb__menu ul li span {
   font-size: 14px;
   color: var(--clr-theme-1);
-<<<<<<< HEAD
-  text-transform: capitalize;
-=======
   /* text-transform: capitalize; */
->>>>>>> 72cc12c8f898f36e09ee51042e7b5f5218163f80
   font-weight: var(--bd-fw-medium);
 }
 .breadcrumb__menu ul li span a {
@@ -1886,11 +1858,7 @@ input[type=color] {
   font-size: 16px;
   line-height: 1.5;
   font-weight: 500;
-<<<<<<< HEAD
-  text-transform: capitalize;
-=======
   /* text-transform: capitalize; */
->>>>>>> 72cc12c8f898f36e09ee51042e7b5f5218163f80
 }
 .mean-container .mean-nav ul li a:last-child {
   border-bottom: 0;
@@ -2130,11 +2098,7 @@ input[type=color] {
   font-weight: var(--bd-fw-medium);
   -webkit-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
-<<<<<<< HEAD
-  text-transform: capitalize;
-=======
   /* text-transform: capitalize; */
->>>>>>> 72cc12c8f898f36e09ee51042e7b5f5218163f80
   line-height: 1;
 }
 .main-menu ul li .submenu {
@@ -2173,11 +2137,7 @@ input[type=color] {
   width: 100%;
   display: block;
   padding: 10px 25px;
-<<<<<<< HEAD
-  text-transform: capitalize;
-=======
   /* text-transform: capitalize; */
->>>>>>> 72cc12c8f898f36e09ee51042e7b5f5218163f80
   color: var(--clr-common-heading);
   font-weight: var(--bd-fw-medium);
   position: relative;
@@ -3332,11 +3292,7 @@ input[type=color] {
 .project__filter-button button {
   font-size: 16px;
   font-weight: 500;
-<<<<<<< HEAD
-  text-transform: capitalize;
-=======
   /* text-transform: capitalize; */
->>>>>>> 72cc12c8f898f36e09ee51042e7b5f5218163f80
 }
 .project__filter-button .active {
   color: var(--clr-theme-1);
@@ -3401,11 +3357,7 @@ input[type=color] {
   background: transparent;
   border-radius: 0;
   font-weight: 700;
-<<<<<<< HEAD
-  text-transform: capitalize;
-=======
   /* text-transform: capitalize; */
->>>>>>> 72cc12c8f898f36e09ee51042e7b5f5218163f80
   position: relative;
   outline: none;
   font-size: 14px;
@@ -4546,11 +4498,7 @@ input[type=color] {
   font-size: 26px;
   font-weight: 600;
   font-style: italic;
-<<<<<<< HEAD
-  text-transform: uppercase;
-=======
   /* text-transform: uppercase; */
->>>>>>> 72cc12c8f898f36e09ee51042e7b5f5218163f80
   margin-bottom: 27px;
   line-height: 1.5;
 }
