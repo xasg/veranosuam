@@ -320,9 +320,8 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                      <div class="table-responsive-xxl">
                         <a name="" id="" class="solid__btn" href="index.php" role="button">Estudiantes</a>
                         <a name="" id="" class="solid__btn" href="#" style="background:none; color:#3887fe;" role="button">Organizaciones</a>
-                        <button type="button" class="solid__btn " data-bs-toggle="modal" data-bs-target="#modalId">
-                          Agregar Usuarios
-                        </button>
+                        <a name="" id="" class="solid__btn" href="usuarios.php" role="button">Usuarios</a>
+                        
                         
                         <br><br>
                         <table class="table table-sm table-dark ">
