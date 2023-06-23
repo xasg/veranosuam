@@ -7,9 +7,10 @@
     $id = $_SESSION['id'];
     // $correo = $_SESSION['correo'];
     $nombre = $_SESSION['name'];
-   //  $rol_usuario = $_SESSION['tp_user'];
     // $usuario = $_SESSION['nombre'];
     // $_SESSION['id'];
+ 
+
 ?>
 
 <!doctype html>
@@ -122,61 +123,64 @@ $(document).ready(function() {
    </head>
    <body>
    <?php
-
-if (isset($_SESSION['name'])) {
-    $usuario = $_SESSION['name'];
-        echo "<script>  Swal.fire({
-            icon: 'success',
-            title: 'Bienvenid@ {$usuario} al panel de ADMINISTRADOR',
-            showConfirmButton: true,
-            customClass: {
-               confirmButton: 'mi-clase-boton-confirmar'
-             },
-            timer: 12500
-        });
-        </script>";
-    
-    // header("Location: ../view/inscribete.php?registrado='si'");
+$usuario = $_SESSION['name'];
+?>
+<?php
+if (isset($_REQUEST['eliminado'])) {//Esta Validación verifica que se haya eliminado una vacante correctamente
+   # code...
+   echo "<script>  Swal.fire({
+      icon: 'success',
+      title: 'Vacante eliminada correctamente',
+      showConfirmButton: true,
+      customClass: {
+         confirmButton: 'mi-clase-boton-confirmar'
+       },
+      timer: 12500
+  });
+  </script>";
 }
+if (isset($_REQUEST['exitoso'])) {//Esta Validación verifica que se haya actualizaco una organización correctamente
+   # code...
+   echo "<script>  Swal.fire({
+      icon: 'success',
+      title: 'Organización actualizada correctamente',
+      showConfirmButton: true,
+      customClass: {
+         confirmButton: 'mi-clase-boton-confirmar'
+       },
+      timer: 12500
+  });
+  </script>";
+}
+
+if (isset($_REQUEST['usuario_eliminado'])) { //Esta Validación verifica que se haya eliminado una organización correctamente
+   # code...
+   echo "<script>  Swal.fire({
+      icon: 'success',
+      title: 'Usuario eliminado correctamente',
+      showConfirmButton: true,
+      customClass: {
+         confirmButton: 'mi-clase-boton-confirmar'
+       },
+      timer: 12500
+  });
+  </script>";
+}
+if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registrado una vacante correctamente
+   # code...
+   echo "<script>  Swal.fire({
+      icon: 'success',
+      title: 'Vacante registrada correctamente',
+      showConfirmButton: true,
+      customClass: {
+         confirmButton: 'mi-clase-boton-confirmar'
+       },
+      timer: 12500
+  });
+  </script>";
+}
+
 ?>
-<?php
-   if (isset($_REQUEST['usuarionuevo'])) {
-?>
- <script>
-        // function mostrarPopup() {
-            Swal.fire({
-                icon: 'success',
-                title: 'Usuario con el correo: <?php echo $_REQUEST['usuarionuevo']; ?> creado correctamente',
-                showConfirmButton: true,
-                customClass: {
-               confirmButton: 'mi-clase-boton-confirmar'
-               },
-                timer: 13500
-            });
-        // }
-    </script>
-<?php
-   }
-?>
-<?php
-   if (isset($_REQUEST['exitoso'])) {
-?>
- <script>
-        // function mostrarPopup() {
-                   Swal.fire({
-                icon: 'success',
-                title: 'Organizacion : <?php echo $_REQUEST['exitoso']; ?>  creada o actualizada correctamente',
-                showConfirmButton: true,
-                customClass: {
-               confirmButton: 'mi-clase-boton-confirmar'
-               },
-                timer: 13500
-            });
-        // }
-    </script>
-<?php
-   }
-   ?>
 
       <!--[if lte IE 9]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -227,11 +231,12 @@ if (isset($_SESSION['name'])) {
                               <i class="fal fa-envelope"></i>
                            </div>
                            <div class="offcanvas__contact-text">
-                              <a href="tel:+012-345-6789"><span class="mailto:enlace.vinculacion@cua.uam.mx">enlace.vinculacion@cua.uam.mx</span></a>
+                              <a href="mailto:enlace.vinculacion@cua.uam.mx"><span >enlace.vinculacion@cua.uam.mx</span></a>
                            </div>
                         </li>
                      </ul>
                   </div>
+                  
                </div>
             </div>
          </div>
@@ -259,14 +264,12 @@ if (isset($_SESSION['name'])) {
                               <ul>
                                  
                                  <li>
-                                    <a href="logout.php">Cerrar Sesion</a>
+                                    <a href="logout.php">Cerrar Sesión</a>
                                  </li>
                                  <li>
                                     <h5>
                                        <i> <?php echo $usuario; ?></i>
                                     </h5>
-                                 </li>
-                                 <li>
                                  </li>
                               </ul>
                            </nav>
@@ -310,41 +313,85 @@ if (isset($_SESSION['name'])) {
                            <span>ADMIN</span>ISTRA
                         </span>
                         <h2 class="section__title-2">
-                           Gestiona el proceso
+                           Organizaciones
                         </h2>
                      </div>
 
                      <div class="table-responsive-xxl">
-                        <a name="" id="" class="solid__btn" style="background:none; color:#3887fe;"  href="#" role="button">Estudiantes</a>
+                        <a name="" id="" class="solid__btn" href="index.php" role="button">Estudiantes</a>
                         <a name="" id="" class="solid__btn" href="organizaciones.php" role="button">Organizaciones</a>
-                        <?php
-                           // if ($rol ==2) {
-                           
-                        ?>
-                        <a href="usuarios.php" class="solid__btn ">Usuarios</a>
-                        <?php
-                           // }
-                        ?>
+                        <a name="" id="" class="solid__btn" href="#" style="background:none; color:#3887fe;" role="button">Usuarios</a>
+                        
+
+                        
                         <br><br>
-
-                        <ul class="nav nav-tabs" id="navId" role="tablist">
-                           <li class="nav-item">
-                              <a href="#tab1Id" class="nav-link active" data-bs-toggle="tab" aria-current="page">Registro de documentación completa</a>
-                           </li>
-
-                           <li class="nav-item" >
-                              <a href="estudiantes.php" class="nav-link" >Estudiantes que no enviaron su documentación</a>
-                           </li>
-                          
-                        </ul>
-                        
-               
-                        
                         <table class="table table-sm table-dark ">
+                           <!-- Button trigger modal Agregar Organización -->
+                           <button type="button" class="solid__btn" style="width:150px; font-size:14px; height: 55px; margin-bottom:20px;" data-bs-toggle="modal" data-bs-target="#modaliduser">
+                             Agrega Usuario
+                           </button>
+                                       <!-- Modal Body -->
+                        <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                        <div class="modal fade" id="modaliduser" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalTitleId">Registro de usuario con rol de ADMIN</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                            <form  action="../includes/crear_responsable.php" method="post">   
+                                            <div class="row justify-content-center align-items-center g-2">
+                                                
+                                            
+                                                    <div class="col-md-12">
+                                                        <label for="nombres" class="form-label">Nombre(s)</label>
+                                                        <input type="text" class="form-control" id="nombres" name="nombres" value="" required>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                        <label for="correo" class="form-label">Correo</label>
+                                                        <input type="email" class="form-control" id="correo" name="correo" value="" required>
+                                                        <div id="result-username"></div> 
+                                                      </div>
+                                                    <div class="col-md-12">
+                                                        <label for="password" class="form-label">Password</label>
+                                                        <input type="password" class="form-control" id="password" name="password" value="" required>
+                                                        <!-- <div id="result-username"></div>  -->
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="" class="form-label">Rol</label>
+                                                        <select class="form-select form-select-md" name="tp_user_rol" id="tp_user_rol" required>
+                                                            <option selected disabled>Seleccióna el rol</option>
+                                                            <option value="2">Administrador</option>
+                                                            <option value="1">Usuario</option>
+                                                        </select>
+                                                    </div>
+                                                   <button type="submit" class="btn solid__btn" >Registrar usuario </button>
+                                                </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar pestaña</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <!-- Optional: Place to the bottom of scripts -->
+                        <script>
+                            const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
+                        
+                        </script>
+                           <br>
+                           
+                           
+                           
                            <?php 
                               require("../controller/conect.php");
 
-                              $query = "SELECT * FROM documentos_estudiante left join estudiantes on estudiantes.matricula = documentos_estudiante.matricula";
+                              $query = "SELECT * FROM usuarios order by tp_user DESC";
+                              // $query = "SELECT * FROM organizacion ORDER BY id_org";
                               $result = $mysqli->query($query);
                               // $row = mysqli_fetch_assoc($result);
                               
@@ -352,147 +399,54 @@ if (isset($_SESSION['name'])) {
                            ?>
                            <thead class="border-bottom">
                               <tr>
-                                 <th scope="col">Matricula del alumno</th>
+
+                                 <th scope="col">ID</th>
                                  <th scope="col">Nombre</th>
-                                 <th scope="col">Apellido Paterno</th>
-                                 <th scope="col">Apellido Materno</th>
-                                 <th scope="col">Licenciatura o carrera</th>
-                                 <th scope="col">Creditos</th>
-                                 <th scope="col">edad</th>
-                                 <th scope="col">Sexo</th>
                                  <th scope="col">correo</th>
-                                 <th scope="col">telefono</th>
-                                 <th scope="col">fecha de registro</th>
-                                 <th scope="col">Ver documentos</th>
+                                 <th scope="col">password</th>
+                                 <th scope="col">rol</th>
+                                 <th scope="col">acciones</th>
                               </tr>
                            </thead>
                            
                            <?php
+                           $counter = 1;
                            foreach ($result as $rows) {
                            ?>
                            <tbody class="">
                               <tr class="table-secondary">
-                                 <td scope="row"><?php echo $rows['matricula'] ?> </td>
-                                 <td scope="row"><?php echo $rows['nombres'] ?> </td>
-                                 <td scope="row"><?php echo $rows['a_paterno'] ?> </td>
-                                 <td scope="row"><?php echo $rows['a_materno'] ?> </td>
-                                 <td scope="row"><?php echo $rows['licenciatura'] ?> </td>
-                                 <td scope="row"><?php echo $rows['creditos'] ?> </td>
-                                 <td scope="row"><?php echo $rows['edad'] ?> </td>
-                                 <td scope="row"><?php echo $rows['sexo'] ?> </td>
+                              
+                                 <!-- <td class="text-center" id="organizacion_id" name="organizacion_id"><?php echo $rows['id_org']; ?></td> ID de la ORG en el registro de la base-->
+                                 <td class="text-center"><?php echo $counter++ ?></td>
+                                 <td scope="row"><?php echo $rows['name'] ?> </td>
                                  <td scope="row"><?php echo $rows['correo'] ?> </td>
-                                 <td scope="row"><?php echo $rows['telefono'] ?> </td>
-                                 <td scope="row"><?php echo $rows['cretate'] ?> </td>
+                                 <td scope="row"><?php echo $rows['password'] ?> </td>
+                                 
+                                 
+                                 <td scope="row"><?php if ($rows['tp_user'] == 2) {
+                                     # code...
+                                     echo 'Administrador';}else{ echo 'usuario';}  ?> </td>
+                                
                                  <td scope="row"> <!--  Modal trigger button  -->
-                                 <button type="button" class="btn btn-primary btn-md" data-bs-toggle="modal" data-bs-target="#modalId<?php echo $rows['id']; ?>">
-                                   ver documentos
-                                 </button>
+                                 <!-- <button type="button" class="btn btn-primary btn-md" data-bs-toggle="modal" data-bs-target="#modalId<?php echo $rows['id']; ?>">
+                                   acciones
+                                 </button> -->
+                                    <?php
+                                       if ($rows['tp_user'] == 1) {
+                                          # code...
+
+                                    ?>
+                                       <form action="eliminar_usuario.php" method="post">
+                                       <input type="text" id="id_eliminar" name="id_eliminar" value="<?php echo $rows['id'];?>" hidden="true">          
+                                       <button type="submit" class="btn btn-danger btn-md" >
+                                             Eliminar
+                                          </button>
+                                       </form>
+                                    <?php
+                                       }
+                                    ?>
                                  
-                                 <!-- Modal Body-->
-                                 <div class="modal fade" id="modalId<?php echo $rows['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalTitleId<?php echo $rows['id']; ?>" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" >
-                                       <div class="modal-content">
-                                             <div class="modal-header">
-                                                   <h5 class="modal-title" id="modalTitleId<?php echo $rows['id']; ?>">Documentos llenados</h5>
-                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                          <div class="modal-body">
-                                             <div class="container-fluid">
-                                                <h4 class="bg-dark text-center border-bottom-0 text-light rounded">
-                                                   Documentos de 
-                                                   <i>
-                                                      <?php echo $rows['nombres']." ".$rows['a_paterno']."  ".$rows['a_materno'] ?> <br>
-                                                   </i> 
-                                                </h4>
-                                                Puedes previsualizar y descarga los documentos <br>
-
-                                                <div class="table-responsive">
-                                                   <table class="table table-striped
-                                                   table-hover	
-                                                   table-borderless
-                                                   table-dark
-                                                   align-middle">
-                                                      <thead class="table-light">
-                                                         <caption>Documentación</caption>
-                                                         <tr class="text-center">
-                                                            <th>INE</th>
-                                                            <th>CURP</th>
-                                                            <th>Comprobante de Domicilio</th>
-                                                         </tr>
-                                                         </thead>
-                                                         <tbody class="table-group-divider">
-                                                            <tr class="table-secondary text-center" >
-                                                               <td scope="row"><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['ine'] ?>" target="_blank">Visualizar</a></td>
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['curp']; ?>" target="_blank">Visualizar</a></td>
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['comprobante_domicilio']; ?>" target="_blank">Visualizar</a></td>
-                                                            </tr>
-                                                         </tbody>
-                                                         <thead>
-                                                            <tr class="text-center">
-                                                               <th>
-                                                               Comprobante de Seguro Facultativo
-                                                               </th>
-                                                               <th>
-                                                               Curriculum Vitae
-                                                               </th>
-                                                               <th>
-                                                               Constancia de Creditos y Promedio
-                                                               </th>
-                                                            </tr>
-                                                         </thead>
-                                                         <tbody>
-                                                         <tr class="table-secondary text-center">
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['seguro']; ?>" target="_blank">Visualizar</a></td>
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['cv'] ?>" target="_blank">Visualizar</a></td>
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['constancia_creditos'] ?>" target="_blank">Visualizar</a></td>
-                                                            </tr>
-                                                         </tbody>
-                                                         <thead>
-                                                            <tr class="text-center">
-                                                               <th>Carta Compromiso</th>
-                                                               <th>Formato de Pago</th>
-                                                               <th>Cuenta Bancaria</th>
-                                                            </tr>
-                                                         </thead>
-                                                         <tbody>
-                                                            <tr class="table-secondary text-center">
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['carta_compromiso'] ?>" target="_blank">Visualizar</a></td>
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['formato_pago'] ?>" target="_blank">Visualizar</a></td>
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['cuenta_bancaria'] ?>" target="_blank">Visualizar</a></td>
-                                                            </tr>
-                                                         </tbody>
-                                                         <thead>
-                                                            <tr>
-                                                               <th>Formato de Postulación</th>
-                                                               <th></th>
-                                                               <th></th>
-                                                            </tr>
-                                                         </thead>
-                                                         <tbody>
-                                                            <tr class="table-secondary text-center">
-                                                               <td><a class="btn btn-primary btn-sm" href="../includes/files/<?php echo $rows['formato_postulacion'] ?>" target="_blank">Visualizar</a></td>
-                                                               <td></td>
-                                                               <td></td>
-                                                            </tr>
-                                                         </tbody>
-                                                         <tfoot>
-                                                         </tfoot>
-                                                   </table>
-                                                </div>
-                                                
-
-                                                <!-- <h3><span>1 - </span> Matricula -> <a class="btn btn-primary btn-sm" href="../includes/files/<?php #echo $rows['ine'] ?>" target="_blank">Visualizar</a></h3><br>  -->
-
-                                             </div>
-                                          </div>
-                                          <div class="modal-footer">
-                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                             
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 
+                                
                                  
                                  
                                  
@@ -508,6 +462,7 @@ if (isset($_SESSION['name'])) {
                            ?>
 
                         </table>
+                        <!-- </form> -->
                         <br><br><br>
                      </div>
                      <div class="col-md-12 text-center">
@@ -550,7 +505,7 @@ if (isset($_SESSION['name'])) {
             
             
             
-
+          
                      </div>
                   </div>
             </div>
@@ -581,12 +536,6 @@ if (isset($_SESSION['name'])) {
                            <span>Cuajimalpa de Morelos, 05348</span>
                            <span>Ciudad de México, CDMX</span>
                         </div>
-                        <!-- <div class="touch__social">
-                           <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                           <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                           <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                           <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                        </div> -->
                      </div>
                   </div>
                </div>
@@ -727,7 +676,6 @@ if (isset($_SESSION['name'])) {
             }
         }
     </script>
-
 
    </body>
   

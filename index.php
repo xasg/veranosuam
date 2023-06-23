@@ -1,6 +1,5 @@
 <?php
 error_reporting (E_ALL);
-// require('controller/conect.php');
 include_once('model/database.php'); 
 $lugares = view_lugares();
 $orgs = view_orgs();
@@ -34,119 +33,108 @@ $cat_carreras = view_cat_carreras();
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <link rel="stylesheet" href="assets/css/style-btn-whatssap.css">
       <style>
        .mi-clase-boton-confirmar {
-  background-color: #007bff !important;
-  border-radius: 10px !important;
-  color: #FFFFFF !important;
-  box-shadow: 1px 0px 8px #000 !important;
+         background-color: #007bff !important;
+         border-radius: 10px !important;
+         color: #FFFFFF !important;
+         box-shadow: 1px 0px 8px #000 !important;
+         }
+
+         .whatsapp-button {
+position: fixed;
+bottom: 20px;
+left: 50px;
+width: 54px;
+
+z-index: 15;
+background-color: #00b341;
+color: white;
+padding: 12px;
+border-radius: 50%;
+font-size: 20px;
+cursor: pointer;
+box-shadow: 0px 0px 4px #000;
 }
-    </style>
-     <style>
+.whatsapp-popup {
+position: fixed;
+z-index: 900;
+bottom: 80px;
+left: -300px; /* Cambiamos el valor para que la ventana esté oculta fuera del lado izquierdo */
+width: 300px;
+height: auto;
+background-color: #fff;
+border: 1px solid #ccc;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+opacity: 0;
+transition: opacity 0.3s ease, left 0.3s ease; /* Actualizamos la transición para que se aplique a la propiedad left */
+padding: 20px;
+border-radius: 5px;
+background-color: #00b341;
 
-            /* Estilos opcionales para el botón */
-    /* .whatsapp-button {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: green;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-    } */
-    .whatsapp-button {
-            position: fixed;
-            bottom: 20px;
-            left: 50px;
-            width: 54px;
 
-            z-index: 15;
-            background-color: #00b341;
-            color: white;
-            padding: 12px;
-            border-radius: 50%;
-            font-size: 20px;
-            cursor: pointer;
-            box-shadow: 0px 0px 4px #000;
-        }
-    .whatsapp-popup {
-      position: fixed;
-      z-index: 900;
-      bottom: 80px;
-      left: -300px; /* Cambiamos el valor para que la ventana esté oculta fuera del lado izquierdo */
-      width: 300px;
-      height: auto;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      opacity: 0;
-      transition: opacity 0.3s ease, left 0.3s ease; /* Actualizamos la transición para que se aplique a la propiedad left */
-      padding: 20px;
-      border-radius: 5px;
-      background-color: #00b341;
-     
-
-    }
-
-    .whatsapp-popup.open {
-      opacity: 1;
-      left: 20px; /* Cambiamos el valor para que la ventana aparezca desde el lado izquierdo */
-    }
-
-    .whatsapp-popup h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-
-    .whatsapp-popup p {
-      font-size: 16px;
-      line-height: 1.5;
-    }
-
-    .whatsapp-popup .close-button {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: none;
-      border: none;
-      font-size: 18px;
-      cursor: pointer;
-    }
-
-    .whatsapp-popup .send-button {
-      display: inline-block;
-      padding: 8px 16px;
-      background-color: green;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-right: 10px;
-    }
-
-    .whatsapp-popup .input-field {
-      width: 100%;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-    .head-whatssap{
-        background-color: #00b341;
-        color: #fff;
-        width: 100%;
-    }
-    textarea {
-    resize: none;
 }
+
+.whatsapp-popup.open {
+opacity: 1;
+left: 20px; /* Cambiamos el valor para que la ventana aparezca desde el lado izquierdo */
+}
+
+.whatsapp-popup h2 {
+font-size: 20px;
+margin-bottom: 10px;
+}
+
+.whatsapp-popup p {
+font-size: 16px;
+line-height: 1.5;
+}
+
+.whatsapp-popup .close-button {
+position: absolute;
+top: 10px;
+right: 10px;
+background: none;
+border: none;
+font-size: 18px;
+cursor: pointer;
+}
+
+.whatsapp-popup .send-button {
+display: inline-block;
+padding: 8px 16px;
+background-color: green;
+color: white;
+border: none;
+border-radius: 5px;
+font-weight: bold;
+cursor: pointer;
+margin-right: 10px;
+}
+
+.whatsapp-popup .input-field {
+width: 100%;
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 5px;
+margin-bottom: 10px;
+}
+.head-whatssap{
+background-color: #00b341;
+color: #fff;
+width: 100%;
+}
+textarea {
+resize: none;
+}
+
     </style>
    </head>
 
    <body>
-   <!-- <div class="whatsapp-button" onclick="abrirWhatsApp()"> -->
-   <div class="whatsapp-button" onclick="toggleWhatsAppPopup()">
+  <!-- <div class="whatsapp-button" onclick="abrirWhatsApp()"> -->
+  <div class="whatsapp-button" onclick="toggleWhatsAppPopup()">
         <!-- <i class="fab fa-whatsapp"></i> -->
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -166,8 +154,6 @@ $cat_carreras = view_cat_carreras();
   <button class="send-button" onclick="sendWhatsAppMessage()">Enviar</button>
   <button class="send-button" onclick="clearWhatsAppMessage()">Limpiar</button>
 </div>
-
-
       <!--[if lte IE 9]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
       <![endif]-->
@@ -175,15 +161,20 @@ $cat_carreras = view_cat_carreras();
       <!-- Mensaje Modal de envio de Documentos -->
       <?php
    if (isset($_REQUEST['envio'])) {
+            /*El siguiente codico comentado es en caso de que el usuario suba sus documentos completos se enviara un correo en automatico al encargado del sistema avisando que ya subio toda su documentación*/
                //   $matricula = $_REQUEST['envio'];
-               //   $destinatario =  "alexis@fese.mx";
+               //   $destinatario =  "enlace.vinculacion@cua.uam.mx";
                //   $asuntoCorreo = "Usuario Registrado";
                //    //  $destinatario =  "enlace.vinculacion@cua.uam.mx";
                //    $header =  "Se registro" . "\r\n";
                //    $header.= "Asunto: Un usuario subio todos sus documentos " .  "\r\n";
                //    $header.="Mensaje: El usuario con la matricula '{$matricula}' subio todos sus documentos";
                //    $mail = mail($destinatario,$asuntoCorreo,$header);
-                  // if ($mail) {
+            
+               /* Cuando se envia el correo satisfactoriamente de que se realizo el registro, 
+            al estudiante le muestra un mensaje indicando que subio los documentos correctamente*/
+               
+            // if ($mail) {
 
                   echo "<script>  Swal.fire({
                      icon: 'success',
@@ -195,8 +186,8 @@ $cat_carreras = view_cat_carreras();
                      timer: 12500
                   });
                   </script>";
-                     //  }
-  }
+            //  }
+   }
    
    ?>
       <div class="fix">
@@ -331,7 +322,7 @@ $cat_carreras = view_cat_carreras();
       <!-- Body main wrapper start -->
       <main>
 
-      <!-- Hero area stat -->
+      <!-- Aside menu area stat -->
       
       <section class="hero__area hero__hight d-flex align-items-center include__bg p-relative" data-background="assets/img/shape/c.png">
          <div class="hero__cercle">
@@ -353,7 +344,6 @@ $cat_carreras = view_cat_carreras();
                         </div>
                         <div class="hero__btn-link wow fadeInUp" data-wow-delay=".8s">
                            <a class="solid__btn" target="_blank" href="https://www.cua.uam.mx/conoce-la-uam-unidad-cuajimalpa/coordinaciones-administrativas/coordinacion-de-vinculacion/desarrollo-profesional/estancias-profesionales-de-verano/informacion-para-alumnos?/epv">Convocatoria</a>
-                           <!--<a class="hero__link popup-video" href="https://www.youtube.com/watch?v=fSv6UgCkuTU"> <i class="fa-solid fa-play"></i></a>-->
                         </div>
                      </div>
                   </div>
@@ -377,10 +367,10 @@ $cat_carreras = view_cat_carreras();
             </div>
          </div>
       </section>
-      <!-- Hero area end -->
+      <!-- Aside menu area end -->
 
-      <!-- Brand area start -->
-      <div class="brand__area pt-120 pb-120">    <!--  imagenes de empresas, estas imagenes se encuentra arriba de "que son"-->
+      <!-- Iconos Orgs area start -->
+      <div class="brand__area pt-120 pb-120">
          <div class="container">
             <div class="row justify-content-center wow fadeInUp" data-wow-delay=".3s">
                <div class="col-12">
@@ -394,49 +384,41 @@ $cat_carreras = view_cat_carreras();
                         <div class="swiper-slide">
                            <div class="singel__brand">
                               <img src="assets/logos/empresa2.svg" alt="image not found">
-                              <!-- <img src="assets/img/brand/2.png" alt="image not found"> -->
                            </div>
                         </div>
                         <div class="swiper-slide">
                            <div class="singel__brand">
                               <img src="assets/logos/empresa3.svg" alt="image not found">
-                              <!-- <img src="assets/img/brand/3.png" alt="image not found"> -->
                            </div>
                         </div>
                         <div class="swiper-slide">
                            <div class="singel__brand">
                               <img src="assets/logos/empresa4.svg" alt="image not found">
-                              <!-- <img src="assets/img/brand/4.png" alt="image not found"> -->
                            </div>
                         </div>
                         <div class="swiper-slide">
                            <div class="singel__brand">
                               <img src="assets/logos/empresa5.svg" alt="image not found">
-                              <!-- <img src="assets/img/brand/5.png" alt="image not found"> -->
                            </div>
                         </div>
                         <div class="swiper-slide">
                            <div class="singel__brand">
                               <img src="assets/logos/empresa6.svg" alt="image not found">
-                              <!-- <img src="assets/img/brand/5.png" alt="image not found"> -->
                            </div>
                         </div>
                         <div class="swiper-slide">
                            <div class="singel__brand">
                               <img src="assets/logos/empresa7.svg" alt="image not found">
-                              <!-- <img src="assets/img/brand/5.png" alt="image not found"> -->
                            </div>
                         </div>
                         <div class="swiper-slide">
                            <div class="singel__brand">
                               <img src="assets/logos/empresa8.svg" alt="image not found">
-                              <!-- <img src="assets/img/brand/5.png" alt="image not found"> -->
                            </div>
                         </div>
                         <div class="swiper-slide">
                            <div class="singel__brand">
                               <img src="assets/logos/empresa9.svg" alt="image not found">
-                              <!-- <img src="assets/img/brand/5.png" alt="image not found"> -->
                            </div>
                         </div>
                      </div>
@@ -445,9 +427,9 @@ $cat_carreras = view_cat_carreras();
             </div>
          </div>
       </div>
-      <!-- Brand area start -->
+      <!-- Iconos Orgs start -->
 
-      <!-- About area start -->   <!--Estas son las imagenes de fondo que se usan en todo la pagina-->
+      <!-- About area start -->
       <a name="que_son"></a>
       <div class="about__area grey-bg z-index-11 p-relative pt-120 pb-60">
          <div class="about__shape-1">
@@ -503,7 +485,6 @@ $cat_carreras = view_cat_carreras();
                            </div>
                            <div class="about__features-content">
                               <p>Adquiere habilidades laborales</p>
-                              <!-- <p>– 6 semanas</p> -->
                            </div>
                         </div>
                         <div class="about__features-item">
@@ -512,7 +493,6 @@ $cat_carreras = view_cat_carreras();
                            </div>
                            <div class="about__features-content">
                               <p>Pon en practica tus conocimientos</p>
-                              <!-- <p>– 3 mil pesos al final de la estancia</p> -->
                            </div>
                         </div>
                      </div>
@@ -706,12 +686,12 @@ $cat_carreras = view_cat_carreras();
                </div>
             </div>
          </div>
-      </div>-->
+      </div>
       <!-- Recent area end -->
 
       <!-- Features area start -->
 
-      <a name="ors"></a> <!--Esta es la seccion de OR'S-->     
+      <a name="ors"></a>
       <section class="features__area p-relative features-bg pt-120 pb-30">
          <div class="features__pattern">
             <img src="assets/img/shape/features-shape.png" alt="image not found">
@@ -779,7 +759,7 @@ $cat_carreras = view_cat_carreras();
                      </div>
 
                      <div class="bd-faq__wrapper mb-60">
-                           <!-- Hover added -->
+                           <!-- Lista desplegable de grado y carreras con consulta a la base de datos -->
                            <div class="mb-3">
                               <label for="" class="form-label">Selecciona tu carrera</label>   
                               <select class="form-select form-select-lg" name="cat_carrera" id="cat_carrera">  
@@ -789,348 +769,31 @@ $cat_carreras = view_cat_carreras();
                                     foreach ($carreras as $resul) {
                                        # code...
                                        // while($resul = $carreras->fetch_assoc()){
-                                       echo '<option value="'.$resul['id_grado'].'">'.$resul['nombre_grado'].'</option>';   //En esta seccion desplegamos las opciones de nivel academico de las cuales hay vacantes
+                                       echo '<option value="'.$resul['id_grado'].'">'.$resul['nombre_grado'].'</option>';    
                                        
                                     }
-                                    // while($carreras = $resul->fetch_assoc()){
-
-                                       // echo '<option value="'.$resul['id_carrera'].'">'.$resul['nivel'].'</option>';    
-                                    // }
 
                                      ?>
                               </select>
                               <br>
-                              
                               <select id="catalogo" name="catalogo" class="form-select form-select-lg"   hidden="true">
-                                 <option selected disabled >Selecciona tu carrera <?php //echo $valorglobal; ?></option> <!--en este select desplegamos la carreraras de las cuales hay vacantes-->
-                              </select>
-                              <br> 
-                              <!-- <select id="catalogo_org" name="catalogo_org" class="form-select form-select-lg"   hidden="true">
                                  <option selected disabled >Selecciona tu carrera <?php //echo $valorglobal; ?></option>
-                              </select>  -->
-                              
+                              </select>
+                              <br>
                            </div>
                            <div class="bd-faq__wrapper mb-60" id="catalogo_org" name="catalogo_org" hidden = true>
-                              
                            </div>
                      </div>
-
-                     <!-- <div class="bd-faq__wrapper mb-60">
-                        <div class="bd-faq__accordion" data-aos="fade-left" data-aos-duration="1000">
-                           <div class="accordion" id="accordionExample">
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                       Instituto Nacional de Medicina Genómica (INMEGEN)
-                                    </button>
-                                 </h2>
-                                 <div id="collapseOne" class="accordion-collapse collapse collapse"
-                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <table class="table table-striped">
-                                          <tr>
-                                             <th>Licenciatura</th>
-                                             <th>Proyecto</th>
-                                             <th>Espacios</th>
-                                          </tr>
-                                          <tr>
-                                             <td>Administración</td>
-                                             <td>• Organización, clasificación y depuración de archivos gubernamentales.
-                                                • Implementación y programas para autogeneración de recursos.
-                                                • Búsqueda y organización de información.
-                                                • Apoyo en actividades de diversas áreas funcionales del Instituto.</td>
-                                             <td>3</td>
-                                           </tr>
-                                           <tr>
-                                             <td>Derecho</td>
-                                             <td>• Apoyo en la fiscalización de procesos administrativos y en la vigilancia del cumplimiento de las obligaciones y el apego a la legalidad de los servidores públicos en el desempeño de sus funciones.
-                                                • Lectura, revisión y clasificación de convenios, certificaciones y contratos.</td>
-                                             <td>4</td>
-                                           </tr>
-                                       </table>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                       Enseña por México A.C.
-                                    </button>
-                                 </h2>
-                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                       De la O & Asociados Diseño S.A. de C.V.
-                                    </button>
-                                 </h2>
-                                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingFour">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                       Editorial De otro tipo
-                                    </button>
-                                 </h2>
-                                 <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingFive">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                       Hospital Infantil de México Federico Gómez
-                                    </button>
-                                 </h2>
-                                 <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingSix">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                       Instituto Nacional de Antropología e Historia (INAH)
-                                    </button>
-                                 </h2>
-                                 <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingSeven">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                       Barroso Mayorga & Asociados
-                                    </button>
-                                 </h2>
-                                 <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingEight">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                                       Hello México
-                                    </button>
-                                 </h2>
-                                 <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingNine">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-                                       Editorial Modernidades
-                                    </button>
-                                 </h2>
-                                 <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingTen">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
-                                       Sin Fronteras I.A.P.
-                                    </button>
-                                 </h2>
-                                 <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingEleven">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
-                                       Escuela de Diseño Aplicado a la Indumentaria y Moda
-                                    </button>
-                                 </h2>
-                                 <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingTwelve">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
-                                       Instituto Nacional de Geriatría (INGER)
-                                    </button>
-                                 </h2>
-                                 <div id="collapseTwelve" class="accordion-collapse collapse" aria-labelledby="headingTwelve"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingTherteen">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseTherteen" aria-expanded="false" aria-controls="collapseTherteen">
-                                       Nosótrikas Tik.-Tank
-                                    </button>
-                                 </h2>
-                                 <div id="collapseTherteen" class="accordion-collapse collapse" aria-labelledby="headingTherteen"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingFourteen">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
-                                       The Anglo Mexican Foundation
-                                    </button>
-                                 </h2>
-                                 <div id="collapseFourteen" class="accordion-collapse collapse" aria-labelledby="headingFourteen"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingFiveteen">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseFiveteen" aria-expanded="false" aria-controls="collapseFiveteen">
-                                       Instituto para Devolver al Pueblo lo Robado (INDEP)
-                                    </button>
-                                 </h2>
-                                 <div id="collapseFiveteen" class="accordion-collapse collapse" aria-labelledby="headingFiveteen"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingSixteen">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseSixteen" aria-expanded="false" aria-controls="collapseSixteen">
-                                       Ethos Laboratorio de Políticas Públicas A.C.
-                                    </button>
-                                 </h2>
-                                 <div id="collapseSixteen" class="accordion-collapse collapse" aria-labelledby="headingSixteen"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingSeventeen">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseSeventeen" aria-expanded="false" aria-controls="collapseSeventeen">
-                                       Merka Med Desechables S.A. de C.V.
-                                    </button>
-                                 </h2>
-                                 <div id="collapseSeventeen" class="accordion-collapse collapse" aria-labelledby="headingSeventeen"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingEighteen">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseEighteen" aria-expanded="false" aria-controls="collapseEighteen">
-                                       UNIMEDIOS
-                                    </button>
-                                 </h2>
-                                 <div id="collapseEighteen" class="accordion-collapse collapse" aria-labelledby="headingEighteen"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingNineteen">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseNineteen" aria-expanded="false" aria-controls="collapseNineteen">
-                                       Discierne
-                                    </button>
-                                 </h2>
-                                 <div id="collapseNineteen" class="accordion-collapse collapse" aria-labelledby="headingNineteen"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header" id="headingTwenty">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseTwenty" aria-expanded="false" aria-controls="collapseTwenty">
-                                       Resa y Asociados S.C.
-                                    </button>
-                                 </h2>
-                                 <div id="collapseTwenty" class="accordion-collapse collapse" aria-labelledby="headingTwenty"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>----------------------------------------------</p>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div> -->
                   </div>
                </div>
             </div>
          </div>
       </section>
-      <!-- Features area end -->
+      <!-- Organizaciòn area end -->
 
-      <!-- Boost area start -->
+      <!-- Sección Participa -->
       <a name="participa"></a>
-<br><br><br>
+      <br><br><br>
       <div class="boost__area pb-25">
          <div class="container">
             <div class="row  wow fadeInUp" data-wow-delay=".3s">
@@ -1262,7 +925,7 @@ $cat_carreras = view_cat_carreras();
             </div>
          </div>
       </div>
-      <!-- Boost area end -->
+      <!-- Sección Participa end -->
 
 
       <!-- Footer area start -->
@@ -1289,7 +952,8 @@ $cat_carreras = view_cat_carreras();
                            <span>Ciudad de México, CDMX</span>
                         </div>
                         <div class="touch__social col-md-auto w-50">
-                           <!-- <form class="w-100 " action="index.php" method="post">
+                           <!--El siguiente es el formulario de contacto-->
+                           <form class="w-100 " action="index.php" method="post">
                               <h4 class="text-center">Contactanos</h4>
                               <br>
                             <div class="mb-3">
@@ -1310,16 +974,16 @@ $cat_carreras = view_cat_carreras();
                             </div>
                             <button type="submit" class="btn btn-primary">Enviar</button>
                             <br><br>
-                        </form> -->
+                        </form>
+
                         <?php
                         if(isset($_POST['nombre'])){
                             $name = $_POST['nombre'];
                             $email = $_POST['email'];
                             $asunto = $_POST['asunto'];
-                            $mensaje = $_POST['mensaje'];
-                            $destinatario =  "alexis@fese.mx";
+                            $mensaje = $_POST['mensaje']; 
                             $asuntoCorreo = "Nuevo mensaje de Dudas";
-                           //  $destinatario =  "enlace.vinculacion@cua.uam.mx";
+                            $destinatario =  "enlace.vinculacion@cua.uam.mx";
                             $header =  "Correo electronico: $email" . "\r\n";
                             $header.= "Asunto: $asunto " .  "\r\n";
                             $header.="Mensaje: $mensaje";
@@ -1380,64 +1044,13 @@ $cat_carreras = view_cat_carreras();
       <script src="assets/app/js/isotope.pkgd.min.js"></script>
       <script src="assets/app/js/ajax-form.js"></script>
       <script src="assets/app/js/main.js"></script>
-      
-      <script> 
-    $(document).ready(function(){
-           $("#cat_carrera").change(function () {         
-             $("#cat_carrera option:selected").each(function () {
-               id_grado= $(this).val();
-               $.post("includes/carrerasObtener.php", { id_grado: id_grado }, function(data){
-                 $("#catalogo").html(data);
-               });            
-             });
-           })
-         });
-         $(document).ready(function(){
-           $("#catalogo").change(function () {         
-             $("#catalogo option:selected").each(function () {
-               id_carrera= $(this).val();
-               $.post("includes/espacios_disp.php", { id_carrera: id_carrera }, function(data){
-                 $("#catalogo_org").html(data);
-               });            
-             });
-           })
-         });
-         </script>
-      
+      <!--El siguiente Script es para mostrar las relaciones de grado carreras-->
+      <script src="assets/js/catcarreras.js"></script>
+      <!--El siguiente Script es para mostrar las relaciones de grado cat carrera y listas desplegables-->
+      <script src="assets/js/catgrado.js"></script>
+      <!--El siguiente Script es para la funcionalidad del boton de whatssap-->
+      <script src="assets/js/btnws.js"></script>
       <script>
-         let ee = document.getElementById('cat_carrera');
-         let ef = document.getElementById('catalogo_org');
-         var cs = document.getElementById('catalogo');
-         ee.addEventListener("change", function(){
-            if (ee.value != 0 ) {
-               cs.disabled = false;
-               cs.hidden = false;
-                        
-            }else {
-               cs.disabled = true;
-            }
-         });
-         cs.addEventListener("change", function(){
-            if (cs.value != 0 ) {
-               ef.hidden = false;                        
-            }else {
-               cs.disabled = true;
-            }
-         });
-      </script>
-<!-- <script>
-        function abrirWhatsApp() {
-            // Reemplaza "xxxxxxxxxxxxx" con el número de teléfono de destino
-            var numeroTelefono = "5637269723";
-            
-            // Crea el enlace para abrir WhatsApp con el número de teléfono
-            var url = "https://api.whatsapp.com/send?phone=" + numeroTelefono;
-
-            // Abre una nueva ventana o pestaña con el enlace de WhatsApp
-            window.open(url);
-        }
-    </script>     -->
-    <script>
     function toggleWhatsAppPopup() {
       var whatsappPopup = document.getElementById('whatsappPopup');
       whatsappPopup.classList.toggle('open');
@@ -1458,6 +1071,8 @@ $cat_carreras = view_cat_carreras();
       document.getElementById('whatsappMessage').value = '';
     }
   </script>
+
+
    </body>
   
 </html>

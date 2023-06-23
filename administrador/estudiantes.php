@@ -303,9 +303,8 @@ $usuario = $_SESSION['name'];
                      <div class="table-responsive-xxl">
                         <a name="" id="" class="solid__btn" style="background:none; color:#3887fe;"  href="#" role="button">Estudiantes</a>
                         <a name="" id="" class="solid__btn" href="organizaciones.php" role="button">Organizaciones</a>
-                        <button type="button" class="solid__btn " data-bs-toggle="modal" data-bs-target="#modalId">
-                             Agregar Usuarios
-                           </button>
+                        <a name="" id="" class="solid__btn" href="usuarios.php" role="button">Usuarios</a>
+                 
                         <br><br>
 
                         <ul class="nav nav-tabs" id="navId" role="tablist">
