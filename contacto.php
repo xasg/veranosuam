@@ -472,6 +472,7 @@ resize: none;
 
       <!-- Footer area start -->
       <footer>
+         <!--
          <section class="footer__border footer-bg grey__bg p-relative z-index-11 pt-120 pb-60">
             <div class="footer__shape">
                <img src="assets/img/shape/footer-shape.png" alt="">
@@ -505,7 +506,7 @@ resize: none;
                   </div>
                </div>
             </div>
-         </div>
+         </div>-->
       </footer>
       <!-- Footer area end -->
 
