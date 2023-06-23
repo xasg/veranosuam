@@ -258,7 +258,7 @@ resize: none;
                <div class="row align-items-center">
                   <div class="col-xl-2 col-lg-2 col-6">
                      <div class="header__logo">
-                        <a href="index.html">
+                        <a href="index.php">  <!--Este es el logo que se muestra de las estancias profesionales de verano y es un enlace a el index.php-->
                            <img src="assets/img/logo/logo.png" alt="logo de estancias profesionales de verano">
                         </a>
                      </div>
@@ -640,7 +640,7 @@ resize: none;
             </div>
          </div>
       </div>
-      </div>
+      </div>-->
       <!-- Service area end -->
 
       <!-- Recent area start --
@@ -686,7 +686,7 @@ resize: none;
                </div>
             </div>
          </div>
-      </div>
+      </div>-->
       <!-- Recent area end -->
 
       <!-- Features area start -->

@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Place favicon.ico in the root directory -->
-      <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+      <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png"><!--LOGO DEL ICONO DE LAS ESTANCIAS DE VERANO -->
 
       <!-- CSS here -->
       <link rel="stylesheet" href="assets/app/css/bootstrap.min.css">
@@ -34,29 +34,119 @@
   color: #FFFFFF !important;
   box-shadow: 1px 0px 8px #000 !important;
 }
+
+.whatsapp-button {
+position: fixed;
+bottom: 20px;
+left: 50px;
+width: 54px;
+
+z-index: 15;
+background-color: #00b341;
+color: white;
+padding: 12px;
+border-radius: 50%;
+font-size: 20px;
+cursor: pointer;
+box-shadow: 0px 0px 4px #000;
+}
+.whatsapp-popup {
+position: fixed;
+z-index: 900;
+bottom: 80px;
+left: -300px; /* Cambiamos el valor para que la ventana esté oculta fuera del lado izquierdo */
+width: 300px;
+height: auto;
+background-color: #fff;
+border: 1px solid #ccc;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+opacity: 0;
+transition: opacity 0.3s ease, left 0.3s ease; /* Actualizamos la transición para que se aplique a la propiedad left */
+padding: 20px;
+border-radius: 5px;
+background-color: #00b341;
+
+
+}
+
+.whatsapp-popup.open {
+opacity: 1;
+left: 20px; /* Cambiamos el valor para que la ventana aparezca desde el lado izquierdo */
+}
+
+.whatsapp-popup h2 {
+font-size: 20px;
+margin-bottom: 10px;
+}
+
+.whatsapp-popup p {
+font-size: 16px;
+line-height: 1.5;
+}
+
+.whatsapp-popup .close-button {
+position: absolute;
+top: 10px;
+right: 10px;
+background: none;
+border: none;
+font-size: 18px;
+cursor: pointer;
+}
+
+.whatsapp-popup .send-button {
+display: inline-block;
+padding: 8px 16px;
+background-color: green;
+color: white;
+border: none;
+border-radius: 5px;
+font-weight: bold;
+cursor: pointer;
+margin-right: 10px;
+}
+
+.whatsapp-popup .input-field {
+width: 100%;
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 5px;
+margin-bottom: 10px;
+}
+.head-whatssap{
+background-color: #00b341;
+color: #fff;
+width: 100%;
+}
+textarea {
+resize: none;
+}
+
     </style>
    
    </head>
    <body>
-   <!--BTN WHATSSAP-->
-   <div class="whatsapp-button" onclick="toggleWhatsAppPopup()">        
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-         <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
-         <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
-      </svg>
-   </div>
-   <div id="whatsappPopup" class="whatsapp-popup">
-      <button class="close-button" onclick="toggleWhatsAppPopup()">X</button>
-      <h2 class="text-light">¡Hola!</h2>
-      <p class="text-light" >Gracias por visitar nuestro sitio web. ¿Cómo podemos ayudarte hoy?</p>
+   <!-- <div class="whatsapp-button" onclick="abrirWhatsApp()"> -->
+  <div class="whatsapp-button" onclick="toggleWhatsAppPopup()">
+        <!-- <i class="fab fa-whatsapp"></i> -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+            <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+          </svg>
+    </div>
+    <!-- <button class="whatsapp-button" onclick="toggleWhatsAppPopup()">Abrir WhatsApp</button> -->
 
-      <textarea class="input-field" id="whatsappMessage" placeholder="Escribe tu mensaje"></textarea>
+<div id="whatsappPopup" class="whatsapp-popup">
+  <button class="close-button" onclick="toggleWhatsAppPopup()">X</button>
+  <h2 class="text-light">¡Hola!</h2>
+  <p class="text-light" >Gracias por visitar nuestro sitio web. ¿Cómo podemos ayudarte hoy?</p>
 
-      <button class="send-button" onclick="sendWhatsAppMessage()">Enviar</button>
-      <button class="send-button" onclick="clearWhatsAppMessage()">Limpiar</button>
-   </div>
-   <!--CIERRA BTN WHATSSAP-->
+  <textarea class="input-field" id="whatsappMessage" placeholder="Escribe tu mensaje"></textarea>
+
+  <button class="send-button" onclick="sendWhatsAppMessage()">Enviar</button>
+  <button class="send-button" onclick="clearWhatsAppMessage()">Limpiar</button>
+</div>
    <?php
 // $usuario = $_SESSION['name'];
 ?>
@@ -447,6 +537,30 @@
       <script src="assets/app/js/ajax-form.js"></script>
       <script src="assets/app/js/main.js"></script>
       <script src="assets/js/btnws.js"></script>
+
+      <script>
+    function toggleWhatsAppPopup() {
+      var whatsappPopup = document.getElementById('whatsappPopup');
+      whatsappPopup.classList.toggle('open');
+    }
+
+    function sendWhatsAppMessage() {
+      var message = document.getElementById('whatsappMessage').value;
+      var phoneNumber = '5637269723'; // Reemplaza con tu número de teléfono de WhatsApp
+
+      var url = 'https://api.whatsapp.com/send?phone=' + phoneNumber + '&text=' + encodeURIComponent(message);
+
+      // Ventana emergente sin redirección
+      var popup = window.open(url, '_blank', 'width=400,height=600,scrollbars=yes,resizable=yes');
+      popup.focus();
+    }
+
+    function clearWhatsAppMessage() {
+      document.getElementById('whatsappMessage').value = '';
+    }
+  </script>
+
+
    </body>
   
 </html>
