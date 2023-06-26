@@ -1048,7 +1048,7 @@ resize: none;
       <script src="assets/js/catcarreras.js"></script>
       <!--El siguiente Script es para mostrar las relaciones de grado cat carrera y listas desplegables-->
       <script src="assets/js/catgrado.js"></script>
-      <!--El siguiente Script es para la funcionalidad del boton de whatssap-->
+      <!--El siguiente Script es para la funcionalidad del boton de whatssap qu se agregara desp-->
       <script src="assets/js/btnws.js"></script>
       <script>
     function toggleWhatsAppPopup() {
