@@ -1045,11 +1045,11 @@ resize: none;
       <script src="assets/app/js/ajax-form.js"></script>
       <script src="assets/app/js/main.js"></script>
       <!--El siguiente Script es para mostrar las relaciones de grado carreras-->
-      <script src="assets/js/catcarreras.js"></script>
+      <script src="includes/js/catcarreras.js"></script>
       <!--El siguiente Script es para mostrar las relaciones de grado cat carrera y listas desplegables-->
-      <script src="assets/js/catgrado.js"></script>
+      <script src="includes/js/catgrado.js"></script>
       <!--El siguiente Script es para la funcionalidad del boton de whatssap qu se agregara desp-->
-      <script src="assets/js/btnws.js"></script>
+      <script src="includes/js/btnws.js"></script>
       <script>
     function toggleWhatsAppPopup() {
       var whatsappPopup = document.getElementById('whatsappPopup');
