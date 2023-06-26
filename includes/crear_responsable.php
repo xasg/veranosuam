@@ -10,7 +10,7 @@
     $rol = strtoupper( $_POST['tp_user_rol']);
     date_default_timezone_set('America/Mexico_City');
 $tiempo = date('d-m-Y H:i:s');
-if ($rol == 0) {
+if ($rol == 0 || $rol != 1) {
     # code...
     $rol = 1;
 }    
