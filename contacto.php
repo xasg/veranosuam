@@ -358,7 +358,7 @@ resize: none;
                            <h3 class="h3-formulario">
                                  Comentarios:
                            </h3><br>
-                        <form class="w-100 " action="contacto.php" method="post">
+                        <!-- <form class="w-100 " action="contacto.php" method="post">
                            
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
@@ -378,7 +378,7 @@ resize: none;
                             </div>
                             <button type="submit" class="btn btn-primary" style="background: #3249b3;">Enviar Mensaje</button>
                             <br><br>
-                        </form>
+                        </form> -->
                         
                         
 
