@@ -5,10 +5,15 @@
       echo "<script> window.location ='../index.php'; </script>";
     }
     $id = $_SESSION['id'];
-    // $correo = $_SESSION['correo'];
     $nombre = $_SESSION['name'];
-    // $usuario = $_SESSION['nombre'];
-    // $_SESSION['id'];
+    //La siguiente consulta valida el tipo de usuario
+    require("../controller/conect.php");
+    $query = "SELECT * FROM usuarios WHERE id = {$id}";
+    $consulta = $mysqli->query($query);
+    foreach ($consulta as $value) {
+      # code...
+      $tp_usuario = $value['tp_user'];
+    }
  
 
 ?>
@@ -320,7 +325,15 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                      <div class="table-responsive-xxl">
                         <a name="" id="" class="solid__btn" href="index.php" role="button">Estudiantes</a>
                         <a name="" id="" class="solid__btn" href="#" style="background:none; color:#3887fe;" role="button">Organizaciones</a>
+                        <?php 
+                           if ($tp_usuario == 2) {
+                              # code...
+                        ?>
                         <a name="" id="" class="solid__btn" href="usuarios.php" role="button">Usuarios</a>
+                        
+                        <?php
+                           }
+                        ?>
                         
                         
                         <br><br>
