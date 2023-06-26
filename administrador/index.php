@@ -7,9 +7,15 @@
     $id = $_SESSION['id'];
     // $correo = $_SESSION['correo'];
     $nombre = $_SESSION['name'];
-   //  $rol_usuario = $_SESSION['tp_user'];
-    // $usuario = $_SESSION['nombre'];
-    // $_SESSION['id'];
+    //La siguiente consulta valida el tipo de usuario
+    require("../controller/conect.php");
+    $query = "SELECT * FROM usuarios WHERE id = {$id}";
+    $consulta = $mysqli->query($query);
+    foreach ($consulta as $value) {
+      # code...
+      $tp_usuario = $value['tp_user'];
+    }
+     
 ?>
 
 <!doctype html>
@@ -318,12 +324,12 @@ if (isset($_SESSION['name'])) {
                         <a name="" id="" class="solid__btn" style="background:none; color:#3887fe;"  href="#" role="button">Estudiantes</a>
                         <a name="" id="" class="solid__btn" href="organizaciones.php" role="button">Organizaciones</a>
                         <?php
-                           // if ($rol ==2) {
+                           if ($tp_usuario ==2) {
                            
                         ?>
                         <a href="usuarios.php" class="solid__btn ">Usuarios</a>
                         <?php
-                           // }
+                           }
                         ?>
                         <br><br>
 
