@@ -236,7 +236,21 @@ if (isset($_POST['correo']) && isset($_POST['pass'])) {
                                                <label for="pass" class="form-label">password</label>
                                                <input type="password"
                                                  class="form-control" name="pass" id="pass" aria-describedby="helpId" placeholder="ingresa tu contraseña" required>
-                                               
+                                               <button type="button" class="btn btn-primary btn-sm" onclick="verpass()"><i class="fa-regular fa-eye"></i></button>
+                                               <script>
+                                                 function verpass() {
+                                                let passwords = document.getElementById('pass');
+                                                if (passwords.type == "password") {
+                                                   passwords.type = "text";
+                                                }else{
+                                                   passwords.type = "password";
+                                                }
+                                                }
+
+                                                 document.getElementById('pass');
+
+
+                                               </script>
                                              </div>
                                              <button type="submit" class="btn btn-primary">Iniciar sesion</button>
                                           </form>
