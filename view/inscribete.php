@@ -558,8 +558,10 @@ if (isset($_GET['matricula'])) {
                                                         <label for="matriculaValida_formato" class="form-label">Matricula</label>
                                                         <input type="number" class="form-control" min="10" maxlength="10" id="matriculaValida_formato" name="matriculaValida_formato" value="" oninput="validarCampoNumerico(this)" required>
                                                         <span id="mensajeError" style="color: red;"></span>
-                                                        <div id="result-matricula-valida-formato"></div> 
+                                                        
                                                         <button type="button" class="btn btn-primary btn-sm " style="margin-top: 5px;">Validar</button>
+                                                        <br>
+                                                        <div id="result-matricula-valida-formato"></div> 
                                                         
                                                     </div>
                                     </div>
@@ -608,8 +610,9 @@ if (isset($_GET['matricula'])) {
                                                         <label for="matriculaValida" class="form-label">Matricula</label>
                                                         <input type="number" class="form-control" min="10" maxlength="10" id="matriculaValida" name="matriculaValida" value="" oninput="validarCampoNumerico(this)" required>
                                                         <span id="mensajeError" style="color: red;"></span>
+                                                        
+                                                        <button type="button" class="btn btn-primary btn-sm " >Validar </button>
                                                         <div id="result-matricula-valida"></div> 
-                                                        <button type="button" class="btn btn-primary btn-sm " >Validar</button>
                                                         <!-- <button type="submit" class="btn btn-primary btn-sm ">Enviar</button> -->
                                                     </div>
                                                     <!-- <button type="sumbit" class="btn solid__btn">Button</button> -->
@@ -685,7 +688,7 @@ if (isset($_GET['matricula'])) {
                                                             </select>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <label for="creditos" class="form-label">Creditos</label>
+                                                        <label for="creditos" class="form-label"> # De Creditos</label>
                                                         <input type="number"  class="form-control" min="2" maxlength="3" id="creditos" name="creditos" value="" oninput="validarCampoNumerico3(this)" required>
                                                         <span id="mensajeError3" style="color: red;"></span>
                                                     </div>
