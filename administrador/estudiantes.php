@@ -5,11 +5,15 @@
       echo "<script> window.location ='../index.php'; </script>";
     }
     $id = $_SESSION['id'];
-    // $correo = $_SESSION['correo'];
     $nombre = $_SESSION['name'];
-    // $usuario = $_SESSION['nombre'];
-    // $_SESSION['id'];
- 
+    //La siguiente consulta valida el tipo de usuario
+    require("../controller/conect.php");
+    $query = "SELECT * FROM usuarios WHERE id = {$id}";
+    $consulta = $mysqli->query($query);
+    foreach ($consulta as $value) {
+      # code...
+      $tp_usuario = $value['tp_user'];
+    }
 
 ?>
 
@@ -303,7 +307,16 @@ $usuario = $_SESSION['name'];
                      <div class="table-responsive-xxl">
                         <a name="" id="" class="solid__btn" style="background:none; color:#3887fe;"  href="#" role="button">Estudiantes</a>
                         <a name="" id="" class="solid__btn" href="organizaciones.php" role="button">Organizaciones</a>
+                        <?php 
+                        // lA SIGUIENTE CONDICIÓN VALIDA SI ERES ADMINISTRADOR O SOLO USUARIO PARA ACCEDER A VER LOS USUARIOS
+                           if ($tp_usuario == 2) {
+                              # code...
+                        ?>
                         <a name="" id="" class="solid__btn" href="usuarios.php" role="button">Usuarios</a>
+                        
+                        <?php
+                           }
+                        ?> 
                  
                         <br><br>
 

@@ -688,8 +688,8 @@ if (isset($_GET['matricula'])) {
                                                             </select>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <label for="creditos" class="form-label"> # De Creditos</label>
-                                                        <input type="number"  class="form-control" min="2" maxlength="3" id="creditos" name="creditos" value="" oninput="validarCampoNumerico3(this)" required>
+                                                        <label for="creditos" class="form-label"> Numero de creditos</label>
+                                                        <input type="number"  class="form-control" min="2" maxlength="3" id="creditos" name="creditos" value="" oninput="validarCampoNumerico3(this)" placeholder="Ingresa el numero de creditos actuales" required>
                                                         <span id="mensajeError3" style="color: red;"></span>
                                                     </div>
                                                     <div class="col-md-4">
@@ -948,26 +948,15 @@ if (isset($_GET['matricula'])) {
 
             if (valor.length > 3 || valor.length < 2 ) {
                 input.value = valor.substring(0, 3); // Recortar el valor a 10 dígitos
-                // mensajeError.textContent = "Completa el campo con 10 digitos";
-                mensajeError3.textContent = "Completa el campo con 2 digitos";
+                
+                mensajeError3.textContent = "Completa el campo maximo con 3 digitos";
                 
             } else {
                 mensajeError3.textContent = "";
             }
         }
     </script>
-<!-- <script>
-        function abrirWhatsApp() {
-            // Reemplaza "xxxxxxxxxxxxx" con el número de teléfono de destino
-            var numeroTelefono = "5637269723";
-            
-            // Crea el enlace para abrir WhatsApp con el número de teléfono
-            var url = "https://api.whatsapp.com/send?phone=" + numeroTelefono;
 
-            // Abre una nueva ventana o pestaña con el enlace de WhatsApp
-            window.open(url);
-        }
-    </script>  -->
     <script>
     function toggleWhatsAppPopup() {
       var whatsappPopup = document.getElementById('whatsappPopup');
@@ -992,10 +981,6 @@ if (isset($_GET['matricula'])) {
    </body>
   
 </html>
-<!--
-veranos
-Cocacola31416
-UhZWoLwfoUm9
--->
+
 
 

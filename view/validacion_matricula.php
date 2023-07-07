@@ -10,7 +10,13 @@ if (isset($_POST)) {
     if ($result->num_rows > 0) {
         echo '<sub class="form-text text-danger"><strong>Oh no!</strong> La matricula ya se encuentra registrada.</sub>';
     } else {
-        echo '<div class="text-success"><strong>Enhorabuena!</strong> Matricula disponible.</div>';
+        if ($matricula == "" ) {
+            # code...
+            echo '<sub class="form-text text-danger"><strong>Oh no!</strong> Ingresa una Matricula valida.</sub>';
+            
+        }else{
+            echo '<div class="text-success"><strong>Enhorabuena!</strong> Matricula disponible.</div>';
+        }
     }
 }
 ?>

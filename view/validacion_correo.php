@@ -10,7 +10,12 @@ if (isset($_POST)) {
     if ($result->num_rows > 0) {
         echo '<sub class="form-text text-danger"><strong>Oh no!</strong> Este Email ya se encuentra registrado.</sub>';
     } else {
-        echo '<div class="text-success"><strong>Enhorabuena!</strong> Usuario disponible.</div>';
+        if ($username == "" || $username) {
+            # code...
+            echo '<sub class="form-text text-danger"><strong>Oh no!</strong> ingresa un correo valido.</sub>';
+        }else{
+            echo '<div class="text-success"><strong>Enhorabuena!</strong> el correo aun no se ha registrado.</div>';
+        }
     }
 }
 ?>
