@@ -14,8 +14,6 @@
       # code...
       $tp_usuario = $value['tp_user'];
     }
- 
-
 ?>
 
 <!doctype html>
@@ -45,78 +43,6 @@
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-    
-<script type="text/javascript">
-$(document).ready(function() {  
-    $('#correo').on('blur', function(){
-        $('#result-username').html('<img src="../img/loader.gif" />').fadeOut(1000);
-
-        var correo = $(this).val();       
-        var dataString = 'correo='+correo;
-
-        $.ajax({
-            type: "POST",
-            url: "validacion_correo_usuario.php",
-            data: dataString,
-            success: function(data) {
-                $('#result-username').fadeIn(1000).html(data);
-            }
-        });
-    });              
-});    
-$(document).ready(function() {  
-    $('#matricula').on('blur', function(){
-        $('#result-matricula').html('<img src="../img/loader.gif" />').fadeOut(1000);
-
-        var matricula = $(this).val();       
-        var dataString = 'matricula='+matricula;
-
-        $.ajax({
-            type: "POST",
-            url: "validacion_matricula.php",
-            data: dataString,
-            success: function(data) {
-                $('#result-matricula').fadeIn(1000).html(data);
-            }
-        });
-    });              
-});    
-$(document).ready(function() {  
-    $('#matriculaValida').on('blur', function(){
-        $('#result-matricula-valida').html('<img src="../img/loader.gif" />').fadeOut(1000);
-
-        var matriculaValida = $(this).val();       
-        var dataString = 'matricula='+matriculaValida;
-
-        $.ajax({
-            type: "POST",
-            url: "validacion_estudiante.php",
-            data: dataString,
-            success: function(data) {
-                $('#result-matricula-valida').fadeIn(1000).html(data);
-            }
-        });
-    });              
-});    
-  
-$(document).ready(function() {  
-    $('#matriculaValida_formato').on('blur', function(){
-        $('#result-matricula-valida-formato').html('<img src="../img/loader.gif" />').fadeOut(1000);
-
-        var matriculaValida = $(this).val();       
-        var dataString = 'matricula='+matriculaValida;
-
-        $.ajax({
-            type: "POST",
-            url: "validacion_estudiante_formato.php",
-            data: dataString,
-            success: function(data) {
-                $('#result-matricula-valida-formato').fadeIn(1000).html(data);
-            }
-        });
-    });              
-});  
-</script>
 <style>
        .mi-clase-boton-confirmar {
   background-color: #007bff !important;
@@ -128,8 +54,9 @@ $(document).ready(function() {
    </head>
    <body>
    <?php
-$usuario = $_SESSION['name'];
-?>
+   //Declaracion del usuario para mostrar en el nav
+   $usuario = $_SESSION['name'];
+   ?>
 <?php
 if (isset($_REQUEST['eliminado'])) {//Esta Validación verifica que se haya eliminado una vacante correctamente
    # code...
@@ -186,11 +113,6 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
 }
 
 ?>
-
-      <!--[if lte IE 9]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-      <![endif]-->
-
       <!-- Offcanvas area start -->
       <div class="fix">
          <div class="offcanvas__info">
@@ -326,6 +248,7 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                         <a name="" id="" class="solid__btn" href="index.php" role="button">Estudiantes</a>
                         <a name="" id="" class="solid__btn" href="#" style="background:none; color:#3887fe;" role="button">Organizaciones</a>
                         <?php 
+                        // lA SIGUIENTE CONDICIÓN VALIDA SI ERES ADMINISTRADOR O SOLO USUARIO PARA ACCEDER A VER LOS USUARIOS
                            if ($tp_usuario == 2) {
                               # code...
                         ?>
@@ -333,9 +256,7 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                         
                         <?php
                            }
-                        ?>
-                        
-                        
+                        ?>              
                         <br><br>
                         <table class="table table-sm table-dark ">
                            <!-- Button trigger modal Agregar Organización -->
@@ -404,10 +325,7 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                               require("../controller/conect.php");
 
                               $query = "SELECT *,COUNT(espacio_disponible.id_organizacion) as espacios, SUM(lugares) as lugar FROM organizacion left join espacio_disponible on organizacion.id_org = espacio_disponible.id_organizacion GROUP BY organizacion.nombre ORDER BY id_org DESC, id_espacio DESC";
-                              // $query = "SELECT * FROM organizacion ORDER BY id_org";
-                              $result = $mysqli->query($query);
-                              // $row = mysqli_fetch_assoc($result);
-                              
+                              $result = $mysqli->query($query);                           
                                  # code...
                            ?>
                            <thead class="border-bottom">
@@ -479,10 +397,6 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                                                 <br>
                                                 Realiza cambios en las vacantes de las ORS <br> <br>
                                                 <?php
-                                                // $query = "SELECT * FROM organizacion LEFT JOIN espacio_disponible on organizacion.id_org = espacio_disponible.id_organizacion where id_org ='{$rows['id_org']}'";
-                                                // $result2 = $mysqli->query($query);
-
-                                                // foreach ($result as $campos ) {
                                                    if ($rows['estatus'] == 1) {
                                                       # code...
                                                       $estats = 'Disponible';
@@ -492,11 +406,7 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                                                    }
                                                    # code...
                                                 ?>                                                         
-                                          
-
                                                 <form action="actualizar_org.php" class="row" method="post">
-
-                                                   <!-- <label for="idorg" class="row form-label col-md-4">ID de Empresa</label> -->
                                                   <input type="text"class="form-control" name="idorg" id="irorg" aria-describedby="helpId" value="<?php echo $rows['id_org'];?>" hidden="true">
                                                    <div class="col-6">
                                                      
@@ -539,8 +449,6 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                                                 <div class="col-6"> 
                                                    
                                                    <label for="vacante"  class="row text-light text-center bg-dark"><b>Agregar Vacante</b></label>
-                                                      <!-- <label for="lic" class="row form-label col-md-4">Licenciatura</label>
-                                                      <input type="text" class="form-control border" name="lic" id="lic" aria-describedby="helpId" value="<?php echo $campos['licenciatura']; ?>"> -->
                                                       <div class="mb-3">
                                                          <label for="" class="form-label">Licenciatura o Maestria</label>
                                                          <select class="form-select form-select-md" name="lic" id="lic" required>
@@ -687,8 +595,6 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                                                         <input type="text" class="form-control border" name="area_act" id="area_act" aria-describedby="helpId" value="<?php echo $campos['area_proyecto']; ?>" >
                                                    </div>
                                                    <div class="col-6">
-                                                      <!-- <label for="actividad" class="form-label">Actividad</label>
-                                                      <input type="text" class="form-control border" name="actividad_act" id="actividad_act" aria-describedby="helpId" value="<?php echo $campos['actividad']; ?>"> -->
                                                       <div class="mb-3">
                                                         <label for="actividad" class="form-label">Actividad</label>
                                                        <textarea class="form-control" name="actividad_act" id="actividad_act" rows="3"><?php echo $campos['actividad']; ?></textarea>
@@ -758,13 +664,6 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                                                 <?php                                                
                                              }
                                                 ?>
-                                                
-                                                
-                                                
-                                             
-
-                                                <!-- <h3><span>1 - </span> Matricula -> <a class="btn btn-primary btn-sm" href="../includes/files/<?php #echo $rows['ine'] ?>" target="_blank">Visualizar</a></h3><br>  -->
-
                                              </div>
                                           </div>
                                           <div class="modal-footer bg-dark text-light">
@@ -775,12 +674,7 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                                     </div>
                                  </div>
                                  
-                                 
-                                 
-                                 
                                   </td>
-                                 <!-- <td></td>
-                                 <td>R1C3</td> -->
                               </tr>
                 
                            </tbody>
@@ -788,16 +682,12 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                            <?php
                            }
                            ?>
-
                         </table>
-                        <!-- </form> -->
                         <br><br><br>
                      </div>
                      <div class="col-md-12 text-center">
-<ul class="pagination pagination-lg pager" id="developer_page"></ul>
-</div>
-                     
-
+                     <ul class="pagination pagination-lg pager" id="developer_page"></ul>
+                     </div>
                   </div>
                </div>
                <div class="col-xl-4 col-lg-6 ">
@@ -814,14 +704,9 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
                      </div>
                      <div class="boost__shape-3"></div>
                      <div class="boost__shape-4">
-                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="44.495" height="44.279" viewBox="0 0 44.495 44.279"> -->
-                           <!-- <path id="Path_26017" data-name="Path 26017" d="M437.625,75.1a11.863,11.863,0,1,1-13.383,10.112l-10.288-1.433a22.245,22.245,0,1,0,25.1-18.964Z" transform="translate(-413.738 -64.809)" fill="#425fec"/> -->
                          </svg>
                      </div>
                      <div class="hero__btn-link wow fadeInUp" data-wow-delay=".8s">
-                        <!-- <a class="solid__btn" href="#">Inscribete</a> -->
-                        
-                        
                         <br>
                         
                      </div>
@@ -952,110 +837,5 @@ if (isset($_REQUEST['creada'])) {//Esta Validación verifica que se haya registr
       <script src="../assets/app/js/isotope.pkgd.min.js"></script>
       <script src="../assets/app/js/ajax-form.js"></script>
       <script src="../assets/app/js/main.js"></script>
-      
-      <script> 
-    $(document).ready(function(){
-           $("#cat_carrera").change(function () {         
-             $("#cat_carrera option:selected").each(function () {
-               id_grado= $(this).val();
-               $.post("includes/carrerasObtener.php", { id_grado: id_grado }, function(data){
-                 $("#catalogo").html(data);
-               });            
-             });
-           })
-         });
-         $(document).ready(function(){
-           $("#catalogo").change(function () {         
-             $("#catalogo option:selected").each(function () {
-               id_carrera= $(this).val();
-               $.post("includes/espacios_disp.php", { id_carrera: id_carrera }, function(data){
-                 $("#catalogo_org").html(data);
-               });            
-             });
-           })
-         });
-         </script>
-      
-      <script>
-         let ee = document.getElementById('cat_carrera');
-         let ef = document.getElementById('catalogo_org');
-         var cs = document.getElementById('catalogo');
-         ee.addEventListener("change", function(){
-            if (ee.value != 0 ) {
-               cs.disabled = false;
-               cs.hidden = false;
-                        
-            }else {
-               cs.disabled = true;
-            }
-         });
-         cs.addEventListener("change", function(){
-            if (cs.value != 0 ) {
-               ef.hidden = false;                        
-            }else {
-               cs.disabled = true;
-            }
-         });
-      </script>
-    
-    <script>
-        function validarCampoNumerico(input) {
-            var valor = input.value;
-            var mensajeError = document.getElementById("mensajeError");
-
-            // Eliminar cualquier caracter no numérico
-            valor = valor.replace(/\D/g, '');
-
-            if (valor.length > 10 || valor.length <10 ) {
-                input.value = valor.substring(0, 10); // Recortar el valor a 10 dígitos
-                mensajeError.textContent = "Completa el campo con 10 digitos";
-                // mensajeError2.textContent = "Completa el campo con 10 digitos";
-                
-            } else {
-                mensajeError.textContent = "";
-            }
-        }
-        function validarCampoNumerico2(input) {
-            var valor = input.value;
-            var mensajeError = document.getElementById("mensajeError2");
-
-            // Eliminar cualquier caracter no numérico
-            valor = valor.replace(/\D/g, '');
-
-            if (valor.length > 10 || valor.length < 10 ) {
-                input.value = valor.substring(0, 10); // Recortar el valor a 10 dígitos
-                // mensajeError.textContent = "Completa el campo con 10 digitos";
-                mensajeError2.textContent = "Completa el campo con 10 digitos";
-                
-            } else {
-                mensajeError.textContent = "";
-            }
-        }
-        function validarCampoNumerico3(input) {
-            var valor = input.value;
-            var mensajeError3 = document.getElementById("mensajeError3");
-
-            // Eliminar cualquier caracter no numérico
-            valor = valor.replace(/\D/g, '');
-
-            if (valor.length > 3 || valor.length < 2 ) {
-                input.value = valor.substring(0, 3); // Recortar el valor a 10 dígitos
-                // mensajeError.textContent = "Completa el campo con 10 digitos";
-                mensajeError3.textContent = "Completa el campo con 2 digitos";
-                
-            } else {
-                mensajeError3.textContent = "";
-            }
-        }
-    </script>
-
    </body>
-  
 </html>
-<!--
-veranos
-Cocacola31416
-UhZWoLwfoUm9
--->
-
-
